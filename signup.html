@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Stackly Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      background-color: var(--color-navy);
+      background-image: linear-gradient(rgba(11, 19, 43, 0.8), rgba(11, 19, 43, 0.95)), url('consulting_hero_bg_1786435771395.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--color-white);
+    }
+    .auth-container {
+      background: rgba(11, 19, 43, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 3rem;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .auth-header h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-serif);
+    }
+    .auth-header p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      color: var(--color-white);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .btn-auth {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    .btn-auth:hover {
+      background-color: var(--color-white);
+      transform: translateY(-2px);
+    }
+    .auth-footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+    .auth-footer a {
+      color: var(--color-gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+    .error-message {
+      color: #ef4444;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <div class="auth-container">
+    <div class="auth-header">
+      <img src="assets/logo.webp" alt="Logo" style="height: 40px; margin-bottom: 1rem;">
+      <h2>Create an Account</h2>
+      <p>Join Stackly Consulting to access your dashboard.</p>
+    </div>
+
+    <form id="signupForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" class="form-control" placeholder="John Doe">
+        <div class="error-message" id="nameError">Please enter your full name.</div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="form-control" placeholder="john@example.com">
+        <div class="error-message" id="emailError">Please enter a valid email address.</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="••••••••">
+        <div class="error-message" id="pwdError">Password must be at least 6 characters.</div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" class="form-control" placeholder="••••••••">
+        <div class="error-message" id="confirmError">Passwords do not match.</div>
+      </div>
+      
+      <button type="submit" class="btn-auth">Register</button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account? <a href="login.html">Sign in here</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Reset errors
+      document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+      
+      let isValid = true;
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const pwd = document.getElementById('password').value;
+      const confirmPwd = document.getElementById('confirmPassword').value;
+
+      if (!name) {
+        document.getElementById('nameError').style.display = 'block';
+        isValid = false;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        document.getElementById('emailError').style.display = 'block';
+        isValid = false;
+      }
+
+      if (!pwd || pwd.length < 6) {
+        document.getElementById('pwdError').style.display = 'block';
+        isValid = false;
+      }
+
+      if (pwd !== confirmPwd) {
+        document.getElementById('confirmError').style.display = 'block';
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Store email for login page pre-fill
+        localStorage.setItem('registeredEmail', email);
+        
+        // Change button state
+        const btn = document.querySelector('.btn-auth');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registering...';
+        
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 800);
+      }
+    });
+
+    // Custom Cursor Logic
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+    if (cursorDot && cursorOutline) {
+      window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        gsap.to(cursorOutline, {
+          x: posX,
+          y: posY,
+          duration: 0.15,
+          ease: 'power2.out'
+        });
+      });
+      const clickables = document.querySelectorAll('a, button, input');
+      clickables.forEach(el => {
+        el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

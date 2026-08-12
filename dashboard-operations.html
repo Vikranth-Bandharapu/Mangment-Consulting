@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operations Dashboard | Apex Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo gradient-text">APEX</div>
+      <nav class="nav-menu">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="dashboard-analytics.html"><i class="fa-solid fa-chart-line"></i> Financials</a>
+        <a href="dashboard-operations.html" class="active"><i class="fa-solid fa-bars-progress"></i> Operations</a>
+        <a href="#"><i class="fa-solid fa-users"></i> Clients</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <h2>Operations & <span class="gradient-text">Projects</span></h2>
+        <div class="user-profile">
+          <span>Welcome, Executive</span>
+          <div class="avatar">E</div>
+        </div>
+      </header>
+
+      <!-- KPI Cards -->
+      <section class="kpi-cards" style="padding: 0;">
+        <div class="kpi-card">
+          <div class="kpi-title">Active Projects</div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-trend"><i class="fa-solid fa-arrow-trend-up"></i> +2 this month</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Team Utilization</div>
+          <div class="kpi-value">87%</div>
+          <div class="kpi-trend"><i class="fa-solid fa-arrow-trend-up"></i> +4%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Upcoming Milestones</div>
+          <div class="kpi-value">5</div>
+          <div class="kpi-trend warning" style="color: #f59e0b;"><i class="fa-solid fa-circle-exclamation"></i> Action Needed</div>
+        </div>
+      </section>
+
+      <!-- Project Tasks -->
+      <section class="charts-grid" style="padding: 0; display: block;">
+        <div class="chart-container" style="margin-bottom: 2rem;">
+          <h3>Project Status Overview</h3>
+          <div class="task-list">
+            
+            <div class="task-item success">
+              <div class="task-info">
+                <h4>Alpha Digital Transformation</h4>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+              <span style="color: #10b981; font-weight: bold;">Completed</span>
+            </div>
+
+            <div class="task-item">
+              <div class="task-info" style="flex: 1; padding-right: 2rem;">
+                <h4>Beta Supply Chain Optimization</h4>
+                <div class="progress-bar">
+                  <!-- Animation will fill this in script.js -->
+                  <div class="progress-fill" data-width="65%" style="width: 0%;"></div>
+                </div>
+              </div>
+              <span>In Progress (65%)</span>
+            </div>
+
+            <div class="task-item warning">
+              <div class="task-info" style="flex: 1; padding-right: 2rem;">
+                <h4>Gamma M&A Due Diligence</h4>
+                <div class="progress-bar">
+                  <div class="progress-fill" data-width="30%" style="width: 0%;"></div>
+                </div>
+              </div>
+              <span>At Risk (30%)</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly | Management Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- 1. Navigation -->
+  <header class="glass-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px; filter: invert(1);"></a>
+      </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="document.getElementById('navLinks').classList.toggle('active')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="#services">Services</a>
+          <a href="#industries">Industries</a>
+          <a href="#case-studies">Case Studies</a>
+          <a href="#about">About</a>
+          <a href="#blogs">Blogs</a>
+          <!-- Mobile Only Auth Links -->
+          <a href="login.html" class="mobile-only-auth" style="color: var(--color-gold); font-weight: bold; margin-top: 1rem;">Sign in</a>
+          <a href="signup.html" class="mobile-only-auth" style="color: var(--color-emerald); font-weight: bold;">Book a consultation</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="sign-in">Sign in</a>
+          <button class="btn-primary" onclick="window.location.href='signup.html'">Book a consultation</button>
+        </div>
+    </div>
+  </header>
+
+  <!-- 2. Hero Section -->
+  <section class="hero" id="vanta-bg">
+    <div class="hero-bg-orb"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="tag gsap-hero"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> MANAGEMENT CONSULTING</div>
+        <h1 class="gsap-hero split-text">Shaping <span style="white-space: nowrap;">high-stakes</span> decisions for global <span class="text-gold text-italic">market leaders.</span></h1>
+        <p class="gsap-hero">We partner with institutional leaders to resolve complex operational choke-points, architect resilient growth strategies, and execute generational transformations.</p>
+        <div class="hero-actions gsap-hero">
+          <button class="btn-primary">INITIATE CONSULTATION <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px;"></i></button>
+          <a href="404.html" class="btn-outline" style="border: none;">View Firm Overview <i class="fa-solid fa-plus" style="margin-left: 5px;"></i></a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper gsap-hero-img">
+        <img src="assets/hero.webp" alt="Modern Concrete Skyscraper" class="hero-image-parallax">
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Partners -->
+  <section class="partners gsap-fade">
+    <div class="container">
+      <div class="tag" style="justify-content: center;">INSTITUTIONAL PARTNERS UNDER COUNSEL</div>
+      <div class="partners-logos">
+        <span>MEROVINGIAN PLC</span>
+        <span>VALO HOLDINGS</span>
+        <span>KRONOS GLOBAL</span>
+        <span>AETHER INTL</span>
+        <span>NORDIC TRUST</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Core Capabilities -->
+  <section class="capabilities" id="services" style="position: relative; overflow: hidden; background-color: #0b132b; color: white;">
+    <!-- Premium background glowing orbs -->
+    <div class="orb orb-gold"></div>
+    <div class="orb orb-purple" style="top: 60%; right: -150px; left: auto; opacity: 0.5;"></div>
+    
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="tag gsap-fade" style="color: white; border-color: rgba(255,255,255,0.2);"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> CORE CAPABILITIES</div>
+      <div class="capabilities-header gsap-fade">
+        <h2 style="color: white;">Rethinking the limits of structural performance.</h2>
+        <p style="color: rgba(255,255,255,0.8);">We do not deliver generic blueprints. We architect robust solutions specifically designed to perform under high volatility and operational stress.</p>
+      </div>
+
+      <div class="cap-title-row gsap-fade">
+        <div>
+          <div class="tag" style="margin-bottom: 0.5rem;">WHAT WE DO</div>
+          <h3>Six practices, one joined-up team</h3>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Most problems worth solving cross more than one discipline. We staff accordingly.</p>
+        </div>
+        <a href="404.html" class="btn-outline">All services <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+
+      <div class="cap-grid bento-grid">
+        <a href="404.html" class="cap-card card-button gsap-stagger bento-wide">
+          <h4>Strategy & Growth</h4>
+          <p>Market entry, portfolio choices and growth plans built on evidence, not opinion.</p>
+          <ul class="cap-list">
+            <li><i class="fa-solid fa-circle-check"></i> Growth diagnostics</li>
+            <li><i class="fa-solid fa-circle-check"></i> Market entry plans</li>
+            <li><i class="fa-solid fa-circle-check"></i> Portfolio strategy</li>
+          </ul>
+          <span class="cap-link">Learn more <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+        
+        <a href="404.html" class="cap-card card-button gsap-stagger bento-wide">
+          <h4>Operations Excellence</h4>
+          <p>Redesign the flow of work so cost, quality and lead time all move in the right direction.</p>
+          <ul class="cap-list">
+            <li><i class="fa-solid fa-circle-check"></i> Process redesign</li>
+            <li><i class="fa-solid fa-circle-check"></i> Cost-to-serve</li>
+          </ul>
+          <span class="cap-link">Learn more <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+
+        <a href="404.html" class="cap-card card-button gsap-stagger bento-small">
+          <h4>Digital</h4>
+          <p>Platform and data roadmaps.</p>
+          <span class="cap-link">Learn more <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+
+        <a href="404.html" class="cap-card card-button gsap-stagger bento-small">
+          <h4>People</h4>
+          <p>Org design and capability plans.</p>
+          <span class="cap-link">Learn more <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+
+        <a href="404.html" class="cap-card card-button gsap-stagger bento-wide">
+          <h4>Risk & Compliance</h4>
+          <p>Practical governance that protects the business without freezing it in place.</p>
+          <ul class="cap-list">
+            <li><i class="fa-solid fa-circle-check"></i> Control frameworks</li>
+            <li><i class="fa-solid fa-circle-check"></i> Regulatory readiness</li>
+          </ul>
+          <span class="cap-link">Learn more <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Philosophy -->
+  <section class="philosophy" id="about">
+    <div class="orb orb-pink"></div>
+    <div class="orb orb-purple"></div>
+    <div class="container philosophy-container">
+      <div class="philosophy-left">
+        <div class="tag tag-light"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> OUR PHILOSOPHY</div>
+        <h2>A direct, unforgiving approach to <span class="text-gold text-italic">results.</span></h2>
+        <p>Consulting firms are famous for delivering slides and walking away. Our reputation sits on operational delivery, rigorous implementation, and absolute accountability.</p>
+      </div>
+      <div class="philosophy-right">
+        <div class="phil-item gsap-phil-item">
+          <div class="phil-num">01</div>
+          <div class="phil-content">
+            <h3>Forensic Audit</h3>
+            <p>We dissect transaction ledgers, deep operations, and human structures to identify the unvarnished reality.</p>
+          </div>
+        </div>
+        <div class="phil-item gsap-phil-item">
+          <div class="phil-num">02</div>
+          <div class="phil-content">
+            <h3>High-Fidelity Modeling</h3>
+            <p>Running real-world simulation stressors across strategic targets to identify tail-risk exposure.</p>
+          </div>
+        </div>
+        <div class="phil-item gsap-phil-item">
+          <div class="phil-num">03</div>
+          <div class="phil-content">
+            <h3>Co-Operative Execution</h3>
+            <p>Our teams embed on-site alongside partners, ensuring change sticks across corporate culture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Outcomes -->
+  <section class="outcomes">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> PROVEN OUTCOMES</div>
+      <h2 class="gsap-fade">Generating tangible enterprise value.</h2>
+      
+      <div class="outcomes-grid">
+        <div class="outcome-card gsap-stagger-outcome">
+          <div class="img-wrapper">
+            <img src="assets/port.webp" alt="Shipping Port" class="parallax-img">
+          </div>
+          <div class="outcome-stat">+<span class="counter" data-target="32">0</span>%</div>
+          <h4>EBITDA EXPANSION</h4>
+          <p>MEROVINGIAN PLC<br>Consolidating decentralized pan-European logistics models</p>
+        </div>
+        <div class="outcome-card gsap-stagger-outcome">
+          <div class="img-wrapper">
+            <img src="assets/boardroom.webp" alt="Boardroom" class="parallax-img">
+          </div>
+          <div class="outcome-stat">$<span class="counter" data-target="420">0</span>M</div>
+          <h4>COST SAVINGS EXECUTED</h4>
+          <p>KRONOS GLOBAL<br>Strategic divestiture and restructuring under activist pressure</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Industries -->
+  <section class="industries" id="industries">
+    <div class="orb orb-emerald"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="tag tag-light gsap-fade">INDUSTRIES</div>
+      <h2 class="gsap-fade">Sector knowledge that shortens the diagnostic</h2>
+      <div class="ind-grid">
+        <a href="404.html" class="ind-card card-button-dark gsap-stagger-ind">
+          <h4>Financial Services</h4>
+          <p>Banking, insurance and payments</p>
+        </a>
+        <a href="404.html" class="ind-card card-button-dark gsap-stagger-ind">
+          <h4>Manufacturing</h4>
+          <p>Industrial and process operations</p>
+        </a>
+        <a href="404.html" class="ind-card card-button-dark gsap-stagger-ind">
+          <h4>Healthcare</h4>
+          <p>Providers, payers and life sciences</p>
+        </a>
+        <a href="404.html" class="ind-card card-button-dark gsap-stagger-ind">
+          <h4>Retail & Consumer</h4>
+          <p>Omnichannel and brand growth</p>
+        </a>
+        <a href="404.html" class="ind-card card-button-dark gsap-stagger-ind">
+          <h4>Energy & Utilities</h4>
+          <p>Transition and asset performance</p>
+        </a>
+        <a href="404.html" class="ind-card card-button-dark gsap-stagger-ind">
+          <h4>Technology</h4>
+          <p>Scale-ups and platform businesses</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Case Studies -->
+  <section class="case-studies" id="case-studies">
+    <div class="container">
+      <div class="cap-title-row gsap-fade">
+        <h2 style="font-size: 2.5rem;">Results our clients can point at</h2>
+        <a href="404.html" class="btn-outline">All Case Studies</a>
+      </div>
+      <div class="horizontal-scroll-wrapper">
+        <div class="case-grid horizontal-scroll-container">
+          <a href="404.html" class="case-card card-button gsap-stagger-case">
+          <div class="case-img"><img src="assets/case1.webp" alt="Financial" class="scale-img"></div>
+          <div class="case-content">
+            <div class="tag">FINANCIAL SERVICES</div>
+            <h3>€38M cost programme without touching frontline service</h3>
+            <p>12% cost-to-income improvement in 14 months</p>
+          </div>
+        </a>
+        <a href="404.html" class="case-card card-button gsap-stagger-case">
+          <div class="case-img"><img src="assets/port.webp" alt="Manufacturing" class="scale-img"></div>
+          <div class="case-content">
+            <div class="tag">MANUFACTURING</div>
+            <h3>Supply chain reset across nine plants</h3>
+            <p>Lead time down 37%, service level up to 97%</p>
+          </div>
+        </a>
+        <a href="404.html" class="case-card card-button gsap-stagger-case">
+          <div class="case-img"><img src="assets/boardroom.webp" alt="Healthcare" class="scale-img"></div>
+          <div class="case-content">
+            <div class="tag">HEALTHCARE</div>
+            <h3>One data platform for 42 care sites</h3>
+            <p>Reporting cycle cut from 11 days to 1</p>
+          </div>
+        </a>
+        <a href="404.html" class="case-card card-button gsap-stagger-case">
+          <div class="case-img"><img src="assets/case2.webp" alt="Retail" class="scale-img"></div>
+          <div class="case-content">
+            <div class="tag">RETAIL & CONSUMER</div>
+            <h3>Growth strategy for a crowded category</h3>
+            <p>+19% like-for-like revenue in two seasons</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Testimonials -->
+  <section class="testimonials" style="position: relative; overflow: hidden;">
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="tag gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> CLIENT VOICES</div>
+      <h2 class="gsap-fade">What it is like to work with us</h2>
+      
+      <div class="test-grid">
+        <div class="test-card gsap-stagger-test">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="test-text">"Stackly refused to hand us a deck and leave. They sat with our plant managers until the plan worked on the floor."</p>
+          <div class="test-author">Elena Vasquez</div>
+          <div class="test-title">COO, Northaus Industrial</div>
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="test-card gsap-stagger-test">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="test-text">"The value tracker was the difference. Every board meeting we knew exactly what had landed and what hadn't."</p>
+          <div class="test-author">Tom Bassey</div>
+          <div class="test-title">CFO, Meridian Bank</div>
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="test-card gsap-stagger-test">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="test-text">"Clear thinking, no theatre. Our teams still use the operating rhythm they built with us two years on."</p>
+          <div class="test-author">Sarah Kline</div>
+          <div class="test-title">CEO, Arcadia Health</div>
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Leadership -->
+  <section class="leadership">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> EXPERTISE LEADERSHIP</div>
+      <h2 class="gsap-fade" style="margin-bottom: 4rem;">Led by senior practitioners.</h2>
+      
+      <div class="leader-grid">
+        <a href="404.html" class="leader-card card-button gsap-stagger-leader">
+          <div class="leader-img" style="background-image: url('assets/leader1.webp'); background-color: #e2e8f0;"></div>
+          <div class="leader-info">
+            <h3>Marcus Aurelius Vance</h3>
+            <div class="leader-title">MANAGING PARTNER</div>
+            <p>Former Lead Partner at McKinsey. 25 years advising top sovereign wealth funds on defense and capital architecture.</p>
+          </div>
+        </a>
+        <a href="404.html" class="leader-card card-button gsap-stagger-leader">
+          <div class="leader-img" style="background-image: url('assets/leader2.webp'); background-color: #cbd5e1;"></div>
+          <div class="leader-info">
+            <h3>Dr. Clara Chen</h3>
+            <div class="leader-title">PARTNER, TRANSFORMATION</div>
+            <p>PhD in Operations Research, MIT. Specialist in algorithmic business transformations and supply optimization.</p>
+          </div>
+        </a>
+        <a href="404.html" class="leader-card card-button gsap-stagger-leader">
+          <div class="leader-img" style="background-image: url('assets/leader3.webp'); background-color: #e2e8f0;"></div>
+          <div class="leader-info">
+            <h3>Arthur Pendleton</h3>
+            <div class="leader-title">PARTNER, STRATEGY</div>
+            <p>Advises global logistics networks and heavy manufacturing on cross-border tax, geopolitical threat, and structuring.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Global Footprint -->
+  <section class="footprint" style="padding: 8rem 0; border-top: 1px solid var(--color-border); position: relative; overflow: hidden; background-color: var(--color-navy); color: var(--color-white);">
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="tag gsap-fade"><i class="fa-solid fa-globe text-gold"></i> GLOBAL FOOTPRINT</div>
+      <h2 class="gsap-fade" style="margin-bottom: 3rem; font-size: 2.5rem;">Operating where markets meet.</h2>
+      
+      <div class="footprint-grid">
+        <a href="404.html" class="footprint-card card-button-dark gsap-stagger-foot">
+          <h3>London</h3>
+          <p>Level 28, The Shard</p>
+          <span class="cap-link" style="margin-top: auto; padding-top: 1.5rem;">View Office <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+        <a href="404.html" class="footprint-card card-button-dark gsap-stagger-foot">
+          <h3>New York</h3>
+          <p>One World Trade Center</p>
+          <span class="cap-link" style="margin-top: auto; padding-top: 1.5rem;">View Office <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+        <a href="404.html" class="footprint-card card-button-dark gsap-stagger-foot">
+          <h3>Singapore</h3>
+          <p>Marina Bay Financial Centre</p>
+          <span class="cap-link" style="margin-top: auto; padding-top: 1.5rem;">View Office <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+        <a href="404.html" class="footprint-card card-button-dark gsap-stagger-foot">
+          <h3>Dubai</h3>
+          <p>DIFC Gate Village</p>
+          <span class="cap-link" style="margin-top: auto; padding-top: 1.5rem;">View Office <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. Insights -->
+  <section class="insights" id="blogs">
+    <div class="container">
+      <div class="cap-title-row gsap-fade">
+        <div>
+          <div class="tag" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-book-open text-gold"></i> PUBLICATIONS</div>
+          <h3>Perspectives that matter</h3>
+        </div>
+        <a href="404.html" class="btn-outline">All Insights <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+      
+      <div class="insights-grid">
+        <a href="404.html" class="insight-card card-button gsap-stagger-insight">
+          <div class="insight-img"><img src="assets/insights.webp" alt="Insights" class="scale-img"></div>
+          <div class="insight-content">
+            <div class="tag">RESEARCH PAPER</div>
+            <h4>The Future of AI in Predictive Logistics</h4>
+            <span class="cap-link">Read publication <i class="fa-solid fa-arrow-right-long"></i></span>
+          </div>
+        </a>
+        <a href="404.html" class="insight-card card-button gsap-stagger-insight">
+          <div class="insight-img"><img src="assets/case2.webp" alt="Insights" class="scale-img"></div>
+          <div class="insight-content">
+            <div class="tag">EXECUTIVE BRIEF</div>
+            <h4>Navigating Retail Margin Compression in 2027</h4>
+            <span class="cap-link">Read publication <i class="fa-solid fa-arrow-right-long"></i></span>
+          </div>
+        </a>
+        <a href="404.html" class="insight-card card-button gsap-stagger-insight">
+          <div class="insight-img"><img src="assets/boardroom.webp" alt="Insights" class="scale-img"></div>
+          <div class="insight-content">
+            <div class="tag">WHITEPAPER</div>
+            <h4>M&A Diligence in High-Interest Environments</h4>
+            <span class="cap-link">Read publication <i class="fa-solid fa-arrow-right-long"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. Careers -->
+  <section class="careers" style="background-color: var(--color-offwhite); padding: 8rem 0; overflow: hidden;">
+    <div class="container" style="display: flex; gap: 4rem; align-items: center;">
+      <div class="careers-content gsap-fade" style="flex: 1;">
+        <div class="tag"><i class="fa-solid fa-user-tie text-gold"></i> JOIN THE FIRM</div>
+        <h2 style="font-size: 3rem; margin-bottom: 2rem;">Build a career of consequence.</h2>
+        <p style="margin-bottom: 3rem; color: var(--color-text-muted);">We recruit top-tier talent who thrive in high-pressure, intellectually demanding environments. Join a joined-up team that architects solutions for the world's largest companies.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <a href="404.html" class="career-btn card-button gsap-stagger-career">
+            <div>
+              <strong>Analysts & Associates</strong>
+              <div style="font-size: 0.85rem; color: var(--color-text-muted);">Recent graduates and early career</div>
+            </div>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+          <a href="404.html" class="career-btn card-button gsap-stagger-career">
+            <div>
+              <strong>Experienced Professionals</strong>
+              <div style="font-size: 0.85rem; color: var(--color-text-muted);">Industry experts and seasoned consultants</div>
+            </div>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </div>
+      </div>
+      <div class="careers-img gsap-slide-left" style="flex: 1; height: 500px; overflow: hidden; border-radius: 12px; transform: translateX(100px); opacity: 0;">
+        <img src="assets/careers.webp" alt="Careers at Stackly" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. CTA -->
+  <section class="cta">
+    <div class="orb orb-pink"></div>
+    <div class="container" style="display: flex; flex-direction: column; align-items: flex-start;">
+      <div class="tag tag-light gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> PARTNER WITH STACKLY</div>
+      <h2 class="gsap-fade">Position your firm for the next macroeconomic landscape.</h2>
+      <p class="gsap-fade">Consultations are entirely confidential, private, and conducted directly with Managing Partners. Initiate strategic discussions today.</p>
+      <div class="cta-actions gsap-fade">
+        <button class="btn-gold">INITIATE DISCUSSION <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button class="btn-outline-gold">DIRECT OFFICE LINE</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col gsap-footer" style="padding-right: 2rem;">
+          <div class="logo" style="margin-bottom: 1rem;">
+            <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px;"></a>
+          </div>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Stackly is an independent management consultancy. We work with leadership teams on the decisions that bend the numbers - the ones they have to live with.</p>
+          <div style="color: var(--color-text-light); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <span><i class="fa-regular fa-envelope"></i> hello@stackly.com</span>
+            <span><i class="fa-solid fa-phone"></i> +44 20 7946 0912</span>
+          </div>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>SERVICES</h4>
+          <ul>
+            <li><a href="404.html">Strategy & Growth</a></li>
+            <li><a href="404.html">Operations Excellence</a></li>
+            <li><a href="404.html">Digital Transformation</a></li>
+            <li><a href="404.html">People & Organisation</a></li>
+            <li><a href="404.html">Risk & Compliance</a></li>
+            <li><a href="404.html">Finance & Performance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="404.html">About Us</a></li>
+            <li><a href="404.html">Case Studies</a></li>
+            <li><a href="404.html">Insights</a></li>
+            <li><a href="404.html">Careers</a></li>
+            <li><a href="404.html">Contact</a></li>
+            <li><a href="404.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>OFFICES</h4>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem; margin-bottom: 1.5rem;">
+            <strong style="color: white;">London</strong><br>
+            Level 28, The Shard<br>
+            32 London Bridge St<br>
+            London SE1 9SG
+          </div>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem;">
+            <strong style="color: white;">New York</strong><br>
+            One World Trade Center<br>
+            Suite 4500<br>
+            New York, NY 10007
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly Consulting Group. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy</a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Terms</a>
+          <a href="404.html" style="color: var(--color-text-muted);"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- SplitType for cinematic text reveals -->
+  <script src="https://unpkg.com/split-type"></script>
+  <!-- Three.js and Vanta.js for WebGL background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

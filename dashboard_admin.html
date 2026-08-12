@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal - Stackly Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      background-color: var(--color-navy);
+      margin: 0;
+      color: var(--color-white);
+      font-family: var(--font-sans);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    /* --- SIDEBAR --- */
+    .sidebar {
+      width: 280px;
+      background: #080d1f;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 1rem;
+    }
+    .sidebar-nav::-webkit-scrollbar {
+      width: 5px;
+    }
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 5px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 0.2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--color-emerald);
+    }
+    .nav-item i {
+      width: 20px;
+      text-align: center;
+    }
+    .sidebar-footer {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .btn-logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .btn-logout:hover {
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    /* --- MAIN CONTENT --- */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.05), transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(200, 169, 126, 0.05), transparent 40%);
+    }
+    .user-profile-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      width: fit-content;
+      min-width: 400px;
+    }
+    .avatar-large {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--color-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--color-emerald);
+      background: rgba(16, 185, 129, 0.1);
+    }
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .profile-name {
+      font-size: 1.5rem;
+      font-family: var(--font-serif);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .profile-email {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-sans);
+      font-weight: normal;
+    }
+    .profile-role {
+      color: var(--color-emerald);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+    .content-area {
+      flex: 1;
+      padding: 3rem;
+      overflow-y: auto;
+    }
+    
+    /* --- DASHBOARD SECTIONS --- */
+    .section-content {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .section-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .section-header {
+      margin-bottom: 2rem;
+    }
+    .section-header h1 {
+      font-size: 2.5rem;
+      font-family: var(--font-serif);
+      margin-bottom: 0.5rem;
+    }
+    .section-header p {
+      color: var(--color-text-muted);
+    }
+
+    /* Grid Layouts */
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .dash-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .dash-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 4px;
+      background: var(--color-emerald);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .dash-card:hover::before {
+      opacity: 1;
+    }
+    
+    .card-value {
+      font-size: 2.5rem;
+      font-family: var(--font-serif);
+      margin: 1rem 0 0.5rem 0;
+    }
+    .card-trend.up { color: var(--color-emerald); }
+    .card-trend.down { color: #ef4444; }
+    
+    /* Rich image cards */
+    .image-card {
+      height: 250px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+    .image-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(transparent, rgba(11, 19, 43, 0.9));
+      z-index: 1;
+    }
+    .image-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .data-table th, .data-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+    }
+    .data-table th {
+      color: var(--color-text-muted);
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .status-active { background: rgba(16, 185, 129, 0.2); color: var(--color-emerald); }
+    .status-pending { background: rgba(200, 169, 126, 0.2); color: var(--color-gold); }
+    .status-critical { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+  </style>
+
+  <style>
+    /* EXTREME MOBILE OVERRIDE INJECTED DIRECTLY */
+    @media (max-width: 768px) {
+      body {
+        display: block !important;
+        overflow-y: auto !important;
+      }
+      .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100vw !important;
+        width: 280px !important;
+        height: 100vh !important;
+        z-index: 2147483647 !important; /* Max z-index */
+        background-color: var(--color-navy) !important;
+        border-right: 1px solid rgba(255,255,255,0.1) !important;
+        transition: left 0.3s ease-in-out !important;
+        display: block !important;
+      }
+      .sidebar.active {
+        left: 0 !important;
+      }
+      .main-wrapper {
+        margin-left: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+      .user-profile-card {
+        min-width: 0 !important;
+        width: 100% !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        word-break: break-all !important;
+      }
+      .dash-grid, .kpi-grid, .pipeline-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+      .table-container {
+        width: 100% !important;
+        overflow-x: auto !important;
+      }
+      .mobile-sidebar-btn {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="dashboard_admin.html"><img src="assets/logo.webp" alt="Logo" style="height: 30px;"></a>
+      <span style="font-weight: bold; font-size: 1.2rem; font-family: var(--font-serif);">Admin Portal</span>
+    </div>
+    <div class="sidebar-nav" id="sidebarNav">
+      <div class="nav-item active" data-target="command"><i class="fa-solid fa-satellite-dish"></i> Command Center</div>
+      <div class="nav-item" data-target="portfolio"><i class="fa-solid fa-city"></i> Client Portfolio</div>
+      <div class="nav-item" data-target="revenue"><i class="fa-solid fa-sack-dollar"></i> Revenue & Billing</div>
+      <div class="nav-item" data-target="utilization"><i class="fa-solid fa-users-gear"></i> Utilization</div>
+      <div class="nav-item" data-target="talent"><i class="fa-solid fa-user-plus"></i> Talent & Recruiting</div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="index.html" class="btn-logout"><i class="fa-solid fa-power-off"></i> Secure Logout</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-wrapper">
+  <div class="dash-mobile-header">
+    <div style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: bold;">Portal</div>
+    <button class="mobile-sidebar-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+    <div style="padding: 1.5rem 3rem 0 3rem;">
+      <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; text-transform: uppercase;">Director Portal</h3>
+    </div>
+    <div class="content-area">
+
+      <!-- User Profile Header -->
+      <div class="user-profile-card">
+        <div class="avatar-large">
+           <i class="fa-solid fa-user-secret"></i>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">
+             DIRECTOR OMEGA <span class="profile-email" id="userEmailDisplay">cmd@stackly.agency</span>
+          </div>
+          <div class="profile-role">GLOBAL COMMAND CENTER</div>
+        </div>
+      </div>
+      
+      <!-- 1. COMMAND CENTER -->
+      
+      <!-- 1. COMMAND CENTER -->
+      
+      <!-- 1. COMMAND CENTER -->
+      
+      <!-- 1. COMMAND CENTER -->
+      <section id="command" class="section-content active">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <h1 style="font-size: 2rem;">Command Center</h1>
+          <p style="font-size: 0.95rem;">Detailed overview and metrics for Command Center.</p>
+        </div>
+        
+        <!-- Block 1: Global KPIs -->
+        <div class="dash-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem; gap: 1rem;">
+            <div class="dash-card" style="background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Global Platform</h3>
+                <div class="card-value" style="color: var(--color-emerald); font-size: 1.8rem; margin: 0.5rem 0;">OPERATIONAL</div>
+                <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">12 regional clusters active</p>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Admin Sessions</h3>
+                <div class="card-value" style="font-size: 2rem; margin: 0.5rem 0;">24</div>
+                <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">+3 since last hour</p>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Pending Approvals</h3>
+                <div class="card-value" style="color: #f97316; font-size: 2rem; margin: 0.5rem 0;">12</div>
+                <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Action required</p>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Security Alerts</h3>
+                <div class="card-value" style="color: #ef4444; font-size: 2rem; margin: 0.5rem 0;">0</div>
+                <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">All systems secure</p>
+            </div>
+        </div>
+
+        <!-- Block 2: Logs and Actions -->
+        <div class="dash-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem; gap: 1.5rem;">
+            <div class="dash-card" style="padding: 0;">
+                <div style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2);">
+                    <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.2rem;">System Alerts & Logs</h3>
+                </div>
+                <div style="background: #000; padding: 1rem; font-family: monospace; font-size: 0.85rem; color: #10b981; height: 250px; overflow-y: scroll;">
+                    [ADMIN] USER 'jsmith' granted SUPERUSER access.<br>
+                    [SYSTEM] Database backup initiated in us-east-1.<br>
+                    [WARN] High CPU load detected on cluster-alpha (89%).<br>
+                    [SYSTEM] Security definitions updated to v4.9.2.<br>
+                    [ADMIN] Invoice #9021 approved by mgmt.<br>
+                    [WARN] Failed login attempt from IP 192.168.1.4.<br>
+                    [SYSTEM] API rate limit adjusted for Client ID 492.<br>
+                    [INFO] Syncing user directories with AD... Done.<br>
+                    [INFO] Analytics batch processing started for Q3.<br>
+                </div>
+            </div>
+            <div class="dash-card" style="display: flex; flex-direction: column;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;">Quick Actions</h3>
+                <button class="btn-primary" style="margin-bottom: 0.75rem; width: 100%; text-align: left;"><i class="fa-solid fa-user-plus" style="width: 25px;"></i> Provision New Client</button>
+                <button class="btn-primary" style="margin-bottom: 0.75rem; width: 100%; text-align: left; background: #4f46e5;"><i class="fa-solid fa-file-invoice" style="width: 25px;"></i> Generate Billing Run</button>
+                <button class="btn-primary" style="margin-bottom: 0.75rem; width: 100%; text-align: left; background: #f97316;"><i class="fa-solid fa-server" style="width: 25px;"></i> Restart Node Cluster</button>
+                <button class="btn-outline" style="margin-top: auto; width: 100%;">View Full Audit Log</button>
+            </div>
+        </div>
+
+        <!-- Block 3: Cluster Nodes -->
+        <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem;">Edge Node Status</h3>
+        <div class="dash-grid" style="grid-template-columns: repeat(6, 1fr); margin-bottom: 2rem; gap: 1rem;">
+            
+                <div class="dash-card" style="text-align: center; padding: 1rem;">
+                    <i class="fa-solid fa-server" style="font-size: 1.5rem; color: var(--color-emerald); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">EU-West</h4>
+                    <span style="display: inline-block; width: 8px; height: 8px; background: var(--color-emerald); border-radius: 50%;"></span>
+                </div>
+            
+                <div class="dash-card" style="text-align: center; padding: 1rem;">
+                    <i class="fa-solid fa-server" style="font-size: 1.5rem; color: var(--color-emerald); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">US-East</h4>
+                    <span style="display: inline-block; width: 8px; height: 8px; background: var(--color-emerald); border-radius: 50%;"></span>
+                </div>
+            
+                <div class="dash-card" style="text-align: center; padding: 1rem;">
+                    <i class="fa-solid fa-server" style="font-size: 1.5rem; color: var(--color-emerald); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">US-West</h4>
+                    <span style="display: inline-block; width: 8px; height: 8px; background: var(--color-emerald); border-radius: 50%;"></span>
+                </div>
+            
+                <div class="dash-card" style="text-align: center; padding: 1rem;">
+                    <i class="fa-solid fa-server" style="font-size: 1.5rem; color: var(--color-emerald); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">AP-South</h4>
+                    <span style="display: inline-block; width: 8px; height: 8px; background: var(--color-emerald); border-radius: 50%;"></span>
+                </div>
+            
+                <div class="dash-card" style="text-align: center; padding: 1rem;">
+                    <i class="fa-solid fa-server" style="font-size: 1.5rem; color: var(--color-emerald); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">AP-East</h4>
+                    <span style="display: inline-block; width: 8px; height: 8px; background: var(--color-emerald); border-radius: 50%;"></span>
+                </div>
+            
+                <div class="dash-card" style="text-align: center; padding: 1rem;">
+                    <i class="fa-solid fa-server" style="font-size: 1.5rem; color: var(--color-emerald); margin-bottom: 0.5rem;"></i>
+                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">SA-East</h4>
+                    <span style="display: inline-block; width: 8px; height: 8px; background: var(--color-emerald); border-radius: 50%;"></span>
+                </div>
+            
+        </div>
+
+        <!-- Block 4: Storage & Backup -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem; gap: 1.5rem;">
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-hard-drive"></i> Global Storage Clusters</h3>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                        <span>Primary Database (SQL)</span>
+                        <span style="color: var(--color-emerald);">64% / 12TB</span>
+                    </div>
+                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                        <div style="width: 64%; height: 100%; background: var(--color-emerald); border-radius: 3px;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                        <span>Object Storage (S3)</span>
+                        <span style="color: #6366f1;">42% / 50TB</span>
+                    </div>
+                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                        <div style="width: 42%; height: 100%; background: #6366f1; border-radius: 3px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-shield-virus"></i> Active Threat Prevention</h3>
+                <table style="width: 100%; font-size: 0.85rem;">
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">DDoS Mitigation</td><td style="text-align: right; color: var(--color-emerald);">Active (Normal)</td></tr>
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">WAF Rulesets</td><td style="text-align: right; color: var(--color-emerald);">Updated today</td></tr>
+                    <tr><td style="padding: 0.5rem 0;">Malware Scanning</td><td style="text-align: right; color: var(--color-emerald);">0 Threats detected</td></tr>
+                </table>
+            </div>
+        </div>
+    
+      </section>
+
+      <!-- 2. CLIENT PORTFOLIO -->
+      <section id="portfolio" class="section-content">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <h1 style="font-size: 2rem;">Client Portfolio</h1>
+          <p style="font-size: 0.95rem;">Detailed overview and metrics for Client Portfolio.</p>
+        </div>
+        
+        <!-- Block 1: Client Overview Cards -->
+        <div class="dash-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem; gap: 1rem;">
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <div style="width: 50px; height: 50px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
+                    <i class="fa-solid fa-building" style="font-size: 1.5rem;"></i>
+                </div>
+                <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem;">TechGlobal Inc.</h4>
+                <span style="padding: 0.2rem 0.5rem; font-size: 0.75rem; background: rgba(16,185,129,0.1); color: var(--color-emerald); border-radius: 4px;">Tier 1</span>
+            </div>
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <div style="width: 50px; height: 50px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
+                    <i class="fa-solid fa-building-columns" style="font-size: 1.5rem;"></i>
+                </div>
+                <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem;">Nexus Bank</h4>
+                <span style="padding: 0.2rem 0.5rem; font-size: 0.75rem; background: rgba(16,185,129,0.1); color: var(--color-emerald); border-radius: 4px;">Tier 1</span>
+            </div>
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <div style="width: 50px; height: 50px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
+                    <i class="fa-solid fa-industry" style="font-size: 1.5rem;"></i>
+                </div>
+                <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem;">AeroLogistics</h4>
+                <span style="padding: 0.2rem 0.5rem; font-size: 0.75rem; background: rgba(200,169,126,0.1); color: var(--color-gold); border-radius: 4px;">Tier 2</span>
+            </div>
+            <div class="dash-card" style="text-align: center; padding: 1.5rem; border: 1px dashed rgba(255,255,255,0.2); cursor: pointer;">
+                <i class="fa-solid fa-plus" style="font-size: 1.5rem; color: var(--color-text-muted); margin-bottom: 0.5rem;"></i>
+                <h4 style="margin: 0; font-size: 1rem; color: var(--color-text-muted);">Onboard Client</h4>
+            </div>
+        </div>
+
+        <!-- Block 2: Matrix Table -->
+        <div class="dash-card" style="padding: 0; margin-bottom: 2rem;">
+            <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.2rem;">Client Health Matrix</h3>
+            </div>
+            <div class="table-container">
+                <table class="data-table" style="margin: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 1rem;">Client ID</th>
+                            <th>Organization</th>
+                            <th>Active Projects</th>
+                            <th>MRR</th>
+                            <th>Health Score</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem;">CL-001</td>
+                            <td style="font-weight: bold;">TechGlobal Inc.</td>
+                            <td>4</td>
+                            <td>$125k</td>
+                            <td><div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;"><div style="width: 95%; height: 100%; background: var(--color-emerald); border-radius: 3px;"></div></div></td>
+                            <td><button class="btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Manage</button></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">CL-002</td>
+                            <td style="font-weight: bold;">Nexus Bank</td>
+                            <td>2</td>
+                            <td>$85k</td>
+                            <td><div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;"><div style="width: 70%; height: 100%; background: var(--color-gold); border-radius: 3px;"></div></div></td>
+                            <td><button class="btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Manage</button></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">CL-003</td>
+                            <td style="font-weight: bold;">AeroLogistics</td>
+                            <td>1</td>
+                            <td>$40k</td>
+                            <td><div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;"><div style="width: 40%; height: 100%; background: #ef4444; border-radius: 3px;"></div></div></td>
+                            <td><button class="btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Manage</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Block 3: Support & Feedback -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-ticket"></i> Support Ticket Backlog</h3>
+                <table style="width: 100%; font-size: 0.85rem;">
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">T-9921: API Gateway Timeout</td><td style="text-align: right; color: #f97316;">High</td></tr>
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">T-9922: Billing Report Error</td><td style="text-align: right; color: var(--color-text-muted);">Low</td></tr>
+                    <tr><td style="padding: 0.5rem 0;">T-9923: Dashboard User Access</td><td style="text-align: right; color: var(--color-text-muted);">Low</td></tr>
+                </table>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-star"></i> Feature Adoption Rates</h3>
+                <div style="margin-bottom: 0.75rem;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.2rem;"><span>Automated Reporting</span><span>88%</span></div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1);"><div style="width: 88%; height: 100%; background: var(--color-emerald);"></div></div>
+                </div>
+                <div style="margin-bottom: 0.75rem;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.2rem;"><span>Advanced AI Analytics</span><span>45%</span></div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1);"><div style="width: 45%; height: 100%; background: #6366f1;"></div></div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.2rem;"><span>API Integrations</span><span>62%</span></div>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1);"><div style="width: 62%; height: 100%; background: var(--color-gold);"></div></div>
+                </div>
+            </div>
+        </div>
+    
+      </section>
+
+      <!-- 3. REVENUE & BILLING -->
+      <section id="revenue" class="section-content">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <h1 style="font-size: 2rem;">Revenue & Billing</h1>
+          <p style="font-size: 0.95rem;">Detailed overview and metrics for Revenue & Billing.</p>
+        </div>
+        
+        <!-- Block 1: Revenue KPIs -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem; gap: 1.5rem;">
+            <div class="dash-card" style="display: flex; align-items: center; justify-content: space-between; padding: 2rem;">
+                <div>
+                    <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Total MRR</h3>
+                    <div style="font-size: 2.2rem; font-family: var(--font-serif); margin: 0.5rem 0;">$2.4M</div>
+                    <p style="color: var(--color-emerald); font-size: 0.85rem; margin: 0;"><i class="fa-solid fa-arrow-up"></i> 5.2% vs last month</p>
+                </div>
+                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(16,185,129,0.1); display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-chart-pie" style="font-size: 2rem; color: var(--color-emerald);"></i>
+                </div>
+            </div>
+            <div class="dash-card" style="display: flex; align-items: center; justify-content: space-between; padding: 2rem;">
+                <div>
+                    <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Outstanding Collections</h3>
+                    <div style="font-size: 2.2rem; font-family: var(--font-serif); margin: 0.5rem 0; color: #f97316;">$350k</div>
+                    <p style="color: #ef4444; font-size: 0.85rem; margin: 0;"><i class="fa-solid fa-triangle-exclamation"></i> 4 invoices overdue</p>
+                </div>
+                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(249,115,22,0.1); display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-hand-holding-dollar" style="font-size: 2rem; color: #f97316;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 2: Invoices -->
+        <div class="dash-card" style="padding: 0; margin-bottom: 2rem;">
+            <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.2rem;">Pending Invoices</h3>
+                <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Send All Reminders</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table" style="margin: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 1rem;">Invoice #</th>
+                            <th>Client</th>
+                            <th>Amount</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem;">INV-9022</td>
+                            <td style="font-weight: bold;">TechGlobal Inc.</td>
+                            <td>$125,000</td>
+                            <td>Oct 30, 2026</td>
+                            <td><span style="color: var(--color-emerald);">Paid</span></td>
+                            <td><button class="btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" disabled>Sent</button></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">INV-9023</td>
+                            <td style="font-weight: bold;">AeroLogistics</td>
+                            <td>$40,000</td>
+                            <td>Oct 15, 2026</td>
+                            <td><span style="color: #ef4444; font-weight: bold;">Overdue</span></td>
+                            <td><button class="btn-primary" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; background: #ef4444;">Remind</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Block 3: Costs and Projections -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-cloud"></i> Cloud Infrastructure Costs</h3>
+                <div style="font-size: 1.8rem; margin-bottom: 1rem;">$45,200 <span style="font-size: 0.8rem; color: var(--color-text-muted);">/ this month</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;"><span>Compute (EC2/EKS)</span><span>$22,500</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem;"><span>Storage (S3/RDS)</span><span>$15,100</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;"><span>Bandwidth & Edge</span><span>$7,600</span></div>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-chart-line"></i> Q4 Revenue Forecast</h3>
+                <div style="height: 120px; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; align-items: flex-end; justify-content: space-around; padding: 1rem;">
+                    <!-- Simple bar chart visualization -->
+                    <div style="width: 15%; height: 60%; background: var(--color-text-muted); border-radius: 4px 4px 0 0;"></div>
+                    <div style="width: 15%; height: 75%; background: var(--color-text-muted); border-radius: 4px 4px 0 0;"></div>
+                    <div style="width: 15%; height: 95%; background: var(--color-emerald); border-radius: 4px 4px 0 0;"></div>
+                    <div style="width: 15%; height: 85%; background: rgba(16,185,129,0.3); border-radius: 4px 4px 0 0; border: 1px dashed var(--color-emerald);"></div>
+                </div>
+            </div>
+        </div>
+    
+      </section>
+
+      <!-- 4. UTILIZATION -->
+      <section id="utilization" class="section-content">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <h1 style="font-size: 2rem;">Utilization</h1>
+          <p style="font-size: 0.95rem;">Detailed overview and metrics for Utilization.</p>
+        </div>
+        
+        <!-- Block 1: Utilization Dials -->
+        <div class="dash-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem; gap: 1rem;">
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Compute Nodes</h3>
+                <div style="position: relative; width: 70px; height: 70px; margin: 1rem auto;">
+                    <svg viewBox="0 0 36 36" style="width:100%; height:100%;">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"></path>
+                        <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--color-emerald)" stroke-width="3"></path>
+                    </svg>
+                    <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:bold; font-size:1rem;">85%</div>
+                </div>
+            </div>
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Storage I/O</h3>
+                <div style="position: relative; width: 70px; height: 70px; margin: 1rem auto;">
+                    <svg viewBox="0 0 36 36" style="width:100%; height:100%;">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"></path>
+                        <path class="circle" stroke-dasharray="45, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#6366f1" stroke-width="3"></path>
+                    </svg>
+                    <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:bold; font-size:1rem;">45%</div>
+                </div>
+            </div>
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Network Bandwidth</h3>
+                <div style="position: relative; width: 70px; height: 70px; margin: 1rem auto;">
+                    <svg viewBox="0 0 36 36" style="width:100%; height:100%;">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"></path>
+                        <path class="circle" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#ef4444" stroke-width="3"></path>
+                    </svg>
+                    <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:bold; font-size:1rem;">92%</div>
+                </div>
+            </div>
+            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Consultant Bench</h3>
+                <div style="position: relative; width: 70px; height: 70px; margin: 1rem auto;">
+                    <svg viewBox="0 0 36 36" style="width:100%; height:100%;">
+                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"></path>
+                        <path class="circle" stroke-dasharray="10, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f97316" stroke-width="3"></path>
+                    </svg>
+                    <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:bold; font-size:1rem;">10%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 2: Topography -->
+        <div class="dash-card" style="height: 250px; display: flex; flex-direction: column; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0; font-size: 1.1rem;">Live Network Topography</h3>
+                <span style="font-size: 0.75rem; color: var(--color-emerald);"><i class="fa-solid fa-circle"></i> Live</span>
+            </div>
+            <div style="flex: 1; background: rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                <!-- Abstract lines to represent topography -->
+                <div style="position: absolute; width: 100%; height: 100%; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(16,185,129,0.05) 40px, rgba(16,185,129,0.05) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(16,185,129,0.05) 40px, rgba(16,185,129,0.05) 41px);"></div>
+                <i class="fa-solid fa-network-wired" style="font-size: 4rem; color: var(--color-emerald); opacity: 0.3;"></i>
+            </div>
+        </div>
+
+        <!-- Block 3: API & Services -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-code"></i> API Endpoints Latency</h3>
+                <table style="width: 100%; font-size: 0.85rem;">
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">/v1/auth</td><td style="text-align: right; color: var(--color-emerald);">42ms</td></tr>
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">/v2/analytics/query</td><td style="text-align: right; color: #f97316;">310ms</td></tr>
+                    <tr><td style="padding: 0.5rem 0;">/v1/billing/invoice</td><td style="text-align: right; color: var(--color-emerald);">89ms</td></tr>
+                </table>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-microchip"></i> Microservices Status</h3>
+                <table style="width: 100%; font-size: 0.85rem;">
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Auth-Service</td><td style="text-align: right; color: var(--color-emerald);">Healthy (9 instances)</td></tr>
+                    <tr><td style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Data-Ingestion</td><td style="text-align: right; color: var(--color-emerald);">Healthy (14 instances)</td></tr>
+                    <tr><td style="padding: 0.5rem 0;">PDF-Generator</td><td style="text-align: right; color: #ef4444;">Failing (Restarting)</td></tr>
+                </table>
+            </div>
+        </div>
+    
+      </section>
+
+      <!-- 5. TALENT & RECRUITING -->
+      <section id="talent" class="section-content">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <h1 style="font-size: 2rem;">Talent & Recruiting</h1>
+          <p style="font-size: 0.95rem;">Detailed overview and metrics for Talent & Recruiting.</p>
+        </div>
+        
+        <!-- Block 1: Recruiting Pipeline -->
+        <div class="dash-card" style="padding: 0; margin-bottom: 2rem;">
+            <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.2rem;">Candidate Pipeline</h3>
+                <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Post Requisition</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table" style="margin: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 1rem;">Name</th>
+                            <th>Role Applied</th>
+                            <th>Stage</th>
+                            <th>Fit Score</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">Alice Freeman</td>
+                            <td>Senior Strategy Analyst</td>
+                            <td>Final Interview</td>
+                            <td><span style="color: var(--color-emerald); font-weight: bold;">94%</span></td>
+                            <td>
+                                <button class="btn-primary" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; background: var(--color-emerald); border: none; margin-right: 0.5rem;">Offer</button>
+                                <button class="btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">John Doherty</td>
+                            <td>Data Engineer L4</td>
+                            <td>Technical Screen</td>
+                            <td><span style="color: var(--color-gold); font-weight: bold;">82%</span></td>
+                            <td>
+                                <button class="btn-primary" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; margin-right: 0.5rem;">Advance</button>
+                                <button class="btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Block 2: Internal Training -->
+        <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem;">Internal Training Modules</h3>
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card" style="display: flex; gap: 1.5rem; align-items: center;">
+                <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: var(--color-emerald);"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 0.25rem 0;">Q4 Security Compliance</h4>
+                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0 0 0.5rem 0;">Mandatory for all active consultants.</p>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                        <div style="width: 76%; height: 100%; background: var(--color-emerald); border-radius: 2px;"></div>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--color-emerald); margin-top: 0.25rem;">76% Completion Rate</p>
+                </div>
+            </div>
+            <div class="dash-card" style="display: flex; gap: 1.5rem; align-items: center;">
+                <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-handshake" style="font-size: 2rem; color: #f97316;"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 0.25rem 0;">Client Communication Ethics</h4>
+                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0 0 0.5rem 0;">For newly onboarded partners.</p>
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                        <div style="width: 42%; height: 100%; background: #f97316; border-radius: 2px;"></div>
+                    </div>
+                    <p style="font-size: 0.75rem; color: #f97316; margin-top: 0.25rem;">42% Completion Rate</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Block 3: Retention & Pulse -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-heart-pulse"></i> Employee Satisfaction</h3>
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--color-emerald);">4.6/5.0</div>
+                <p style="font-size: 0.85rem; color: var(--color-text-muted);">Based on October internal survey (N=142)</p>
+            </div>
+            <div class="dash-card" style="padding: 1.5rem;">
+                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;"><i class="fa-solid fa-door-open"></i> Annual Churn Rate</h3>
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--color-gold);">8.2%</div>
+                <p style="font-size: 0.85rem; color: var(--color-text-muted);">Well below industry average of 14%</p>
+            </div>
+        </div>
+    
+      </section>
+    </main>
+
+  <script>
+    // Tab switching logic
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.section-content');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        // Remove active from all nav items
+        navItems.forEach(n => n.classList.remove('active'));
+        // Add active to clicked
+        item.classList.add('active');
+
+        // Hide all sections
+        sections.forEach(s => s.classList.remove('active'));
+        // Show target section
+        const targetId = item.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
+          document.querySelector('.sidebar').classList.remove('active'); // Close sidebar on mobile
+      });
+    });
+
+    // Populate email from localStorage if available
+    const savedEmail = localStorage.getItem('registeredEmail');
+    if (savedEmail) {
+      const emailDisplay = document.getElementById('userEmailDisplay');
+      if (emailDisplay) emailDisplay.textContent = savedEmail;
+    }
+
+    // Custom Cursor Logic
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+    if (cursorDot && cursorOutline) {
+      window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        gsap.to(cursorOutline, {
+          x: posX,
+          y: posY,
+          duration: 0.15,
+          ease: 'power2.out'
+        });
+      });
+      const clickables = document.querySelectorAll('a, button, .nav-item, input');
+      clickables.forEach(el => {
+        el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Dashboard | Apex Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo gradient-text">APEX</div>
+      <nav class="nav-menu">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="dashboard-analytics.html" class="active"><i class="fa-solid fa-chart-line"></i> Financials</a>
+        <a href="dashboard-operations.html"><i class="fa-solid fa-bars-progress"></i> Operations</a>
+        <a href="#"><i class="fa-solid fa-users"></i> Clients</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <h2>Financial <span class="gradient-text">Analytics</span></h2>
+        <div class="user-profile">
+          <span>Welcome, Executive</span>
+          <div class="avatar">E</div>
+        </div>
+      </header>
+
+      <!-- KPI Cards -->
+      <section class="kpi-cards" style="padding: 0;">
+        <div class="kpi-card">
+          <div class="kpi-title">Total Revenue (Q3)</div>
+          <div class="kpi-value">$4.2M</div>
+          <div class="kpi-trend"><i class="fa-solid fa-arrow-trend-up"></i> +12.5%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Operating Margin</div>
+          <div class="kpi-value">24.8%</div>
+          <div class="kpi-trend"><i class="fa-solid fa-arrow-trend-up"></i> +2.1%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Customer Acquisition Cost</div>
+          <div class="kpi-value">$1,250</div>
+          <div class="kpi-trend negative"><i class="fa-solid fa-arrow-trend-down"></i> -5.4%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">EBITDA</div>
+          <div class="kpi-value">$1.8M</div>
+          <div class="kpi-trend"><i class="fa-solid fa-arrow-trend-up"></i> +8.2%</div>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="charts-grid" style="padding: 0;">
+        <div class="chart-container">
+          <h3>Revenue vs Expenses (YTD)</h3>
+          <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3>Revenue by Region</h3>
+          <canvas id="regionChart"></canvas>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
