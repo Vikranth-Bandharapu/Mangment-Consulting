@@ -273,7 +273,9 @@
     .status-pending { background: rgba(200, 169, 126, 0.2); color: var(--color-gold); }
     .status-critical { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
 
-  </style>
+  
+    body.no-scroll .content-area { overflow: hidden !important; touch-action: none; }
+</style>
 
   <style>
     /* EXTREME MOBILE OVERRIDE INJECTED DIRECTLY */
@@ -323,7 +325,9 @@
         display: block !important;
       }
     }
-  </style>
+  
+    body.no-scroll .content-area { overflow: hidden !important; touch-action: none; }
+</style>
 </head>
 <body>
 
@@ -353,7 +357,7 @@
   <main class="main-wrapper">
   <div class="dash-mobile-header">
     <div><a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 28px;"></a></div>
-    <button class="mobile-sidebar-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+    <button class="mobile-sidebar-btn" onclick="document.querySelector('.sidebar').classList.toggle('active'); document.body.classList.toggle('no-scroll');">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
@@ -1074,6 +1078,7 @@
         const targetId = item.getAttribute('data-target');
         document.getElementById(targetId).classList.add('active');
           document.querySelector('.sidebar').classList.remove('active'); // Close sidebar on mobile
+          document.body.classList.remove('no-scroll');
       });
     });
 
@@ -1122,6 +1127,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
