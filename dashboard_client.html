@@ -50,9 +50,7 @@
       border-radius: 5px;
     }
     .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem;
       padding: 0.8rem 1rem;
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
@@ -339,7 +337,7 @@
   <aside class="sidebar">
     <div class="sidebar-header">
       <a href="dashboard_client.html"><img src="assets/logo.webp" alt="Logo" style="height: 30px;"></a>
-      <span style="font-weight: bold; font-size: 1.2rem; font-family: var(--font-serif);">Client Portal</span>
+      <span style="font-weight: bold; font-size: 1.8rem; font-family: var(--font-serif);">Client Portal</span>
     </div>
     <div class="sidebar-nav" id="sidebarNav">
       <div class="nav-item active" data-target="overview"><i class="fa-solid fa-house"></i> Overview</div>
@@ -349,21 +347,21 @@
       <div class="nav-item" data-target="market"><i class="fa-solid fa-globe"></i> Market Intel</div>
     </div>
     <div class="sidebar-footer">
-      <a href="index.html" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Secure Logout</a>
+      <a href="404.html" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Secure Logout</a>
     </div>
   </aside>
 
   <!-- MAIN -->
   <main class="main-wrapper">
   <div class="dash-mobile-header">
-    <div style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: bold;">Portal</div>
+    <div><a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 28px;"></a></div>
     <button class="mobile-sidebar-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
     <div style="padding: 1.5rem 3rem 0 3rem; display: flex; justify-content: space-between; align-items: center;">
       <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; text-transform: uppercase;">Client Portal</h3>
-      <div style="position: relative; cursor: pointer;">
+      <div style="position: relative; cursor: pointer;" onclick="window.location.href='404.html'">
         <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: var(--color-gold);"></i>
         <span style="position: absolute; top: -5px; right: -8px; background: #ef4444; color: white; font-size: 0.65rem; font-weight: bold; padding: 2px 5px; border-radius: 50%;">3</span>
       </div>
@@ -376,10 +374,10 @@
            <i class="fa-solid fa-user-tie"></i>
         </div>
         <div class="profile-info">
-          <div class="profile-name">
-             CLIENT PARTNER <span class="profile-email" id="userEmailDisplay">client@enterprise.com</span>
+          <div class="profile-name" style="word-break: break-all; font-size: 1.1rem;">
+             <span class="profile-email" id="userEmailDisplay">client@enterprise.com</span>
           </div>
-          <div class="profile-role">ENTERPRISE PORTAL</div>
+          <div class="profile-role">CLIENT PORTAL</div>
         </div>
       </div>
       
@@ -434,7 +432,7 @@
         <!-- 6. Wide Chart Placeholder -->
         <div class="dash-card" style="margin-bottom: 2rem; padding: 0; overflow: hidden; border-radius: 12px; height: 300px; display: flex; flex-direction: column;">
             <div style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.2rem;">Quarterly Performance Trajectory</h3>
+                <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.8rem;">Quarterly Performance Trajectory</h3>
             </div>
             <div style="flex: 1; background-image: url('consulting_hero_bg_1786435771395.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative;">
                 <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.6);"></div>
@@ -531,7 +529,7 @@
                 <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-family: var(--font-serif);">Marcus Aurelius Vance</h4>
                 <p style="color: var(--color-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 1rem 0; font-weight: bold;">Lead Strategy Partner</p>
                 <p style="color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem;">Marcus oversees the global deployment of your architecture, ensuring rigorous alignment with board-level expectations.</p>
-                <button class="btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.9rem;">Schedule Video Briefing</button>
+                <button onclick="window.location.href='404.html'" class="btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.9rem;">Schedule Video Briefing</button>
             </div>
             
             <!-- Progress Column -->
@@ -576,6 +574,64 @@
                         <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
                             <div style="width: 99.9%; height: 100%; background: var(--color-emerald); border-radius: 3px; box-shadow: 0 0 8px var(--color-emerald);"></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Content Row -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <!-- Recent Reports -->
+            <div class="dash-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="margin: 0; font-size: 1.8rem;">Recent Reports</h3>
+                    <a href="404.html" style="color: var(--color-gold); font-size: 0.85rem; text-decoration: none;">View All</a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;">Q3 Market Analysis</div>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted);">PDF &bull; 2.4 MB</div>
+                        </div>
+                        <i class="fa-solid fa-download" style="color: var(--color-gold); cursor: pointer;" onclick="window.location.href='404.html'"></i>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;">Competitor Landscape</div>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted);">XLSX &bull; 1.1 MB</div>
+                        </div>
+                        <i class="fa-solid fa-download" style="color: var(--color-gold); cursor: pointer;" onclick="window.location.href='404.html'"></i>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;">Financial Audit Draft</div>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted);">PDF &bull; 4.5 MB</div>
+                        </div>
+                        <i class="fa-solid fa-download" style="color: var(--color-gold); cursor: pointer;" onclick="window.location.href='404.html'"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support Tickets -->
+            <div class="dash-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="margin: 0; font-size: 1.8rem;">Support Tickets</h3>
+                    <button class="btn-404" style="padding: 0.4rem 0.8rem; font-size: 0.8rem; background: var(--color-gold); color: var(--color-navy); border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" onclick="window.location.href='404.html'">New Ticket</button>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;">Login Issue</div>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted);">#TKT-9921 &bull; Opened 2h ago</div>
+                        </div>
+                        <span style="padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; background: rgba(239,68,68,0.2); color: #ef4444;">Open</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;">Billing Inquiry</div>
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted);">#TKT-9840 &bull; Opened 1d ago</div>
+                        </div>
+                        <span style="padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; background: rgba(16,185,129,0.2); color: #10b981;">Resolved</span>
                     </div>
                 </div>
             </div>
@@ -665,14 +721,46 @@
                     <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">Server Provisioning Complete</h4>
                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">DevOps Team - Yesterday</p>
                 </div>
-                <div style="position: relative;">
+                                <div style="position: relative;">
                     <div style="position: absolute; left: -1.9rem; top: 0; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
-                    <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">Initial Strategy Draft</h4>
-                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Strategy Group - Oct 12, 2026</p>
+                    <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">Kickoff Meeting</h4>
+                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Oct 1st, 2026</p>
                 </div>
             </div>
         </div>
-    
+              <!-- Project Risk Register -->
+        <div class="dash-card" style="margin-top: 2rem; padding: 0;">
+            <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.3rem;">Project Risk Register</h3>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Updated Today</span>
+            </div>
+            <div class="table-container">
+                <table class="data-table" style="margin: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 1rem;">Project</th>
+                            <th>Risk Item</th>
+                            <th>Impact</th>
+                            <th>Mitigation Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">Data Center Migration</td>
+                            <td>Hardware supply chain delays</td>
+                            <td><span style="color: #ef4444; font-weight: bold;">High</span></td>
+                            <td style="font-size: 0.9rem; color: var(--color-text-muted);">Sourced alternative vendors in EMEA region</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">Retail Store AI Vision</td>
+                            <td>Data privacy compliance review</td>
+                            <td><span style="color: #f59e0b; font-weight: bold;">Medium</span></td>
+                            <td style="font-size: 0.9rem; color: var(--color-text-muted);">Engaged legal council for GDPR validation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
       </section>
 
       <!-- 3. FINANCIALS -->
@@ -682,91 +770,108 @@
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Financials.</p>
         </div>
         
-        <!-- Financials -->
-        <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-gold);">Financials & Billing</h2>
-            <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 800px;">Comprehensive breakdown of expenditures, revenue realization, and outstanding invoices.</p>
-        </div>
-
-        <div class="dash-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
-            <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
-                <i class="fa-solid fa-vault" style="font-size: 2rem; color: var(--color-gold); margin-bottom: 0.75rem;"></i>
-                <h3 style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">YTD Budget Realized</h3>
-                <div style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$8.4M</div>
+        <div class="dash-grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card" style="padding: 1.5rem; border-top: 4px solid var(--color-gold);">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Total Billed (YTD)</h3>
+                <div class="card-value" style="font-size: 2.2rem; margin: 0.5rem 0;">$4.2M</div>
+                <p style="color: var(--color-emerald); font-size: 0.8rem; font-weight: bold;"><i class="fa-solid fa-arrow-trend-up"></i> +8.4% vs last year</p>
             </div>
-            <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
-                <i class="fa-solid fa-file-invoice-dollar" style="font-size: 2rem; color: #f97316; margin-bottom: 0.75rem;"></i>
-                <h3 style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">Outstanding Invoices</h3>
-                <div style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$1.2M</div>
+            <div class="dash-card" style="padding: 1.5rem; border-top: 4px solid #ef4444;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Outstanding Invoices</h3>
+                <div class="card-value" style="font-size: 2.2rem; margin: 0.5rem 0;">$850K</div>
+                <p style="color: #ef4444; font-size: 0.8rem; font-weight: bold;"><i class="fa-solid fa-circle-exclamation"></i> 2 invoices overdue</p>
             </div>
-            <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
-                <i class="fa-solid fa-money-bill-trend-up" style="font-size: 2rem; color: var(--color-emerald); margin-bottom: 0.75rem;"></i>
-                <h3 style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">Projected Q4 CapEx</h3>
-                <div style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$4.5M</div>
+            <div class="dash-card" style="padding: 1.5rem; border-top: 4px solid #10b981;">
+                <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Projected Q4 Spend</h3>
+                <div class="card-value" style="font-size: 2.2rem; margin: 0.5rem 0;">$1.1M</div>
+                <p style="color: var(--color-text-muted); font-size: 0.8rem;">Aligned with budget forecasts</p>
             </div>
         </div>
 
-        <div class="dash-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem; gap: 1.5rem;">
-            <div class="dash-card" style="padding: 0; overflow: hidden;">
-                <div style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-image: url('insights_bg_1786437124692.jpg'); background-size: cover; position: relative;">
-                    <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.8);"></div>
-                    <h3 style="margin: 0; font-size: 1.1rem; position: relative; z-index: 2;">Recent Invoices</h3>
-                </div>
-                <div class="table-container">
-                    <table class="data-table" style="margin: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th style="padding: 1rem;">Invoice #</th>
-                                <th>Description</th>
-                                <th>Amount</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding: 1rem; font-size: 0.9rem;">INV-2026-881</td>
-                                <td style="font-size: 0.9rem;">Q3 Software Licensing</td>
-                                <td style="font-size: 0.9rem;">$450,000</td>
-                                <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Download PDF</button></td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 1rem; font-size: 0.9rem;">INV-2026-882</td>
-                                <td style="font-size: 0.9rem;">Consulting Retainer - Oct</td>
-                                <td style="font-size: 0.9rem;">$125,000</td>
-                                <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Download PDF</button></td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 1rem; font-size: 0.9rem;">INV-2026-883</td>
-                                <td style="font-size: 0.9rem;">Hardware Provisioning</td>
-                                <td style="font-size: 0.9rem;">$89,400</td>
-                                <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Download PDF</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="dash-card" style="margin-bottom: 2rem;">
+            <h3 style="margin: 0 0 1.5rem 0; font-family: var(--font-serif); font-size: 1.3rem;">Recent Invoices</h3>
+            <table class="data-table" style="margin: 0; width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="padding: 1rem;">Invoice #</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">INV-2026-089</td>
+                        <td>Oct 15, 2026</td>
+                        <td>Phase 2 Consulting Retainer</td>
+                        <td style="font-weight: bold;">$125,000</td>
+                        <td><span style="padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; background: rgba(245,158,11,0.2); color: #f59e0b;">Pending</span></td>
+                        <td><button class="btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" onclick="window.location.href='404.html'">Pay Now</button></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">INV-2026-074</td>
+                        <td>Sep 01, 2026</td>
+                        <td>Data Center Architecture Review</td>
+                        <td style="font-weight: bold;">$85,000</td>
+                        <td><span style="padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; background: rgba(16,185,129,0.2); color: #10b981;">Paid</span></td>
+                        <td><a href="404.html" style="color: var(--color-gold); font-size: 0.85rem; text-decoration: none;">Receipt</a></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">INV-2026-062</td>
+                        <td>Aug 15, 2026</td>
+                        <td>Security Compliance Audit</td>
+                        <td style="font-weight: bold;">$45,000</td>
+                        <td><span style="padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; background: rgba(16,185,129,0.2); color: #10b981;">Paid</span></td>
+                        <td><a href="404.html" style="color: var(--color-gold); font-size: 0.85rem; text-decoration: none;">Receipt</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+              <!-- Expense Breakdown & Renewals -->
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+            <div class="dash-card">
+                <h3 style="margin: 0 0 1rem 0; font-family: var(--font-serif); font-size: 1.8rem;">Q4 Expense Breakdown</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+                        <span style="color: var(--color-text-muted);">Cloud Infrastructure</span>
+                        <span style="font-weight: bold;">$420,000</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+                        <span style="color: var(--color-text-muted);">Consulting Fees</span>
+                        <span style="font-weight: bold;">$350,000</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+                        <span style="color: var(--color-text-muted);">Software Licenses</span>
+                        <span style="font-weight: bold;">$180,000</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding-bottom: 0.5rem;">
+                        <span style="color: var(--color-text-muted);">Travel & Expenses</span>
+                        <span style="font-weight: bold;">$75,000</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="dash-card" style="padding: 1.5rem;">
-                <h3 style="margin: 0 0 1.2rem 0; font-size: 1.1rem;">Expense Breakdown</h3>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.4rem; font-size: 0.9rem;">
-                    <span>Software & Cloud</span>
-                    <span style="font-weight: bold; color: var(--color-gold);">45%</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.4rem; font-size: 0.9rem;">
-                    <span>Consulting Fees</span>
-                    <span style="font-weight: bold; color: var(--color-gold);">30%</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.4rem; font-size: 0.9rem;">
-                    <span>Hardware CapEx</span>
-                    <span style="font-weight: bold; color: var(--color-gold);">15%</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
-                    <span>Travel & Expenses</span>
-                    <span style="font-weight: bold; color: var(--color-gold);">10%</span>
+            <div class="dash-card">
+                <h3 style="margin: 0 0 1rem 0; font-family: var(--font-serif); font-size: 1.8rem;">Upcoming Contract Renewals</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
+                        <div style="font-weight: bold; margin-bottom: 0.25rem;">AWS Enterprise Support</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--color-text-muted);">Renews Nov 15, 2026</span>
+                            <span style="color: var(--color-gold);">$120,000/yr</span>
+                        </div>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
+                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Stackly Security Retainer</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span style="color: var(--color-text-muted);">Renews Dec 01, 2026</span>
+                            <span style="color: var(--color-gold);">$250,000/yr</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    
       </section>
 
       <!-- 4. ANALYTICS -->
@@ -776,54 +881,172 @@
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Analytics.</p>
         </div>
         
-        <!-- Analytics -->
-        <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-gold);">Analytics & System Health</h2>
-            <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 800px;">Deep dive into data processing metrics, API usage, and structural integrity of the deployment.</p>
+        <div class="dash-grid" style="grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+            <div class="dash-card">
+                <h3 style="margin: 0 0 1.5rem 0; font-family: var(--font-serif); font-size: 1.3rem;">Operational Efficiency Trend</h3>
+                <div style="height: 250px; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; align-items: flex-end; justify-content: space-between; padding: 1rem; position: relative;">
+                    <!-- Mock line chart SVG -->
+                    <svg viewBox="0 0 100 40" style="position: absolute; top:0; left:0; width:100%; height:100%; padding: 1rem; overflow: visible;">
+                        <polyline fill="none" stroke="var(--color-gold)" stroke-width="2" points="0,35 20,25 40,30 60,15 80,20 100,5" stroke-linejoin="round" stroke-linecap="round"/>
+                        <circle cx="0" cy="35" r="1.5" fill="var(--color-gold)"/>
+                        <circle cx="20" cy="25" r="1.5" fill="var(--color-gold)"/>
+                        <circle cx="40" cy="30" r="1.5" fill="var(--color-gold)"/>
+                        <circle cx="60" cy="15" r="1.5" fill="var(--color-gold)"/>
+                        <circle cx="80" cy="20" r="1.5" fill="var(--color-gold)"/>
+                        <circle cx="100" cy="5" r="1.5" fill="var(--color-gold)"/>
+                    </svg>
+                    <div style="width: 10%; height: 100%; border-right: 1px dashed rgba(255,255,255,0.1);"></div>
+                    <div style="width: 10%; height: 100%; border-right: 1px dashed rgba(255,255,255,0.1);"></div>
+                    <div style="width: 10%; height: 100%; border-right: 1px dashed rgba(255,255,255,0.1);"></div>
+                    <div style="width: 10%; height: 100%; border-right: 1px dashed rgba(255,255,255,0.1);"></div>
+                    <div style="width: 10%; height: 100%; border-right: 1px dashed rgba(255,255,255,0.1);"></div>
+                </div>
+            </div>
+            
+            <div class="dash-card">
+                <h3 style="margin: 0 0 1.5rem 0; font-family: var(--font-serif); font-size: 1.3rem;">Key Drivers</h3>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                            <span>Automation Workflows</span>
+                            <span style="color: var(--color-emerald); font-weight: bold;">45% Impact</span>
+                        </div>
+                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                            <div style="width: 45%; height: 100%; background: var(--color-emerald); border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                            <span>Cloud Consolidation</span>
+                            <span style="color: var(--color-gold); font-weight: bold;">32% Impact</span>
+                        </div>
+                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                            <div style="width: 32%; height: 100%; background: var(--color-gold); border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                            <span>Process Re-engineering</span>
+                            <span style="color: #3b82f6; font-weight: bold;">23% Impact</span>
+                        </div>
+                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                            <div style="width: 23%; height: 100%; background: #3b82f6; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- 4 Chart Dashboards -->
-        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
-            <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
-                <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">API Request Volume</h3>
-                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-chart-bar" style="font-size: 2.5rem; color: var(--color-gold); opacity: 0.5;"></i>
+              <!-- User Engagement -->
+        <div class="dash-card" style="margin-top: 2rem;">
+            <h3 style="margin: 0 0 1.5rem 0; font-family: var(--font-serif); font-size: 1.3rem;">Platform Adoption by Region</h3>
+            <div class="dash-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="font-size: 2rem; color: var(--color-gold); font-weight: bold; margin-bottom: 0.5rem;">42%</div>
+                    <div style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">North America</div>
                 </div>
-            </div>
-            <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
-                <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">Data Lake Growth (TB)</h3>
-                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-chart-line" style="font-size: 2.5rem; color: var(--color-gold); opacity: 0.5;"></i>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="font-size: 2rem; color: var(--color-emerald); font-weight: bold; margin-bottom: 0.5rem;">35%</div>
+                    <div style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">EMEA</div>
                 </div>
-            </div>
-            <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
-                <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">User Engagement</h3>
-                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-chart-pie" style="font-size: 2.5rem; color: var(--color-gold); opacity: 0.5;"></i>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="font-size: 2rem; color: #3b82f6; font-weight: bold; margin-bottom: 0.5rem;">18%</div>
+                    <div style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">APAC</div>
                 </div>
-            </div>
-            <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
-                <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">Error Rates</h3>
-                <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5rem; color: #ef4444; opacity: 0.5;"></i>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="font-size: 2rem; color: #f59e0b; font-weight: bold; margin-bottom: 0.5rem;">5%</div>
+                    <div style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">LATAM</div>
                 </div>
             </div>
         </div>
       </section>
+
       <!-- 5. MARKET INTEL -->
       <section id="market" class="section-content">
         <div class="section-header" style="margin-bottom: 1.5rem;">
           <h1 style="font-size: 2rem;">Market Intel</h1>
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Market Intel.</p>
         </div>
-        <div class="dash-card" style="padding: 2rem; text-align: center;">
-            <i class="fa-solid fa-globe" style="font-size: 3rem; color: var(--color-gold); margin-bottom: 1rem;"></i>
-            <h3>Market Intelligence Feed</h3>
-            <p style="color: var(--color-text-muted);">Real-time market updates and competitor analysis are being provisioned for your region.</p>
+        
+        <div class="dash-grid" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 180px; background-image: url('stackly_boardroom_outcomes_1786436446072.jpg'); background-size: cover; background-position: center;"></div>
+                <div style="padding: 1.5rem;">
+                    <span style="font-size: 0.75rem; color: var(--color-gold); text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">Q4 Strategy Report</span>
+                    <h3 style="margin: 0.5rem 0; font-family: var(--font-serif); font-size: 1.3rem;">Competitor M&A Landscape</h3>
+                    <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5;">An analysis of recent consolidation in the enterprise SaaS sector, highlighting potential threat vectors and acquisition targets.</p>
+                    <a href="404.html" style="color: var(--color-gold); font-size: 0.9rem; text-decoration: none; font-weight: bold;"><i class="fa-solid fa-file-pdf"></i> Download Full Report (3.2 MB)</a>
+                </div>
+            </div>
+            
+            <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 180px; background-image: url('case_study_2_1786437200403.jpg'); background-size: cover; background-position: center;"></div>
+                <div style="padding: 1.5rem;">
+                    <span style="font-size: 0.75rem; color: var(--color-gold); text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">Macro Trends</span>
+                    <h3 style="margin: 0.5rem 0; font-family: var(--font-serif); font-size: 1.3rem;">Regulatory Shifts in EMEA</h3>
+                    <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5;">Upcoming data privacy mandates scheduled for Q1 2027 and their projected impact on cross-border data flows.</p>
+                    <a href="404.html" style="color: var(--color-gold); font-size: 0.9rem; text-decoration: none; font-weight: bold;"><i class="fa-solid fa-file-pdf"></i> Download Briefing (1.8 MB)</a>
+                </div>
+            </div>
+        </div>
+              <!-- Competitor Benchmarking & News -->
+        <div class="dash-grid" style="grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+            <div class="dash-card" style="padding: 0;">
+                <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.3rem;">Competitor Benchmarking (Q3)</h3>
+                </div>
+                <table class="data-table" style="margin: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 1rem;">Metric</th>
+                            <th>Your Company</th>
+                            <th>Industry Avg</th>
+                            <th>Top Quartile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">Customer Retention</td>
+                            <td style="color: var(--color-emerald); font-weight: bold;">94.2%</td>
+                            <td>88.5%</td>
+                            <td>93.0%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">Operating Margin</td>
+                            <td style="color: var(--color-gold); font-weight: bold;">24.5%</td>
+                            <td>21.0%</td>
+                            <td>26.2%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; font-weight: bold;">Time-to-Market (Months)</td>
+                            <td style="color: var(--color-emerald); font-weight: bold;">4.2</td>
+                            <td>6.5</td>
+                            <td>4.8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="dash-card">
+                <h3 style="margin: 0 0 1rem 0; font-family: var(--font-serif); font-size: 1.8rem;">Live Sector News</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--color-emerald); margin-bottom: 0.25rem;">2 Hours Ago &bull; TechCrunch</div>
+                        <a href="404.html" style="color: var(--color-white); text-decoration: none; font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 0.25rem;">Enterprise SaaS spending projected to grow 14% in 2027</a>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+                        <div style="font-size: 0.75rem; color: var(--color-gold); margin-bottom: 0.25rem;">5 Hours Ago &bull; WSJ</div>
+                        <a href="404.html" style="color: var(--color-white); text-decoration: none; font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 0.25rem;">European regulators signal softer stance on AI mandates</a>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+                        <div style="font-size: 0.75rem; color: #3b82f6; margin-bottom: 0.25rem;">Yesterday &bull; Bloomberg</div>
+                        <a href="404.html" style="color: var(--color-white); text-decoration: none; font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 0.25rem;">Major consolidation expected in cloud logistics sector</a>
+                    </div>
+                </div>
+            </div>
         </div>
       </section>
-    </div>
-  </main>
+
+    </main>
+
   <script>
     // Tab switching logic
     const navItems = document.querySelectorAll('.nav-item');
@@ -859,8 +1082,8 @@
       window.addEventListener('mousemove', (e) => {
         const posX = e.clientX;
         const posY = e.clientY;
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+        cursorDot.style.left = `px`;
+        cursorDot.style.top = `px`;
         gsap.to(cursorOutline, {
           x: posX,
           y: posY,
@@ -875,37 +1098,21 @@
       });
     }
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loggedInEmail = localStorage.getItem('loggedInEmail');
+      if (!loggedInEmail) {
+        window.location.href = 'login.html';
+      } else {
+        const emailDisplay = document.getElementById('userEmailDisplay');
+        if (emailDisplay) {
+          emailDisplay.innerText = loggedInEmail;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

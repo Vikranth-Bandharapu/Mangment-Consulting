@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -175,7 +175,7 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" placeholder="••••••••">
+        <input type="password" id="password" class="form-control" placeholder="Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢Ã¢â‚¬Â¢">
         <div class="error-message" id="pwdError">Please enter your password.</div>
       </div>
       
@@ -225,6 +225,7 @@
       }
 
       if (isValid) {
+        localStorage.setItem('loggedInEmail', email);
         // Change button state
         const btn = document.querySelector('.btn-auth');
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
@@ -264,6 +265,11 @@
   </script>
 </body>
 </html>
+
+
+
+
+
 
 
 

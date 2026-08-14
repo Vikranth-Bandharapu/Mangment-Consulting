@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -81,7 +81,10 @@
   <div class="content-404">
     <h1>404</h1>
     <p>The page you are looking for is lost in the data.</p>
-    <a href="index.html" class="btn-404">Back to Home</a>
+    <div style="display: flex; gap: 1rem; justify-content: center; pointer-events: auto;">
+      <button onclick="history.back()" class="btn-404" style="background-color: transparent; border: 2px solid var(--color-gold); color: var(--color-gold);">Go Back</button>
+      <a href="index.html" class="btn-404">Back to Home</a>
+    </div>
   </div>
 
   <script>
@@ -135,6 +138,10 @@
   </script>
 </body>
 </html>
+
+
+
+
 
 
 

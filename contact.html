@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,12 +16,13 @@
   <header class="glass-header">
     <div class="container header-container">
       <div class="logo">
-        <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px; filter: invert(1);"></a>
+        <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px;"></a>
       </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="document.getElementById('navLinks').classList.toggle('active')">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
           <a href="services.html">Services</a>
           <a href="industries.html">Industries</a>
           <a href="case-studies.html">Case Studies</a>
@@ -32,7 +33,7 @@
         </div>
         <div class="nav-actions">
           <a href="login.html" class="sign-in">Sign in</a>
-          <button class="btn-primary" onclick="window.location.href='signup.html'">Book a consultation</button>
+          <button class="btn-primary" onclick="window.location.href='404.html'">Book a consultation</button>
         </div>
     </div>
   </header>
@@ -134,22 +135,22 @@
       <h2 class="gsap-fade" style="margin-bottom: 3rem;">Global Support Centers</h2>
       
       <div class="footprint-grid bento-grid">
-        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot" onclick="window.location.href='404.html'">
           <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
           <h4>New York</h4>
           <p>Capital Markets & Tech</p>
         </div>
-        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot" onclick="window.location.href='404.html'">
           <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
           <h4>Dubai</h4>
           <p>Energy & Infrastructure</p>
         </div>
-        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot" onclick="window.location.href='404.html'">
           <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
           <h4>Chennai</h4>
           <p>Technology & Analytics</p>
         </div>
-        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot" onclick="window.location.href='404.html'">
           <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
           <h4>Frankfurt</h4>
           <p>European Operations</p>
@@ -165,68 +166,66 @@
       <h2 style="color: var(--color-navy);">Ready to transform?</h2>
       <p style="color: var(--color-text-muted);">Join the leaders who have redefined their operational architecture.</p>
       <div class="cta-actions">
-        <button class="btn-gold" onclick="window.location.href='signup.html'">REQUEST SECTOR BRIEFING <i class="fa-solid fa-arrow-right-long"></i></button>
+        <button class="btn-gold" onclick="window.location.href='404.html'">REQUEST SECTOR BRIEFING <i class="fa-solid fa-arrow-right-long"></i></button>
       </div>
     </div>
   </section>
 
   <!-- 7. Footer -->
-  <footer>
+    <footer>
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-grid" style="grid-template-columns: 1.5fr 1fr 1fr 1fr;">
         <div class="footer-col gsap-footer" style="padding-right: 2rem;">
-          <div class="logo" style="margin-bottom: 1rem;">
+          <div class="logo" style="margin-bottom: 1.5rem;">
             <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px;"></a>
           </div>
-          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Stackly is an independent management consultancy. We work with leadership teams on the decisions that bend the numbers - the ones they have to live with.</p>
-          <div style="color: var(--color-text-light); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            <span><i class="fa-regular fa-envelope"></i> hello@stackly.com</span>
-            <span><i class="fa-solid fa-phone"></i> +44 20 7946 0912</span>
+          <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
+            Advancing human interaction through the power of spatial computing, artificial intelligence and augmented reality.
+          </p>
+          <div style="display: flex; gap: 1rem;">
+            <a href="404.html" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.05); color: var(--color-text-muted); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='white'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.color='var(--color-text-muted)'"><i class="fa-brands fa-twitter"></i></a>
+            <a href="404.html" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.05); color: var(--color-text-muted); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='white'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.color='var(--color-text-muted)'"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="404.html" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.05); color: var(--color-text-muted); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='white'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.color='var(--color-text-muted)'"><i class="fa-brands fa-github"></i></a>
+            <a href="404.html" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.05); color: var(--color-text-muted); text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='white'" onmouseout="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.color='var(--color-text-muted)'"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
         <div class="footer-col gsap-footer">
-          <h4>QUICK LINKS</h4>
+          <h4>Platform</h4>
           <ul>
-            <li><a href="404.html">Strategy & Growth</a></li>
-            <li><a href="404.html">Operations Excellence</a></li>
-            <li><a href="404.html">Digital Transformation</a></li>
-            <li><a href="404.html">People & Organisation</a></li>
-            <li><a href="404.html">Risk & Compliance</a></li>
+            <li><a href="404.html">Cloud Rendering</a></li>
+            <li><a href="404.html">Spatial Analytics</a></li>
+            <li><a href="404.html">AI Assistance</a></li>
+            <li><a href="404.html">Hardware SDK</a></li>
+            <li><a href="404.html">Enterprise API</a></li>
           </ul>
         </div>
         <div class="footer-col gsap-footer">
-          <h4>COMPANY</h4>
+          <h4>Company</h4>
           <ul>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="industries.html">Industries</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Solutions</a></li>
+            <li><a href="blogs.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="industries.html">Industries</a></li>
           </ul>
         </div>
         <div class="footer-col gsap-footer">
-          <h4>OFFICES</h4>
-          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem; margin-bottom: 1.5rem;">
-            <strong style="color: white;">London</strong><br>
-            Level 28, The Shard<br>
-            32 London Bridge St<br>
-            London SE1 9SG
-          </div>
-          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem;">
-            <strong style="color: white;">New York</strong><br>
-            One World Trade Center<br>
-            Suite 4500<br>
-            New York, NY 10007
-          </div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="404.html">Careers</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="404.html">Client Portal</a></li>
+            <li><a href="404.html">Developer Portal</a></li>
+            <li><a href="404.html">Compliance</a></li>
+          </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div>&copy; 2026 Stackly Consulting Group. All rights reserved.</div>
+        <div>&copy; 2026 Stackly, Inc. All rights reserved.</div>
         <div style="display: flex; gap: 1.5rem;">
-          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy</a>
-          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Terms</a>
-          <a href="404.html" style="color: var(--color-text-muted);"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy Policy</a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Terms of Service</a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Cookie Policy</a>
         </div>
       </div>
     </div>
@@ -281,3 +280,7 @@
   </script>
 </body>
 </html>
+
+
+
+
