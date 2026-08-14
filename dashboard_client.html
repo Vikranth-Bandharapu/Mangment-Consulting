@@ -6,6 +6,7 @@
   <title>Client Portal - Stackly Consulting</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <style>
     body {
@@ -32,7 +33,8 @@
       padding: 2rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       gap: 1rem;
     }
     .sidebar-nav {
@@ -359,8 +361,12 @@
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
-    <div style="padding: 1.5rem 3rem 0 3rem;">
+    <div style="padding: 1.5rem 3rem 0 3rem; display: flex; justify-content: space-between; align-items: center;">
       <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; text-transform: uppercase;">Client Portal</h3>
+      <div style="position: relative; cursor: pointer;">
+        <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: var(--color-gold);"></i>
+        <span style="position: absolute; top: -5px; right: -8px; background: #ef4444; color: white; font-size: 0.65rem; font-weight: bold; padding: 2px 5px; border-radius: 50%;">3</span>
+      </div>
     </div>
     <div class="content-area">
 
@@ -385,9 +391,9 @@
       
       <!-- 1. DASHBOARD OVERVIEW -->
       <section id="overview" class="section-content active">
-        <div class="section-header" style="margin-bottom: 1.5rem;">
-          <h1 style="font-size: 2rem;">Dashboard Overview</h1>
-          <p style="font-size: 0.95rem;">Detailed overview and metrics for Dashboard Overview.</p>
+        <div class="section-header" style="margin-bottom: 0;">
+          <h1 style="font-size: 2rem; margin-bottom: 0;">Dashboard Overview</h1>
+          <p style="font-size: 0.95rem; margin-top: 0.2rem; margin-bottom: 0;">Detailed overview and metrics for Dashboard Overview.</p>
         </div>
         
         <!-- 1. Hero Image Banner -->
@@ -799,112 +805,25 @@
             <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
                 <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">Error Rates</h3>
                 <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fa-solid fa-chart-area" style="font-size: 2.5rem; color: #ef4444; opacity: 0.5;"></i>
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5rem; color: #ef4444; opacity: 0.5;"></i>
                 </div>
             </div>
         </div>
-
-        <div class="dash-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem; gap: 1.5rem;">
-            <div class="dash-card" style="padding: 1.5rem;">
-                <h3 style="margin: 0 0 1rem 0; font-size: 1.1rem;">Live System Logs</h3>
-                <div style="background: rgba(0,0,0,0.8); padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: #10b981; height: 180px; overflow-y: scroll;">
-                    [14:02:01] INFO: Analytics cluster scaling up (Node 4).<br>
-                    [14:02:05] WARN: High latency detected in EU-West routing.<br>
-                    [14:03:12] INFO: Backup job #89221 completed successfully.<br>
-                    [14:05:44] INFO: Ingress traffic spike detected (+400%).<br>
-                    [14:10:00] INFO: Daily analytics aggregation started.<br>
-                    [14:11:02] INFO: Machine Learning model v4.2 deployed.<br>
-                    [14:15:33] INFO: Database snapshot created.<br>
-                </div>
-            </div>
-            <div class="dash-card" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 1.5rem;">
-                <i class="fa-solid fa-server" style="font-size: 3rem; color: var(--color-gold); margin-bottom: 0.75rem;"></i>
-                <h3 style="font-size: 1.2rem; margin: 0 0 0.25rem 0;">Server Health</h3>
-                <h1 style="font-size: 2.2rem; margin: 0; color: var(--color-emerald);">Optimal</h1>
-                <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.75rem;">All 124 nodes are responding well within SLA thresholds.</p>
-            </div>
-        </div>
-    
       </section>
-
       <!-- 5. MARKET INTEL -->
       <section id="market" class="section-content">
         <div class="section-header" style="margin-bottom: 1.5rem;">
           <h1 style="font-size: 2rem;">Market Intel</h1>
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Market Intel.</p>
         </div>
-        
-        <!-- Market Intel & Talent -->
-        <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-gold);">Market Intel & Intelligence</h2>
-            <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 800px;">Curated market trends, competitor analysis, and global economic outlooks tailored for your enterprise.</p>
+        <div class="dash-card" style="padding: 2rem; text-align: center;">
+            <i class="fa-solid fa-globe" style="font-size: 3rem; color: var(--color-gold); margin-bottom: 1rem;"></i>
+            <h3>Market Intelligence Feed</h3>
+            <p style="color: var(--color-text-muted);">Real-time market updates and competitor analysis are being provisioned for your region.</p>
         </div>
-
-        <div class="dash-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 2rem; gap: 1rem;">
-            <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-                <div style="height: 100px; background-image: url('insights_bg_1786437124692.jpg'); background-size: cover; background-position: center;"></div>
-                <div style="padding: 1rem;">
-                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem;">Q4 Macro Trends</h4>
-                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Inflation easing in European sectors leading to higher CapEx.</p>
-                </div>
-            </div>
-            <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-                <div style="height: 100px; background-image: url('consulting_hero_bg_1786435771395.jpg'); background-size: cover; background-position: center;"></div>
-                <div style="padding: 1rem;">
-                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem;">Competitor M&A</h4>
-                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Rival Corp announces $2B acquisition of AI startup.</p>
-                </div>
-            </div>
-            <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-                <div style="height: 100px; background-image: url('case_study_1_1786437153769.jpg'); background-size: cover; background-position: center;"></div>
-                <div style="padding: 1rem;">
-                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem;">Asian Markets</h4>
-                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Supply chain constraints easing significantly in APAC.</p>
-                </div>
-            </div>
-            <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-                <div style="height: 100px; background-image: url('stackly_boardroom_outcomes_1786436446072.jpg'); background-size: cover; background-position: center;"></div>
-                <div style="padding: 1rem;">
-                    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem;">Fed Rate Impact</h4>
-                    <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Analysis of recent rate cuts on enterprise borrowing.</p>
-                </div>
-            </div>
-        </div>
-
-        <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem;">Your Consulting Roster</h3>
-        <div class="dash-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
-            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
-                <div style="width: 70px; height: 70px; border-radius: 50%; background-image: url('leader1_1786437562772.jpg'); background-size: cover; margin: 0 auto 0.75rem auto; border: 2px solid var(--color-gold);"></div>
-                <h4 style="margin: 0 0 0.2rem 0; font-size: 1rem;">Marcus Vance</h4>
-                <p style="color: var(--color-gold); font-size: 0.8rem; margin: 0 0 1rem 0;">Senior Partner</p>
-                <button class="btn-outline" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">Message</button>
-            </div>
-            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
-                <div style="width: 70px; height: 70px; border-radius: 50%; background-image: url('leader2_1786437620528.jpg'); background-size: cover; margin: 0 auto 0.75rem auto; border: 2px solid var(--color-gold);"></div>
-                <h4 style="margin: 0 0 0.2rem 0; font-size: 1rem;">Dr. Clara Chen</h4>
-                <p style="color: var(--color-gold); font-size: 0.8rem; margin: 0 0 1rem 0;">Head of Operations</p>
-                <button class="btn-outline" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">Message</button>
-            </div>
-            <div class="dash-card" style="text-align: center; padding: 1.5rem;">
-                <div style="width: 70px; height: 70px; border-radius: 50%; background-image: url('leader3_1786437662211.jpg'); background-size: cover; margin: 0 auto 0.75rem auto; border: 2px solid var(--color-gold);"></div>
-                <h4 style="margin: 0 0 0.2rem 0; font-size: 1rem;">Elena Rostova</h4>
-                <p style="color: var(--color-gold); font-size: 0.8rem; margin: 0 0 1rem 0;">Lead Financial Analyst</p>
-                <button class="btn-outline" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">Message</button>
-            </div>
-        </div>
-        
-        <div class="dash-card" style="padding: 3rem; text-align: center; background-image: url('careers_bg_1786437139342.jpg'); background-size: cover; background-position: center; position: relative; border-radius: 12px;">
-            <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.85); border-radius: 12px;"></div>
-            <div style="position: relative; z-index: 2;">
-                <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.75rem; color: var(--color-white);">Global Outlook 2026</h2>
-                <p style="color: var(--color-text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto 1.5rem auto;">Download our comprehensive 120-page proprietary research report on the state of enterprise transformation.</p>
-                <button class="btn-primary" style="font-size: 0.95rem; padding: 0.8rem 1.5rem;">Download Report (PDF)</button>
-            </div>
-        </div>
-    
       </section>
-    </main>
-
+    </div>
+  </main>
   <script>
     // Tab switching logic
     const navItems = document.querySelectorAll('.nav-item');
@@ -958,6 +877,10 @@
   </script>
 </body>
 </html>
+
+
+
+
 
 
 

@@ -1,0 +1,809 @@
+﻿Created At: 2026-08-13T18:07:07+05:30
+Completed At: 2026-08-13T18:07:07+05:30
+File Path: `file:///c:/Users/admin/Desktop/Mangement%20Consulting/dashboard_client.html`
+Total Lines: 990
+Total Bytes: 53562
+Showing lines 1 to 800
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: <head>
+4:   <meta charset="UTF-8">
+5:   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6:   <title>Client Portal - Stackly Consulting</title>
+7:   <link rel="stylesheet" href="styles.css">
+8:   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+9:   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+10:   <style>
+11:     body {
+12:       background-color: var(--color-navy);
+13:       margin: 0;
+14:       color: var(--color-white);
+15:       font-family: var(--font-sans);
+16:       display: flex;
+17:       height: 100vh;
+18:       overflow: hidden;
+19:     }
+20:     
+21:     /* --- SIDEBAR --- */
+22:     .sidebar {
+23:       width: 280px;
+24:       background: #080d1f;
+25:       border-right: 1px solid rgba(255, 255, 255, 0.05);
+26:       display: flex;
+27:       flex-direction: column;
+28:       height: 100vh;
+29:       flex-shrink: 0;
+30:     }
+31:     .sidebar-header {
+32:       padding: 2rem;
+33:       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+34:       display: flex;
+35:       align-items: center;
+36:       gap: 1rem;
+37:     }
+38:     .sidebar-nav {
+39:       flex: 1;
+40:       overflow-y: auto;
+41:       padding: 1.5rem 1rem;
+42:     }
+43:     .sidebar-nav::-webkit-scrollbar {
+44:       width: 5px;
+45:     }
+46:     .sidebar-nav::-webkit-scrollbar-thumb {
+47:       background: rgba(255,255,255,0.1);
+48:       border-radius: 5px;
+49:     }
+50:     .nav-item {
+51:       display: flex;
+52:       align-items: center;
+53:       gap: 1rem;
+54:       padding: 0.8rem 1rem;
+55:       color: rgba(255, 255, 255, 0.7);
+56:       text-decoration: none;
+57:       border-radius: 8px;
+58:       margin-bottom: 0.2rem;
+59:       transition: all 0.3s ease;
+60:       cursor: pointer;
+61:     }
+62:     .nav-item:hover, .nav-item.active {
+63:       background: rgba(200, 169, 126, 0.1);
+64:       color: var(--color-gold);
+65:     }
+66:     .nav-item i {
+67:       width: 20px;
+68:       text-align: center;
+69:     }
+70:     .sidebar-footer {
+71:       padding: 1.5rem 2rem;
+72:       border-top: 1px solid rgba(255, 255, 255, 0.05);
+73:     }
+74:     .btn-logout {
+75:       display: flex;
+76:       align-items: center;
+77:       justify-content: center;
+78:       gap: 0.5rem;
+79:       width: 100%;
+80:       padding: 0.8rem;
+81:       background: rgba(239, 68, 68, 0.1);
+82:       color: #ef4444;
+83:       border: 1px solid rgba(239, 68, 68, 0.2);
+84:       border-radius: 6px;
+85:       cursor: pointer;
+86:       font-weight: 600;
+87:       transition: all 0.3s ease;
+88:       text-decoration: none;
+89:     }
+90:     .btn-logout:hover {
+91:       background: rgba(239, 68, 68, 0.2);
+92:     }
+93: 
+94:     /* --- MAIN CONTENT --- */
+95:     .main-wrapper {
+96:       flex: 1;
+97:       display: flex;
+98:       flex-direction: column;
+99:       height: 100vh;
+100:       overflow: hidden;
+101:       background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05), transparent 40%),
+102:                   radial-gradient(circle at bottom left, rgba(200, 169, 126, 0.05), transparent 40%);
+103:     }
+104:     .user-profile-card {
+105:       background: rgba(255, 255, 255, 0.03);
+106:       border: 1px solid rgba(255, 255, 255, 0.05);
+107:       border-radius: 12px;
+108:       padding: 1.5rem;
+109:       display: flex;
+110:       align-items: center;
+111:       gap: 1.5rem;
+112:       margin-bottom: 2.5rem;
+113:       width: fit-content;
+114:       min-width: 400px;
+115:     }
+116:     .avatar-large {
+117:       width: 60px;
+118:       height: 60px;
+119:       border-radius: 50%;
+120:       border: 2px solid var(--color-gold);
+121:       display: flex;
+122:       align-items: center;
+123:       justify-content: center;
+124:       font-size: 1.8rem;
+125:       color: var(--color-gold);
+126:       background: rgba(200, 169, 126, 0.1);
+127:     }
+128:     .profile-info {
+129:       display: flex;
+130:       flex-direction: column;
+131:     }
+132:     .profile-name {
+133:       font-size: 1.5rem;
+134:       font-family: var(--font-serif);
+135:       font-weight: bold;
+136:       display: flex;
+137:       align-items: center;
+138:       gap: 0.5rem;
+139:     }
+140:     .profile-email {
+141:       font-size: 0.95rem;
+142:       color: var(--color-text-muted);
+143:       font-family: var(--font-sans);
+144:       font-weight: normal;
+145:     }
+146:     .profile-role {
+147:       color: var(--color-gold);
+148:       font-size: 0.85rem;
+149:       text-transform: uppercase;
+150:       letter-spacing: 1.5px;
+151:       margin-top: 0.25rem;
+152:       font-weight: 600;
+153:     }
+154:     .content-area {
+155:       flex: 1;
+156:       padding: 3rem;
+157:       overflow-y: auto;
+158:     }
+159:     
+160:     /* --- DASHBOARD SECTIONS --- */
+161:     .section-content {
+162:       display: none;
+163:       animation: fadeIn 0.4s ease forwards;
+164:     }
+165:     .section-content.active {
+166:       display: block;
+167:     }
+168:     @keyframes fadeIn {
+169:       from { opacity: 0; transform: translateY(10px); }
+170:       to { opacity: 1; transform: translateY(0); }
+171:     }
+172:     
+173:     .section-header {
+174:       margin-bottom: 2rem;
+175:     }
+176:     .section-header h1 {
+177:       font-size: 2.5rem;
+178:       font-family: var(--font-serif);
+179:       margin-bottom: 0.5rem;
+180:     }
+181:     .section-header p {
+182:       color: var(--color-text-muted);
+183:     }
+184: 
+185:     /* Grid Layouts */
+186:     .dash-grid {
+187:       display: grid;
+188:       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+189:       gap: 1.5rem;
+190:       margin-bottom: 2rem;
+191:     }
+192:     .dash-card {
+193:       background: rgba(255, 255, 255, 0.03);
+194:       border: 1px solid rgba(255, 255, 255, 0.05);
+195:       border-radius: 12px;
+196:       padding: 1.5rem;
+197:       position: relative;
+198:       overflow: hidden;
+199:     }
+200:     .dash-card::before {
+201:       content: '';
+202:       position: absolute;
+203:       top: 0; left: 0; width: 100%; height: 4px;
+204:       background: var(--color-gold);
+205:       opacity: 0;
+206:       transition: opacity 0.3s ease;
+207:     }
+208:     .dash-card:hover::before {
+209:       opacity: 1;
+210:     }
+211:     
+212:     .card-value {
+213:       font-size: 2.5rem;
+214:       font-family: var(--font-serif);
+215:       margin: 1rem 0 0.5rem 0;
+216:     }
+217:     .card-trend.up { color: var(--color-emerald); }
+218:     .card-trend.down { color: #ef4444; }
+219:     
+220:     /* Rich image cards */
+221:     .image-card {
+222:       height: 250px;
+223:       border-radius: 12px;
+224:       background-size: cover;
+225:       background-position: center;
+226:       position: relative;
+227:       overflow: hidden;
+228:       display: flex;
+229:       flex-direction: column;
+230:       justify-content: flex-end;
+231:       padding: 1.5rem;
+232:     }
+233:     .image-card::after {
+234:       content: '';
+235:       position: absolute;
+236:       top: 0; left: 0; width: 100%; height: 100%;
+237:       background: linear-gradient(transparent, rgba(11, 19, 43, 0.9));
+238:       z-index: 1;
+239:     }
+240:     .image-card > * {
+241:       position: relative;
+242:       z-index: 2;
+243:     }
+244: 
+245:     /* Tables */
+246:     .table-container {
+247:       width: 100%;
+248:       overflow-x: auto;
+249:     }
+250:     .data-table {
+251:       width: 100%;
+252:       border-collapse: collapse;
+253:       margin-top: 1rem;
+254:     }
+255:     .data-table th, .data-table td {
+256:       padding: 1rem;
+257:       text-align: left;
+258:       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+259:       white-space: nowrap;
+260:     }
+261:     .data-table th {
+262:       color: var(--color-text-muted);
+263:       font-weight: 500;
+264:       font-size: 0.85rem;
+265:       text-transform: uppercase;
+266:       letter-spacing: 1px;
+267:     }
+268:     
+269:     .status-badge {
+270:       padding: 0.25rem 0.75rem;
+271:       border-radius: 50px;
+272:       font-size: 0.85rem;
+273:       font-weight: 600;
+274:     }
+275:     .status-active { background: rgba(16, 185, 129, 0.2); color: var(--color-emerald); }
+276:     .status-pending { background: rgba(200, 169, 126, 0.2); color: var(--color-gold); }
+277: 
+278:   </style>
+279: 
+280:   <style>
+281:     /* EXTREME MOBILE OVERRIDE INJECTED DIRECTLY */
+282:     @media (max-width: 768px) {
+283:       body {
+284:         display: block !important;
+285:         overflow-y: auto !important;
+286:       }
+287:       .sidebar {
+288:         position: fixed !important;
+289:         top: 0 !important;
+290:         left: -100vw !important;
+291:         width: 280px !important;
+292:         height: 100vh !important;
+293:         z-index: 2147483647 !important; /* Max z-index */
+294:         background-color: var(--color-navy) !important;
+295:         border-right: 1px solid rgba(255,255,255,0.1) !important;
+296:         transition: left 0.3s ease-in-out !important;
+297:         display: block !important;
+298:       }
+299:       .sidebar.active {
+300:         left: 0 !important;
+301:       }
+302:       .main-wrapper {
+303:         margin-left: 0 !important;
+304:         width: 100vw !important;
+305:         max-width: 100vw !important;
+306:         overflow-x: hidden !important;
+307:       }
+308:       .user-profile-card {
+309:         min-width: 0 !important;
+310:         width: 100% !important;
+311:         flex-direction: column !important;
+312:         text-align: center !important;
+313:         word-break: break-all !important;
+314:       }
+315:       .dash-grid, .kpi-grid, .pipeline-grid {
+316:         display: flex !important;
+317:         flex-direction: column !important;
+318:         width: 100% !important;
+319:       }
+320:       .table-container {
+321:         width: 100% !important;
+322:         overflow-x: auto !important;
+323:       }
+324:       .mobile-sidebar-btn {
+325:         display: block !important;
+326:       }
+327:     }
+328:   </style>
+329: </head>
+330: <body>
+331: 
+332:   <!-- Custom Cursor -->
+333:   <div class="cursor-dot"></div>
+334:   <div class="cursor-outline"></div>
+335: 
+336:   <!-- SIDEBAR -->
+337:   <aside class="sidebar">
+338:     <div class="sidebar-header">
+339:       <a href="dashboard_client.html"><img src="assets/logo.webp" alt="Logo" style="height: 30px;"></a>
+340:       <span style="font-weight: bold; font-size: 1.2rem; font-family: var(--font-serif);">Client Portal</span>
+341:     </div>
+342:     <div class="sidebar-nav" id="sidebarNav">
+343:       <div class="nav-item active" data-target="overview"><i class="fa-solid fa-house"></i> Overview</div>
+344:       <div class="nav-item" data-target="projects"><i class="fa-solid fa-briefcase"></i> Active Projects</div>
+345:       <div class="nav-item" data-target="financials"><i class="fa-solid fa-file-invoice-dollar"></i> Financials</div>
+346:       <div class="nav-item" data-target="analytics"><i class="fa-solid fa-chart-line"></i> Analytics</div>
+347:       <div class="nav-item" data-target="market"><i class="fa-solid fa-globe"></i> Market Intel</div>
+348:     </div>
+349:     <div class="sidebar-footer">
+350:       <a href="index.html" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Secure Logout</a>
+351:     </div>
+352:   </aside>
+353: 
+354:   <!-- MAIN -->
+355:   <main class="main-wrapper">
+356:   <div class="dash-mobile-header">
+357:     <div style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: bold;">Portal</div>
+358:     <button class="mobile-sidebar-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+359:       <i class="fa-solid fa-bars"></i>
+360:     </button>
+361:   </div>
+362:     <div style="padding: 1.5rem 3rem 0 3rem;">
+363:       <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; text-transform: uppercase;">Client Portal</h3>
+364:     </div>
+365:     <div class="content-area">
+366: 
+367:       <!-- User Profile Header -->
+368:       <div class="user-profile-card">
+369:         <div class="avatar-large">
+370:            <i class="fa-solid fa-user-tie"></i>
+371:         </div>
+372:         <div class="profile-info">
+373:           <div class="profile-name">
+374:              CLIENT PARTNER <span class="profile-email" id="userEmailDisplay">client@enterprise.com</span>
+375:           </div>
+376:           <div class="profile-role">ENTERPRISE PORTAL</div>
+377:         </div>
+378:       </div>
+379:       
+380:       <!-- 1. OVERVIEW -->
+381:       
+382:       <!-- 1. DASHBOARD OVERVIEW -->
+383:       
+384:       <!-- 1. DASHBOARD OVERVIEW -->
+385:       
+386:       <!-- 1. DASHBOARD OVERVIEW -->
+387:       <section id="overview" class="section-content active">
+388:         <div class="section-header" style="margin-bottom: 1.5rem;">
+389:           <h1 style="font-size: 2rem;">Dashboard Overview</h1>
+390:           <p style="font-size: 0.95rem;">Detailed overview and metrics for Dashboard Overview.</p>
+391:         </div>
+392:         
+393:         <!-- 1. Hero Image Banner -->
+394:         <div style="margin-bottom: 2rem; border-radius: 12px; overflow: hidden; height: 280px; background-image: url('stackly_hero_building_1786436367086.jpg'); background-size: cover; background-position: center; position: relative;">
+395:             <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,19,43,1) 0%, rgba(11,19,43,0) 100%);"></div>
+396:             <div style="position: absolute; bottom: 2rem; left: 2rem;">
+397:                 <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-white);">Strategic Executive Briefing</h2>
+398:                 <p style="color: var(--color-text-muted); font-size: 1rem; max-width: 600px;">
+399:                     Comprehensive overview of current operational metrics, highlighting strategic milestones achieved in the current quarter. System performance remains stable with an upward trajectory in key deliverables.
+400:                 </p>
+401:             </div>
+402:         </div>
+403: 
+404:         <!-- 2, 3, 4, 5. Four Stat Cards -->
+405:         <div class="dash-grid" style="margin-bottom: 2rem; gap: 1rem;">
+406:             <div class="dash-card" style="padding: 1.5rem;">
+407:                 <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Total Value Generated</h3>
+408:                 <div class="card-value" style="color: var(--color-gold); font-size: 2rem; margin: 0.5rem 0;">$14.2M</div>
+409:                 <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.5rem;">+12.4% vs last period</p>
+410:             </div>
+411:             <div class="dash-card" style="padding: 1.5rem;">
+412:                 <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Active Deployments</h3>
+413:                 <div class="card-value" style="font-size: 2rem; margin: 0.5rem 0;">124</div>
+414:                 <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Target: 120</p>
+415:             </div>
+416:             <div class="dash-card" style="padding: 1.5rem;">
+417:                 <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">Consultant Uptime</h3>
+418:                 <div class="card-value" style="font-size: 2rem; margin: 0.5rem 0;">99.8%</div>
+419:                 <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Fully operational</p>
+420:             </div>
+421:             <div class="dash-card" style="padding: 1.5rem;">
+422:                 <h3 style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase;">System Load</h3>
+423:                 <div class="card-value" style="color: #ef4444; font-size: 2rem; margin: 0.5rem 0;">89%</div>
+424:                 <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Peak hours detected</p>
+425:             </div>
+426:         </div>
+427: 
+428:         <!-- 6. Wide Chart Placeholder -->
+429:         <div class="dash-card" style="margin-bottom: 2rem; padding: 0; overflow: hidden; border-radius: 12px; height: 300px; display: flex; flex-direction: column;">
+430:             <div style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+431:                 <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.2rem;">Quarterly Performance Trajectory</h3>
+432:             </div>
+433:             <div style="flex: 1; background-image: url('consulting_hero_bg_1786435771395.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative;">
+434:                 <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.6);"></div>
+435:                 <i class="fa-solid fa-chart-line" style="font-size: 4rem; color: var(--color-gold); position: relative; z-index: 2;"></i>
+436:             </div>
+437:         </div>
+438: 
+439:         <!-- 7, 8, 9. Massive 3-Column Image Gallery -->
+440:         <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem;">Featured Case Studies</h3>
+441:         <div class="dash-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
+442:             <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+443:                 <div style="height: 160px; background-image: url('case_study_1_1786437153769.jpg'); background-size: cover; background-position: center;"></div>
+444:                 <div style="padding: 1.2rem;">
+445:                     <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: var(--color-gold);">Global Expansion</h4>
+446:                     <p style="color: var(--color-text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Phase 2 deployment successfully completed across all EMEA sectors, driving a 45% increase in market penetration.</p>
+447:                 </div>
+448:             </div>
+449:             <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+450:                 <div style="height: 160px; background-image: url('case_study_2_1786437200403.jpg'); background-size: cover; background-position: center;"></div>
+451:                 <div style="padding: 1.2rem;">
+452:                     <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: var(--color-gold);">Supply Chain AI</h4>
+453:                     <p style="color: var(--color-text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Logistics overhead reduced by 14% through proprietary AI-driven routing algorithms.</p>
+454:                 </div>
+455:             </div>
+456:             <div class="dash-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+457:                 <div style="height: 160px; background-image: url('stackly_boardroom_outcomes_1786436446072.jpg'); background-size: cover; background-position: center;"></div>
+458:                 <div style="padding: 1.2rem;">
+459:                     <h4 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: var(--color-gold);">M&A Restructuring</h4>
+460:                     <p style="color: var(--color-text-muted); font-size: 0.85rem; margin: 0; line-height: 1.5;">Successfully negotiated and structured the $4.2B acquisition of TechCorp global assets.</p>
+461:                 </div>
+462:             </div>
+463:         </div>
+464: 
+465:         <!-- 10. Massive Data Table Block -->
+466:         <div class="dash-card" style="margin-bottom: 2rem; padding: 0;">
+467:             <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-image: url('insights_bg_1786437124692.jpg'); background-size: cover; background-position: top; position: relative;">
+468:                 <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.8);"></div>
+469:                 <div style="position: relative; z-index: 2;">
+470:                     <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.3rem;">Recent Milestones & Deliverables</h3>
+471:                     <p style="color: var(--color-text-muted); margin-top: 0.25rem; font-size: 0.85rem;">Comprehensive tracking of all active workstreams</p>
+472:                 </div>
+473:             </div>
+474:             <div class="table-container">
+475:             <table class="data-table" style="margin: 0; width: 100%;">
+476:                 <thead>
+477:                     <tr>
+478:                         <th style="padding: 1rem;">ID</th>
+479:                         <th>Milestone Deliverable</th>
+480:                         <th>Target Date</th>
+481:                         <th>Lead Partner</th>
+482:                         <th>Status</th>
+483:                     </tr>
+484:                 </thead>
+485:                 <tbody>
+486:                     <tr>
+487:                         <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">#4092</td>
+488:                         <td style="font-size: 0.95rem;">Initial Security Architecture Audit</td>
+489:                         <td>Oct 12, 2026</td>
+490:                         <td>Marcus Vance</td>
+491:                         <td><span style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: rgba(16,185,129,0.1); color: var(--color-emerald); border-radius: 4px;">Completed</span></td>
+492:                     </tr>
+493:                     <tr>
+494:                         <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">#4093</td>
+495:                         <td style="font-size: 0.95rem;">Data Lake Migration Phase 1</td>
+496:                         <td>Oct 15, 2026</td>
+497:                         <td>Dr. Clara Chen</td>
+498:                         <td><span style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: rgba(200,169,126,0.1); color: var(--color-gold); border-radius: 4px;">In Progress</span></td>
+499:                     </tr>
+500:                     <tr>
+501:                         <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">#4094</td>
+502:                         <td style="font-size: 0.95rem;">Global Payment Gateway Integration</td>
+503:                         <td>Oct 20, 2026</td>
+504:                         <td>Elena Rostova</td>
+505:                         <td><span style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: rgba(255,255,255,0.05); color: var(--color-text-muted); border-radius: 4px;">Pending review</span></td>
+506:                     </tr>
+507:                     <tr>
+508:                         <td style="padding: 1rem; font-weight: bold; color: var(--color-gold);">#4095</td>
+509:                         <td style="font-size: 0.95rem;">Q4 Board Strategy Deck Delivery</td>
+510:                         <td>Nov 01, 2026</td>
+511:                         <td>Marcus Vance</td>
+512:                         <td><span style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: rgba(255,255,255,0.05); color: var(--color-text-muted); border-radius: 4px;">Scheduled</span></td>
+513:                     </tr>
+514:                 </tbody>
+515:             </table>
+516:             </div>
+517:         </div>
+518: 
+519:         <!-- 11 & 12. Strategic Profiles and Progress Meters -->
+520:         <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem;">Resource Allocation & Leadership</h3>
+521:         <div class="dash-grid" style="grid-template-columns: 1fr 2fr; margin-bottom: 2rem; gap: 1.5rem;">
+522:             <!-- Profile Column -->
+523:             <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
+524:                 <div style="width: 90px; height: 90px; border-radius: 50%; background-image: url('leader1_1786437562772.jpg'); background-size: cover; margin: 0 auto 1rem auto; border: 3px solid var(--color-gold); box-shadow: 0 0 15px rgba(200,169,126,0.2);"></div>
+525:                 <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; font-family: var(--font-serif);">Marcus Aurelius Vance</h4>
+526:                 <p style="color: var(--color-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 1rem 0; font-weight: bold;">Lead Strategy Partner</p>
+527:                 <p style="color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem;">Marcus oversees the global deployment of your architecture, ensuring rigorous alignment with board-level expectations.</p>
+528:                 <button class="btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.9rem;">Schedule Video Briefing</button>
+529:             </div>
+530:             
+531:             <!-- Progress Column -->
+532:             <div style="display: flex; flex-direction: column; gap: 1rem;">
+533:                 <!-- Wide picture card -->
+534:                 <div class="dash-card" style="padding: 0; overflow: hidden; height: 140px; display: flex; align-items: flex-end; background-image: url('careers_bg_1786437139342.jpg'); background-size: cover; background-position: center;">
+535:                     <div style="background: rgba(11,19,43,0.9); width: 100%; padding: 1rem;">
+536:                         <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Talent Acquisition Pipeline</h4>
+537:                         <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Securing top-tier global consulting talent for your operations.</p>
+538:                     </div>
+539:                 </div>
+540:                 
+541:                 <!-- Detailed Progress Bars -->
+542:                 <div class="dash-card" style="flex: 1; padding: 1.5rem;">
+543:                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem;">Overall Program Health</h4>
+544:                     
+545:                     <div style="margin-bottom: 1rem;">
+546:                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem; color: var(--color-white);">
+547:                             <span>Phase 1 Timeline</span>
+548:                             <span style="color: var(--color-gold); font-weight: bold;">85% Completed</span>
+549:                         </div>
+550:                         <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+551:                             <div style="width: 85%; height: 100%; background: var(--color-gold); border-radius: 3px; box-shadow: 0 0 8px var(--color-gold);"></div>
+552:                         </div>
+553:                     </div>
+554:                     
+555:                     <div style="margin-bottom: 1rem;">
+556:                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem; color: var(--color-white);">
+557:                             <span>CapEx Budget Utilization</span>
+558:                             <span style="color: #f97316; font-weight: bold;">92% Utilized</span>
+559:                         </div>
+560:                         <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+561:                             <div style="width: 92%; height: 100%; background: #f97316; border-radius: 3px; box-shadow: 0 0 8px #f97316;"></div>
+562:                         </div>
+563:                     </div>
+564:                     
+565:                     <div>
+566:                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem; color: var(--color-white);">
+567:                             <span>Quality Assurance Metrics</span>
+568:                             <span style="color: var(--color-emerald); font-weight: bold;">99.9% Passing</span>
+569:                         </div>
+570:                         <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+571:                             <div style="width: 99.9%; height: 100%; background: var(--color-emerald); border-radius: 3px; box-shadow: 0 0 8px var(--color-emerald);"></div>
+572:                         </div>
+573:                     </div>
+574:                 </div>
+575:             </div>
+576:         </div>
+577:     
+578:       </section>
+579: 
+580:       <!-- 2. ACTIVE PROJECTS -->
+581:       <section id="projects" class="section-content">
+582:         <div class="section-header" style="margin-bottom: 1.5rem;">
+583:           <h1 style="font-size: 2rem;">Active Projects</h1>
+584:           <p style="font-size: 0.95rem;">Detailed overview and metrics for Active Projects.</p>
+585:         </div>
+586:         
+587:         <!-- Projects / Portfolio -->
+588:         <div style="margin-bottom: 2rem;">
+589:             <h2 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-gold);">Active Workstreams</h2>
+590:             <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 800px;">Real-time tracking of 6 high-priority enterprise projects across multiple geographical zones.</p>
+591:         </div>
+592: 
+593:         <div class="dash-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
+594:             <!-- Project 1 -->
+595:             <div class="dash-card" style="display: flex; gap: 1rem; align-items: center; padding: 1.2rem;">
+596:                 <div style="width: 80px; height: 80px; border-radius: 6px; background-image: url('case_study_1_1786437153769.jpg'); background-size: cover;"></div>
+597:                 <div style="flex: 1;">
+598:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Data Center Migration</h4>
+599:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.75rem;">EU-West Frankfurt</p>
+600:                     <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+601:                         <div style="width: 80%; height: 100%; background: var(--color-gold); border-radius: 2px;"></div>
+602:                     </div>
+603:                 </div>
+604:             </div>
+605:             <!-- Project 2 -->
+606:             <div class="dash-card" style="display: flex; gap: 1rem; align-items: center; padding: 1.2rem;">
+607:                 <div style="width: 80px; height: 80px; border-radius: 6px; background-image: url('stackly_boardroom_outcomes_1786436446072.jpg'); background-size: cover;"></div>
+608:                 <div style="flex: 1;">
+609:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Retail Store AI Vision</h4>
+610:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.75rem;">North America</p>
+611:                     <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+612:                         <div style="width: 45%; height: 100%; background: var(--color-gold); border-radius: 2px;"></div>
+613:                     </div>
+614:                 </div>
+615:             </div>
+616:             <!-- Project 3 -->
+617:             <div class="dash-card" style="display: flex; gap: 1rem; align-items: center; padding: 1.2rem;">
+618:                 <div style="width: 80px; height: 80px; border-radius: 6px; background-image: url('case_study_2_1786437200403.jpg'); background-size: cover;"></div>
+619:                 <div style="flex: 1;">
+620:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Logistics Optimization</h4>
+621:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.75rem;">APAC Region</p>
+622:                     <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+623:                         <div style="width: 95%; height: 100%; background: #10b981; border-radius: 2px;"></div>
+624:                     </div>
+625:                 </div>
+626:             </div>
+627:             <!-- Project 4 -->
+628:             <div class="dash-card" style="display: flex; gap: 1rem; align-items: center; padding: 1.2rem;">
+629:                 <div style="width: 80px; height: 80px; border-radius: 6px; background-image: url('careers_bg_1786437139342.jpg'); background-size: cover;"></div>
+630:                 <div style="flex: 1;">
+631:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Talent Acquisition Portal</h4>
+632:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 0.75rem;">Global HR</p>
+633:                     <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+634:                         <div style="width: 15%; height: 100%; background: #f97316; border-radius: 2px;"></div>
+635:                     </div>
+636:                 </div>
+637:             </div>
+638:         </div>
+639: 
+640:         <div class="dash-card" style="height: 250px; background-image: url('stackly_hero_building_1786436367086.jpg'); background-size: cover; background-position: center; border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; position: relative;">
+641:             <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.7); border-radius: 12px;"></div>
+642:             <div style="position: relative; z-index: 2; text-align: center;">
+643:                 <i class="fa-solid fa-earth-americas" style="font-size: 3rem; color: var(--color-gold); margin-bottom: 0.75rem;"></i>
+644:                 <h2 style="font-size: 1.5rem; margin: 0 0 0.5rem 0;">Global Deployment Map</h2>
+645:                 <p style="color: var(--color-text-muted); font-size: 0.9rem;">Interactive module loading...</p>
+646:             </div>
+647:         </div>
+648: 
+649:         <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 1rem;">Recent Activity Timeline</h3>
+650:         <div class="dash-card" style="padding: 1.5rem;">
+651:             <div style="border-left: 2px solid rgba(255,255,255,0.1); padding-left: 1.5rem; position: relative;">
+652:                 <div style="margin-bottom: 1.5rem; position: relative;">
+653:                     <div style="position: absolute; left: -1.9rem; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--color-gold);"></div>
+654:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">Phase 2 Signed Off</h4>
+655:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">By Marcus Vance - 2 hours ago</p>
+656:                 </div>
+657:                 <div style="margin-bottom: 1.5rem; position: relative;">
+658:                     <div style="position: absolute; left: -1.9rem; top: 0; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
+659:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">Server Provisioning Complete</h4>
+660:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">DevOps Team - Yesterday</p>
+661:                 </div>
+662:                 <div style="position: relative;">
+663:                     <div style="position: absolute; left: -1.9rem; top: 0; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2);"></div>
+664:                     <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem;">Initial Strategy Draft</h4>
+665:                     <p style="color: var(--color-text-muted); font-size: 0.8rem; margin: 0;">Strategy Group - Oct 12, 2026</p>
+666:                 </div>
+667:             </div>
+668:         </div>
+669:     
+670:       </section>
+671: 
+672:       <!-- 3. FINANCIALS -->
+673:       <section id="financials" class="section-content">
+674:         <div class="section-header" style="margin-bottom: 1.5rem;">
+675:           <h1 style="font-size: 2rem;">Financials</h1>
+676:           <p style="font-size: 0.95rem;">Detailed overview and metrics for Financials.</p>
+677:         </div>
+678:         
+679:         <!-- Financials -->
+680:         <div style="margin-bottom: 2rem;">
+681:             <h2 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-gold);">Financials & Billing</h2>
+682:             <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 800px;">Comprehensive breakdown of expenditures, revenue realization, and outstanding invoices.</p>
+683:         </div>
+684: 
+685:         <div class="dash-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
+686:             <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
+687:                 <i class="fa-solid fa-vault" style="font-size: 2rem; color: var(--color-gold); margin-bottom: 0.75rem;"></i>
+688:                 <h3 style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">YTD Budget Realized</h3>
+689:                 <div style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$8.4M</div>
+690:             </div>
+691:             <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
+692:                 <i class="fa-solid fa-file-invoice-dollar" style="font-size: 2rem; color: #f97316; margin-bottom: 0.75rem;"></i>
+693:                 <h3 style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">Outstanding Invoices</h3>
+694:                 <div style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$1.2M</div>
+695:             </div>
+696:             <div class="dash-card" style="text-align: center; padding: 2rem 1.5rem;">
+697:                 <i class="fa-solid fa-money-bill-trend-up" style="font-size: 2rem; color: var(--color-emerald); margin-bottom: 0.75rem;"></i>
+698:                 <h3 style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;">Projected Q4 CapEx</h3>
+699:                 <div style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$4.5M</div>
+700:             </div>
+701:         </div>
+702: 
+703:         <div class="dash-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem; gap: 1.5rem;">
+704:             <div class="dash-card" style="padding: 0; overflow: hidden;">
+705:                 <div style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); background-image: url('insights_bg_1786437124692.jpg'); background-size: cover; position: relative;">
+706:                     <div style="position: absolute; inset: 0; background: rgba(11,19,43,0.8);"></div>
+707:                     <h3 style="margin: 0; font-size: 1.1rem; position: relative; z-index: 2;">Recent Invoices</h3>
+708:                 </div>
+709:                 <div class="table-container">
+710:                     <table class="data-table" style="margin: 0; width: 100%;">
+711:                         <thead>
+712:                             <tr>
+713:                                 <th style="padding: 1rem;">Invoice #</th>
+714:                                 <th>Description</th>
+715:                                 <th>Amount</th>
+716:                                 <th>Action</th>
+717:                             </tr>
+718:                         </thead>
+719:                         <tbody>
+720:                             <tr>
+721:                                 <td style="padding: 1rem; font-size: 0.9rem;">INV-2026-881</td>
+722:                                 <td style="font-size: 0.9rem;">Q3 Software Licensing</td>
+723:                                 <td style="font-size: 0.9rem;">$450,000</td>
+724:                                 <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Download PDF</button></td>
+725:                             </tr>
+726:                             <tr>
+727:                                 <td style="padding: 1rem; font-size: 0.9rem;">INV-2026-882</td>
+728:                                 <td style="font-size: 0.9rem;">Consulting Retainer - Oct</td>
+729:                                 <td style="font-size: 0.9rem;">$125,000</td>
+730:                                 <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Download PDF</button></td>
+731:                             </tr>
+732:                             <tr>
+733:                                 <td style="padding: 1rem; font-size: 0.9rem;">INV-2026-883</td>
+734:                                 <td style="font-size: 0.9rem;">Hardware Provisioning</td>
+735:                                 <td style="font-size: 0.9rem;">$89,400</td>
+736:                                 <td><button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Download PDF</button></td>
+737:                             </tr>
+738:                         </tbody>
+739:                     </table>
+740:                 </div>
+741:             </div>
+742:             
+743:             <div class="dash-card" style="padding: 1.5rem;">
+744:                 <h3 style="margin: 0 0 1.2rem 0; font-size: 1.1rem;">Expense Breakdown</h3>
+745:                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.4rem; font-size: 0.9rem;">
+746:                     <span>Software & Cloud</span>
+747:                     <span style="font-weight: bold; color: var(--color-gold);">45%</span>
+748:                 </div>
+749:                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.4rem; font-size: 0.9rem;">
+750:                     <span>Consulting Fees</span>
+751:                     <span style="font-weight: bold; color: var(--color-gold);">30%</span>
+752:                 </div>
+753:                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.4rem; font-size: 0.9rem;">
+754:                     <span>Hardware CapEx</span>
+755:                     <span style="font-weight: bold; color: var(--color-gold);">15%</span>
+756:                 </div>
+757:                 <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+758:                     <span>Travel & Expenses</span>
+759:                     <span style="font-weight: bold; color: var(--color-gold);">10%</span>
+760:                 </div>
+761:             </div>
+762:         </div>
+763:     
+764:       </section>
+765: 
+766:       <!-- 4. ANALYTICS -->
+767:       <section id="analytics" class="section-content">
+768:         <div class="section-header" style="margin-bottom: 1.5rem;">
+769:           <h1 style="font-size: 2rem;">Analytics</h1>
+770:           <p style="font-size: 0.95rem;">Detailed overview and metrics for Analytics.</p>
+771:         </div>
+772:         
+773:         <!-- Analytics -->
+774:         <div style="margin-bottom: 2rem;">
+775:             <h2 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-gold);">Analytics & System Health</h2>
+776:             <p style="color: var(--color-text-muted); font-size: 0.9rem; max-width: 800px;">Deep dive into data processing metrics, API usage, and structural integrity of the deployment.</p>
+777:         </div>
+778: 
+779:         <!-- 4 Chart Dashboards -->
+780:         <div class="dash-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem; gap: 1rem;">
+781:             <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
+782:                 <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">API Request Volume</h3>
+783:                 <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+784:                     <i class="fa-solid fa-chart-bar" style="font-size: 2.5rem; color: var(--color-gold); opacity: 0.5;"></i>
+785:                 </div>
+786:             </div>
+787:             <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
+788:                 <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">Data Lake Growth (TB)</h3>
+789:                 <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+790:                     <i class="fa-solid fa-chart-line" style="font-size: 2.5rem; color: var(--color-gold); opacity: 0.5;"></i>
+791:                 </div>
+792:             </div>
+793:             <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
+794:                 <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">User Engagement</h3>
+795:                 <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+796:                     <i class="fa-solid fa-chart-pie" style="font-size: 2.5rem; color: var(--color-gold); opacity: 0.5;"></i>
+797:                 </div>
+798:             </div>
+799:             <div class="dash-card" style="height: 180px; display: flex; flex-direction: column; padding: 1.2rem;">
+800:                 <h3 style="margin: 0 0 0.75rem 0; font-size: 1rem;">Error Rates</h3>
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+

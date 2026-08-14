@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights | Stackly Management Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- 1. Navigation -->
+  <header class="glass-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px; filter: invert(1);"></a>
+      </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="document.getElementById('navLinks').classList.toggle('active')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="services.html">Services</a>
+          <a href="industries.html">Industries</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Us</a>
+          <a href="blogs.html">Blogs</a> <a href="contact.html">Contact</a>
+          <a href="login.html" class="mobile-only-auth" style="color: var(--color-gold); font-weight: bold; margin-top: 1rem;">Sign in</a>
+          <a href="signup.html" class="mobile-only-auth" style="color: var(--color-emerald); font-weight: bold;">Book a consultation</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="sign-in">Sign in</a>
+          <button class="btn-primary" onclick="window.location.href='signup.html'">Book a consultation</button>
+        </div>
+    </div>
+  </header>
+
+  <!-- 2. Insights Hero (TOPOLOGY effect) -->
+  <section class="hero topology" style="padding-top: 180px; min-height: 80vh; display: flex; align-items: center; position: relative; text-align: left;">
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <div class="tag gsap-hero" style="justify-content: center;"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> INTELLECTUAL CAPITAL</div>
+        <h1 class="gsap-hero split-text">Mapping the <span class="text-gold text-italic">macro.</span></h1>
+        <p class="gsap-hero" style="font-size: 1.25rem; margin-top: 1.5rem; color: rgba(255,255,255,0.8);">Proprietary research, emerging vectors, and unfiltered perspectives from our senior partners.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Featured Insight -->
+  <section style="padding: 8rem 0; background-color: var(--color-offwhite);">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-fire text-gold"></i> QUARTERLY THESIS</div>
+      <div class="gsap-fade" style="display: flex; gap: 4rem; align-items: center; margin-top: 3rem;">
+        <div style="flex: 1; height: 500px; border-radius: 12px; overflow: hidden; position: relative;">
+          <img src="assets/case2.webp" alt="Supply Chain" style="width: 100%; height: 100%; object-fit: cover;">
+          <div style="position: absolute; top: 2rem; left: 2rem;">
+            <div class="tag" style="background: var(--color-gold); color: var(--color-navy); border: none; font-weight: bold;">Q3 2026 OUTLOOK</div>
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--color-navy);">The End of Cheap Capital: Operational Leverage as the Only Alpha</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: 2rem;">As interest rates normalize, the era of financial engineering is dead. We model why only companies capable of extracting massive operational efficiencies will survive the upcoming margin compression cycle.</p>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem;">
+            <img src="assets/insights.webp" alt="Author" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+            <div>
+              <div style="font-weight: bold; color: var(--color-navy);">Elena Rostova</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted);">15 Min Read</div>
+            </div>
+          </div>
+          <a href="404.html" class="btn-primary">Read the full thesis <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px;"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Category Filter -->
+  <section style="padding: 2rem 0; background-color: var(--color-white); border-bottom: 1px solid rgba(0,0,0,0.1);">
+    <div class="container gsap-fade" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <button class="tag" style="background: var(--color-navy); color: white; cursor: pointer;">All Insights</button>
+      <button class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Macro Strategy</button>
+      <button class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Digital Core</button>
+      <button class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Supply Chain</button>
+      <button class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">M&A</button>
+    </div>
+  </section>
+
+  <!-- 5. Latest Insights Row 1 -->
+  <section style="padding: 4rem 0 2rem; background-color: var(--color-white);">
+    <div class="container">
+      <div class="cap-grid bento-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+          <div style="height: 200px; width: 100%; overflow: hidden;">
+            <img src="assets/case1.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="padding: 2rem;">
+            <div class="tag" style="border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1rem; color: var(--color-navy);">M&A</div>
+            <h4 style="color: var(--color-navy); margin-bottom: 1rem; font-size: 1.2rem;">Why 70% of Tech Acquisitions Destroy Value</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">A post-mortem of the last decade's most expensive software rollups.</p>
+          </div>
+        </a>
+        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+          <div style="height: 200px; width: 100%; overflow: hidden;">
+            <img src="assets/hero.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="padding: 2rem;">
+            <div class="tag" style="border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1rem; color: var(--color-navy);">SUPPLY CHAIN</div>
+            <h4 style="color: var(--color-navy); margin-bottom: 1rem; font-size: 1.2rem;">The Nearshoring Math</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Calculating the true landed cost of moving manufacturing back to North America.</p>
+          </div>
+        </a>
+        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+          <div style="height: 200px; width: 100%; overflow: hidden;">
+            <img src="assets/boardroom.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <div style="padding: 2rem;">
+            <div class="tag" style="border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1rem; color: var(--color-navy);">DIGITAL CORE</div>
+            <h4 style="color: var(--color-navy); margin-bottom: 1rem; font-size: 1.2rem;">AI Implementation Realities</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Separating generative AI hype from actual P&L utility in enterprise workflows.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Newsletter Subscription -->
+  <section style="padding: 8rem 0; background-color: var(--color-navy); color: white;">
+    <div class="orb orb-pink"></div>
+    <div class="container text-center gsap-fade" style="position: relative; z-index: 1;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">The Stackly Dispatch</h2>
+      <p style="color: rgba(255,255,255,0.8); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Our monthly briefing on macro trends and operational strategy. Read by over 10,000 C-suite executives globally. Zero spam.</p>
+      <form style="display: flex; max-width: 500px; margin: 0 auto; gap: 1rem;">
+        <input type="email" placeholder="Corporate email address" style="flex: 1; padding: 1rem; border-radius: 4px; border: none; background: rgba(255,255,255,0.1); color: white; outline: none;">
+        <button type="button" class="btn-primary" onclick="alert('Subscribed successfully!')">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 7. Whitepapers Row -->
+  <section style="padding: 8rem 0; background-color: var(--color-white);">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-file-pdf text-gold"></i> DEEP DIVES</div>
+      <h2 class="gsap-fade" style="color: var(--color-navy); margin-bottom: 3rem;">Downloadable Research</h2>
+      
+      <div class="cap-grid">
+        <div class="cap-card gsap-stagger-leader" style="background: var(--color-offwhite); display: flex; flex-direction: column; align-items: flex-start;">
+          <h4 style="color: var(--color-navy); margin-bottom: 1rem;">The 2026 CFO Playbook</h4>
+          <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Strategies for capital preservation in highly volatile regulatory environments.</p>
+          <a href="404.html" class="btn-outline" style="margin-top: auto;">Download PDF <i class="fa-solid fa-download" style="margin-left: 8px;"></i></a>
+        </div>
+        <div class="cap-card gsap-stagger-leader" style="background: var(--color-offwhite); display: flex; flex-direction: column; align-items: flex-start;">
+          <h4 style="color: var(--color-navy); margin-bottom: 1rem;">ESG: From Compliance to Alpha</h4>
+          <p style="color: var(--color-text-muted); margin-bottom: 2rem;">How top decile industrials are monetizing sustainability.</p>
+          <a href="404.html" class="btn-outline" style="margin-top: auto;">Download PDF <i class="fa-solid fa-download" style="margin-left: 8px;"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Podcast / Video Teaser -->
+  <section style="padding: 8rem 0; background-color: var(--color-offwhite);">
+    <div class="container" style="display: flex; gap: 4rem; align-items: center;">
+      <div class="gsap-fade" style="flex: 1;">
+        <div class="tag"><i class="fa-solid fa-microphone text-gold"></i> AUDIO SERIES</div>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--color-navy);">The Operator's Room Podcast</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Uncut interviews with CEOs who have survived massive turnarounds and hostile takeovers.</p>
+        <div style="display: flex; gap: 1rem;">
+          <a href="404.html" class="btn-primary" style="background: black; color: white;">Listen on Spotify</a>
+          <a href="404.html" class="btn-outline">Listen on Apple</a>
+        </div>
+      </div>
+      <div class="gsap-slide-left" style="flex: 1; height: 400px; border-radius: 12px; overflow: hidden; position: relative;">
+        <img src="assets/port.webp" alt="Podcast" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5);">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+          <i class="fa-solid fa-circle-play text-gold" style="font-size: 4rem; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Partner Perspectives -->
+  <section class="philosophy" style="padding: 8rem 0; background-color: var(--color-navy-light);">
+    <div class="container philosophy-container">
+      <div class="philosophy-left">
+        <div class="tag tag-light"><i class="fa-solid fa-comment-dots text-gold"></i> PARTNER PERSPECTIVES</div>
+        <h2>Unfiltered <span class="text-gold text-italic">Opinions.</span></h2>
+      </div>
+      <div class="philosophy-right">
+        <div class="phil-item gsap-phil-item">
+          <div class="phil-num">"</div>
+          <div class="phil-content">
+            <h3>On Digital Transformation</h3>
+            <p>If your digital transformation doesn't retire legacy servers or reduce headcount in the back office, it was just an expensive IT project.</p>
+            <div style="margin-top: 1rem; color: var(--color-gold); font-size: 0.9rem;">— David Chen, Partner</div>
+          </div>
+        </div>
+        <div class="phil-item gsap-phil-item">
+          <div class="phil-num">"</div>
+          <div class="phil-content">
+            <h3>On Strategy</h3>
+            <p>Strategy is not a document. Strategy is the physical allocation of capital and human bandwidth. If budgets didn't change, the strategy didn't change.</p>
+            <div style="margin-top: 1rem; color: var(--color-gold); font-size: 0.9rem;">— Elena Rostova, Managing Partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Load More -->
+  <section style="padding: 4rem 0 8rem; background-color: var(--color-white); text-align: center;">
+    <div class="container gsap-fade">
+      <button class="btn-outline">LOAD MORE INSIGHTS <i class="fa-solid fa-rotate-right" style="margin-left: 8px;"></i></button>
+    </div>
+  </section>
+
+  <!-- 11. CTA -->
+  <section class="cta" style="padding: 8rem 0; background-color: var(--color-navy);">
+    <div class="orb orb-gold"></div>
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1;">
+      <div class="tag tag-light gsap-fade"><i class="fa-solid fa-envelope text-gold"></i> DEBATE WITH US</div>
+      <h2 class="gsap-fade" style="color: white;">Disagree with our thesis?</h2>
+      <p class="gsap-fade" style="color: rgba(255,255,255,0.8);">We welcome intellectual friction. Let's debate how these trends impact your specific enterprise.</p>
+      <div class="cta-actions gsap-fade">
+        <button class="btn-gold" onclick="window.location.href='signup.html'">SCHEDULE A CALL <i class="fa-solid fa-arrow-right-long"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col gsap-footer" style="padding-right: 2rem;">
+          <div class="logo" style="margin-bottom: 1rem;">
+            <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px;"></a>
+          </div>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Stackly is an independent management consultancy. We work with leadership teams on the decisions that bend the numbers - the ones they have to live with.</p>
+          <div style="color: var(--color-text-light); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <span><i class="fa-regular fa-envelope"></i> hello@stackly.com</span>
+            <span><i class="fa-solid fa-phone"></i> +44 20 7946 0912</span>
+          </div>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="404.html">Strategy & Growth</a></li>
+            <li><a href="404.html">Operations Excellence</a></li>
+            <li><a href="404.html">Digital Transformation</a></li>
+            <li><a href="404.html">People & Organisation</a></li>
+            <li><a href="404.html">Risk & Compliance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>OFFICES</h4>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem; margin-bottom: 1.5rem;">
+            <strong style="color: white;">London</strong><br>
+            Level 28, The Shard<br>
+            32 London Bridge St<br>
+            London SE1 9SG
+          </div>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem;">
+            <strong style="color: white;">New York</strong><br>
+            One World Trade Center<br>
+            Suite 4500<br>
+            New York, NY 10007
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly Consulting Group. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy</a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Terms</a>
+          <a href="404.html" style="color: var(--color-text-muted);"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

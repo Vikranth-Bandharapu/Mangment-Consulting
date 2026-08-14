@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy & Growth | Stackly Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- 1. Navigation (Imported from index.html) -->
+  <header class="glass-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px; filter: invert(1);"></a>
+      </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="document.getElementById('navLinks').classList.toggle('active')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="services.html">Services</a>
+          <a href="industries.html">Industries</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Us</a>
+          <a href="blogs.html">Blogs</a> <a href="contact.html">Contact</a>
+          <!-- Mobile Only Auth Links -->
+          <a href="login.html" class="mobile-only-auth" style="color: var(--color-gold); font-weight: bold; margin-top: 1rem;">Sign in</a>
+          <a href="signup.html" class="mobile-only-auth" style="color: var(--color-emerald); font-weight: bold;">Book a consultation</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="sign-in">Sign in</a>
+          <button class="btn-primary" onclick="window.location.href='signup.html'">Book a consultation</button>
+        </div>
+    </div>
+  </header>
+
+  <!-- Section 1: Cinematic Hero Banner -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-bg"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="tag gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> SERVICE OFFERING</div>
+      <h1 class="split-text">Strategy & Growth</h1>
+      <p class="gsap-fade subpage-lead">Market entry, portfolio choices and growth plans built on evidence, not opinion. We architect competitive advantages that outlast market cycles.</p>
+    </div>
+  </section>
+
+  <!-- Section 2: Executive Summary -->
+  <section class="exec-summary">
+    <div class="container">
+      <div class="exec-grid">
+        <div class="exec-left gsap-fade">
+          <h2>The growth mandate has changed. <span class="text-gold text-italic">Margin is the new revenue.</span></h2>
+        </div>
+        <div class="exec-right gsap-fade">
+          <p>Growth at all costs is a relic of low-interest environments. Today's market leaders demand resilient, margin-accretive expansion. Stackly approaches strategy as a rigorous engineering discipline, stripping away assumptions and modeling out tail-risk before committing capital.</p>
+          <p>We do not deliver generic 200-page slide decks. We deliver operational directives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Core Capabilities (Bento Grid) -->
+  <section class="sub-capabilities">
+    <div class="container">
+      <div class="tag gsap-fade">WHAT WE DELIVER</div>
+      <h2 class="gsap-fade" style="margin-bottom: 3rem; font-size: 2.5rem;">Specific interventions for complex challenges.</h2>
+      
+      <div class="bento-grid">
+        <div class="glass-card bento-wide gsap-stagger">
+          <div class="bento-icon"><i class="fa-solid fa-chess-knight"></i></div>
+          <h3>Market Entry Strategy</h3>
+          <p>Identifying white-space opportunities in adjacent markets, backed by forensic competitor analysis and regulatory roadmapping.</p>
+        </div>
+        <div class="glass-card bento-small gsap-stagger">
+          <div class="bento-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Portfolio Optimization</h3>
+          <p>Divesting non-core assets to free up capital.</p>
+        </div>
+        <div class="glass-card bento-small gsap-stagger">
+          <div class="bento-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h3>Growth Diagnostics</h3>
+          <p>Identifying the root cause of stalled revenue.</p>
+        </div>
+        <div class="glass-card bento-wide gsap-stagger">
+          <div class="bento-icon"><i class="fa-solid fa-building-flag"></i></div>
+          <h3>M&A Diligence</h3>
+          <p>Pre-deal strategic assessment and post-merger integration planning to ensure synergy targets are actually realized, not just modeled.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Key Metrics / Impact -->
+  <section class="sub-metrics">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card gsap-fade">
+          <div class="metric-value">+$<span class="counter" data-target="14">0</span>B</div>
+          <div class="metric-label">Value Generated in 2025</div>
+        </div>
+        <div class="metric-card gsap-fade">
+          <div class="metric-value"><span class="counter" data-target="42">0</span>%</div>
+          <div class="metric-label">Average Margin Expansion</div>
+        </div>
+        <div class="metric-card gsap-fade">
+          <div class="metric-value"><span class="counter" data-target="150">0</span>+</div>
+          <div class="metric-label">M&A Deals Advised</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Methodology Timeline -->
+  <section class="sub-methodology">
+    <div class="container">
+      <div class="tag gsap-fade">OUR APPROACH</div>
+      <h2 class="gsap-fade" style="margin-bottom: 4rem; font-size: 2.5rem;">How we execute.</h2>
+      
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        <div class="timeline-item gsap-fade">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <h3>Forensic Audit</h3>
+            <p>We ingest your financial, operational, and market data to establish an unvarnished baseline.</p>
+          </div>
+        </div>
+        <div class="timeline-item gsap-fade">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <h3>Hypothesis Generation</h3>
+            <p>Developing contrarian growth strategies tailored to your specific capital constraints.</p>
+          </div>
+        </div>
+        <div class="timeline-item gsap-fade">
+          <div class="timeline-content">
+            <h3>Simulation & Stress-Testing</h3>
+            <p>Subjecting our strategies to rigorous Monte Carlo simulations to identify failure modes.</p>
+          </div>
+          <div class="timeline-dot">3</div>
+        </div>
+        <div class="timeline-item gsap-fade">
+          <div class="timeline-content">
+            <h3>Operational Integration</h3>
+            <p>Embedding with your frontline teams to ensure the strategy is executed, not just presented.</p>
+          </div>
+          <div class="timeline-dot">4</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Featured Case Studies -->
+  <section class="case-studies" style="background-color: var(--color-navy); color: white;">
+    <div class="container">
+      <div class="cap-title-row gsap-fade">
+        <h2 style="font-size: 2.5rem; color: white;">Strategy in action.</h2>
+        <a href="404.html" class="btn-outline-gold">All Case Studies</a>
+      </div>
+      <div class="horizontal-scroll-wrapper">
+        <div class="case-grid horizontal-scroll-container">
+          <a href="404.html" class="case-card card-button gsap-stagger-case" style="background-color: var(--color-navy-light); border-color: rgba(255,255,255,0.1);">
+          <div class="case-img"><img src="assets/case1.webp" alt="Financial" class="scale-img"></div>
+          <div class="case-content" style="background: transparent;">
+            <div class="tag">FINANCIAL SERVICES</div>
+            <h3 style="color: white;">€38M cost programme without touching frontline service</h3>
+            <p style="color: var(--color-text-muted);">12% cost-to-income improvement in 14 months</p>
+          </div>
+        </a>
+        <a href="404.html" class="case-card card-button gsap-stagger-case" style="background-color: var(--color-navy-light); border-color: rgba(255,255,255,0.1);">
+          <div class="case-img"><img src="assets/case2.webp" alt="Retail" class="scale-img"></div>
+          <div class="case-content" style="background: transparent;">
+            <div class="tag">RETAIL & CONSUMER</div>
+            <h3 style="color: white;">Growth strategy for a crowded category</h3>
+            <p style="color: var(--color-text-muted);">+19% like-for-like revenue in two seasons</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Client Voices -->
+  <section class="testimonials" style="background-color: var(--color-offwhite); color: var(--color-navy);">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> CLIENT VOICES</div>
+      <h2 class="gsap-fade" style="margin-bottom: 4rem;">What it is like to work with us</h2>
+      
+      <div class="test-grid">
+        <div class="test-card glass-card gsap-stagger-test" style="border-color: rgba(0,0,0,0.1); background: white;">
+          <p class="test-text" style="color: var(--color-text-dark);">"Stackly refused to hand us a deck and leave. They sat with our plant managers until the plan worked on the floor."</p>
+          <div class="test-author">Elena Vasquez</div>
+          <div class="test-title" style="color: var(--color-text-muted);">COO, Northaus Industrial</div>
+        </div>
+        <div class="test-card glass-card gsap-stagger-test" style="border-color: rgba(0,0,0,0.1); background: white;">
+          <p class="test-text" style="color: var(--color-text-dark);">"Clear thinking, no theatre. Our teams still use the operating rhythm they built with us two years on."</p>
+          <div class="test-author">Sarah Kline</div>
+          <div class="test-title" style="color: var(--color-text-muted);">CEO, Arcadia Health</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Leadership -->
+  <section class="leadership">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> PRACTICE LEADERSHIP</div>
+      <h2 class="gsap-fade" style="margin-bottom: 4rem;">Led by senior practitioners.</h2>
+      
+      <div class="leader-grid">
+        <a href="404.html" class="leader-card card-button gsap-stagger-leader">
+          <div class="leader-img" style="background-image: url('assets/leader1.webp'); background-color: #e2e8f0;"></div>
+          <div class="leader-info">
+            <h3>Marcus Aurelius Vance</h3>
+            <div class="leader-title">MANAGING PARTNER</div>
+            <p>Former Lead Partner at McKinsey. 25 years advising top sovereign wealth funds on defense and capital architecture.</p>
+          </div>
+        </a>
+        <a href="404.html" class="leader-card card-button gsap-stagger-leader">
+          <div class="leader-img" style="background-image: url('assets/leader3.webp'); background-color: #e2e8f0;"></div>
+          <div class="leader-info">
+            <h3>Arthur Pendleton</h3>
+            <div class="leader-title">PARTNER, STRATEGY</div>
+            <p>Advises global logistics networks and heavy manufacturing on cross-border tax, geopolitical threat, and structuring.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: Industry Insights -->
+  <section class="insights" style="background-color: var(--color-navy); color: white;">
+    <div class="container">
+      <div class="cap-title-row gsap-fade">
+        <div>
+          <div class="tag" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-book-open text-gold"></i> PUBLICATIONS</div>
+          <h3 style="color: white;">Strategy Perspectives</h3>
+        </div>
+        <a href="404.html" class="btn-outline-gold">All Insights <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
+      
+      <div class="insights-grid">
+        <a href="404.html" class="insight-card card-button gsap-stagger-insight" style="background-color: var(--color-navy-light); border-color: rgba(255,255,255,0.1);">
+          <div class="insight-img"><img src="assets/insights.webp" alt="Insights" class="scale-img"></div>
+          <div class="insight-content">
+            <div class="tag">RESEARCH PAPER</div>
+            <h4 style="color: white;">The Future of AI in Strategic Forecasting</h4>
+            <span class="cap-link" style="color: var(--color-gold);">Read publication <i class="fa-solid fa-arrow-right-long"></i></span>
+          </div>
+        </a>
+        <a href="404.html" class="insight-card card-button gsap-stagger-insight" style="background-color: var(--color-navy-light); border-color: rgba(255,255,255,0.1);">
+          <div class="insight-img"><img src="assets/case2.webp" alt="Insights" class="scale-img"></div>
+          <div class="insight-content">
+            <div class="tag">EXECUTIVE BRIEF</div>
+            <h4 style="color: white;">Navigating Retail Margin Compression in 2027</h4>
+            <span class="cap-link" style="color: var(--color-gold);">Read publication <i class="fa-solid fa-arrow-right-long"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: Global Footprint -->
+  <section class="footprint" style="padding: 8rem 0; border-top: 1px solid var(--color-border); background-color: var(--color-offwhite);">
+    <div class="container">
+      <div class="tag gsap-fade"><i class="fa-solid fa-globe text-gold"></i> PRACTICE OFFICES</div>
+      <h2 class="gsap-fade" style="margin-bottom: 3rem; font-size: 2.5rem;">Strategy Hubs.</h2>
+      
+      <div class="footprint-grid">
+        <a href="404.html" class="footprint-card glass-card gsap-stagger-foot" style="border-color: rgba(0,0,0,0.1); color: var(--color-navy);">
+          <h3>London</h3>
+          <p style="color: var(--color-text-muted);">Level 28, The Shard</p>
+          <span class="cap-link" style="margin-top: auto; padding-top: 1.5rem; color: var(--color-navy);">View Office <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+        <a href="404.html" class="footprint-card glass-card gsap-stagger-foot" style="border-color: rgba(0,0,0,0.1); color: var(--color-navy);">
+          <h3>New York</h3>
+          <p style="color: var(--color-text-muted);">One World Trade Center</p>
+          <span class="cap-link" style="margin-top: auto; padding-top: 1.5rem; color: var(--color-navy);">View Office <i class="fa-solid fa-arrow-right-long"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 11: FAQ Accordion -->
+  <section class="sub-faq">
+    <div class="container">
+      <h2 class="gsap-fade" style="text-align: center; margin-bottom: 3rem;">Frequently Asked Questions</h2>
+      <div class="accordion-container gsap-fade">
+        <div class="accordion-item">
+          <button class="accordion-header">What is a typical engagement timeline? <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Our strategy engagements typically range from 8 to 16 weeks depending on the complexity of the mandate and the scale of the organization.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Do you assist with implementation? <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Yes. Unlike traditional strategy houses, we embed operational experts alongside our strategy teams to ensure seamless transition from boardroom planning to frontline execution.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">How are fees structured? <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>We prefer value-based pricing models where a significant portion of our fees is tied directly to the successful realization of agreed-upon strategic KPIs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 12: Final CTA Banner -->
+  <section class="cta" style="background: linear-gradient(135deg, var(--color-navy) 0%, #080d1f 100%);">
+    <div class="orb orb-gold"></div>
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+      <div class="tag tag-light gsap-fade"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> NEXT STEPS</div>
+      <h2 class="gsap-fade">Ready to architect your growth mandate?</h2>
+      <p class="gsap-fade" style="text-align: center;">Consultations are entirely confidential and conducted directly with Managing Partners.</p>
+      <div class="cta-actions gsap-fade">
+        <button class="btn-gold">INITIATE DISCUSSION <i class="fa-solid fa-arrow-right-long"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col gsap-footer" style="padding-right: 2rem;">
+          <div class="logo" style="margin-bottom: 1rem;">
+            <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px;"></a>
+          </div>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Stackly is an independent management consultancy. We work with leadership teams on the decisions that bend the numbers - the ones they have to live with.</p>
+          <div style="color: var(--color-text-light); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <span><i class="fa-regular fa-envelope"></i> hello@stackly.com</span>
+            <span><i class="fa-solid fa-phone"></i> +44 20 7946 0912</span>
+          </div>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="404.html">Strategy & Growth</a></li>
+            <li><a href="404.html">Operations Excellence</a></li>
+            <li><a href="404.html">Digital Transformation</a></li>
+            <li><a href="404.html">People & Organisation</a></li>
+            <li><a href="404.html">Risk & Compliance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="404.html">Strategy & Growth</a></li>
+            <li><a href="404.html">Operations Excellence</a></li>
+            <li><a href="404.html">Digital Transformation</a></li>
+            <li><a href="404.html">People & Organisation</a></li>
+            <li><a href="404.html">Risk & Compliance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>OFFICES</h4>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem; margin-bottom: 1.5rem;">
+            <strong style="color: white;">London</strong><br>
+            Level 28, The Shard<br>
+            32 London Bridge St<br>
+            London SE1 9SG
+          </div>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem;">
+            <strong style="color: white;">New York</strong><br>
+            One World Trade Center<br>
+            Suite 4500<br>
+            New York, NY 10007
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly Consulting Group. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy</a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Terms</a>
+          <a href="404.html" style="color: var(--color-text-muted);"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="script.js"></script>
+  <script>
+    // Accordion Logic
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+        
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+

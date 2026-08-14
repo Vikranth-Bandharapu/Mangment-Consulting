@@ -22,10 +22,12 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
+  overflow-x: hidden;
   font-family: var(--font-sans);
   color: var(--color-text-dark);
   background-color: var(--color-white);
@@ -811,7 +813,8 @@ footer {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  position: sticky;
+  position: fixed;
+    width: 100%;
   top: 0;
   z-index: 1000;
 }
@@ -909,6 +912,7 @@ footer {
 
 /* Custom Cursor */
 body {
+  overflow-x: hidden;
   cursor: none; /* Hide default cursor */
 }
 a, button, .card-button {
@@ -1034,6 +1038,7 @@ a, button, .card-button {
 @media (max-width: 768px) {
   /* Global */
   body {
+  overflow-x: hidden;
     font-size: 14px;
   }
   section {
@@ -1148,7 +1153,8 @@ a, button, .card-button {
 }
 /* Toggles & Overflows Fix */
 * { box-sizing: border-box; }
-body { overflow-x: hidden; width: 100%; max-width: 100%; }
+body {
+  overflow-x: hidden; overflow-x: hidden; width: 100%; max-width: 100%; }
 
 /* Mobile Header Toggle (Index) */
 .mobile-menu-btn {
@@ -1305,6 +1311,7 @@ body { overflow-x: hidden; width: 100%; max-width: 100%; }
   
   /* Ensure all sections fit viewport */
   body, html {
+  overflow-x: hidden;
     max-width: 100vw;
     overflow-x: hidden;
   }
@@ -1323,6 +1330,7 @@ body { overflow-x: hidden; width: 100%; max-width: 100%; }
 }
 
 html, body {
+  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden !important;
@@ -1398,7 +1406,8 @@ img, video, svg, canvas {
   }
   h2 { font-size: 1.8rem !important; }
   h3 { font-size: 1.5rem !important; }
-  body { font-size: 14px !important; }
+  body {
+  overflow-x: hidden; font-size: 14px !important; }
   
   /* Horizontal Scrolling Lists */
   .horizontal-scroll-container .case-card {
@@ -1728,3 +1737,111 @@ img, video, svg, canvas {
     gap: 1rem;
   }
 }
+
+/* --- PREMIUM GLASS CARDS INJECTION --- */
+/* Core Capabilities Glassmorphism */
+.capabilities .card-button {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+  color: var(--color-white) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.capabilities .card-button h4 {
+  color: var(--color-gold) !important;
+  font-size: 1.4rem !important;
+}
+
+.capabilities .card-button p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.capabilities .card-button .cap-list li {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.capabilities .card-button .cap-list li i {
+  color: var(--color-emerald) !important;
+}
+
+.capabilities .card-button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(200, 169, 126, 0.5) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(200, 169, 126, 0.1) !important;
+  transform: translateY(-10px) !important;
+}
+
+/* Global Footprint Glassmorphism */
+.footprint-card.card-button-dark {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.footprint-card.card-button-dark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top right, rgba(200,169,126,0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.footprint-card.card-button-dark h3 {
+  color: var(--color-gold) !important;
+}
+
+.footprint-card.card-button-dark p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.footprint-card.card-button-dark:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(200, 169, 126, 0.5) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(200, 169, 126, 0.1) !important;
+  transform: translateY(-10px) !important;
+}
+
+/* Utilities Added */
+.text-center { text-align: center !important; }
+.text-center * { text-align: center; }
+
+
+.text-center p { margin-left: auto; margin-right: auto; }
+.text-center .tag { margin-left: auto; margin-right: auto; justify-content: center; }
+
+
+/* GENERIC MOBILE OVERRIDES FOR INLINE SUBPAGE LAYOUTS */
+@media (max-width: 768px) {
+  div[style*='gap: 4rem'] {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  div[style*='border-left'] {
+    border-left: none !important;
+    border-top: 1px solid var(--color-border) !important;
+    padding-left: 0 !important;
+    padding-top: 2rem !important;
+  }
+  div[style*='padding: 3rem'] {
+    padding: 1.5rem !important;
+  }
+  div[style*='flex: 1'] {
+    flex: none !important;
+    width: 100% !important;
+  }
+  form div[style*='display: flex'] {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  div[style*='height: 500px'] {
+    height: 300px !important;
+  }
+}
+

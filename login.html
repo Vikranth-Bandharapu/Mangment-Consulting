@@ -6,6 +6,7 @@
   <title>Login - Stackly Consulting</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <style>
     body {
@@ -21,27 +22,36 @@
       color: var(--color-white);
     }
     .auth-container {
-      background: rgba(11, 19, 43, 0.6);
+      background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 2px solid var(--color-gold);
+      border-radius: 16px;
+      padding: 3.5rem 3rem;
       width: 100%;
-      max-width: 450px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      max-width: 480px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px rgba(200, 169, 126, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .auth-container:hover {
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(200, 169, 126, 0.2);
     }
     .auth-header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
     .auth-header h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 0.5rem;
       font-family: var(--font-serif);
+      color: var(--color-gold);
     }
     .auth-header p {
-      color: var(--color-text-muted);
+      color: var(--color-text-light);
+      opacity: 0.8;
       font-size: 0.95rem;
     }
     .form-group {
@@ -51,20 +61,29 @@
     .form-group label {
       display: block;
       margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.7);
     }
-    .form-control, .form-select {
+    .form-control {
       width: 100%;
-      padding: 0.8rem 1rem;
-      background: rgba(255, 255, 255, 0.05);
+      padding: 0.9rem 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
+      border-radius: 8px;
       color: var(--color-white);
       font-family: var(--font-sans);
       font-size: 1rem;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-sizing: border-box;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.1);
+      transform: translateY(-2px);
     }
     .form-select {
       appearance: none;
@@ -72,6 +91,16 @@
       background-repeat: no-repeat;
       background-position: right 1rem center;
       background-size: 1em;
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--color-white);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
     }
     .form-control:focus, .form-select:focus {
       outline: none;
@@ -85,20 +114,23 @@
     }
     .btn-auth {
       width: 100%;
-      padding: 1rem;
-      background-color: var(--color-gold);
+      padding: 1.1rem;
+      background: linear-gradient(135deg, var(--color-gold) 0%, #b3915f 100%);
       color: var(--color-navy);
       border: none;
-      border-radius: 6px;
-      font-weight: 600;
+      border-radius: 8px;
+      font-weight: 700;
       font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 1rem;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 15px rgba(200, 169, 126, 0.3);
     }
     .btn-auth:hover {
-      background-color: var(--color-white);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(200, 169, 126, 0.5);
     }
     .auth-footer {
       text-align: center;
@@ -232,6 +264,10 @@
   </script>
 </body>
 </html>
+
+
+
+
 
 
 

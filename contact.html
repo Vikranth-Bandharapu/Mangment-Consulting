@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Stackly Management Consulting</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- 1. Navigation -->
+  <header class="glass-header">
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px; filter: invert(1);"></a>
+      </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="document.getElementById('navLinks').classList.toggle('active')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="services.html">Services</a>
+          <a href="industries.html">Industries</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="about.html">About Us</a>
+          <a href="blogs.html">Blogs</a> <a href="contact.html">Contact</a>
+          <a href="login.html" class="mobile-only-auth" style="color: var(--color-gold); font-weight: bold; margin-top: 1rem;">Sign in</a>
+          <a href="signup.html" class="mobile-only-auth" style="color: var(--color-emerald); font-weight: bold;">Book a consultation</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="sign-in">Sign in</a>
+          <button class="btn-primary" onclick="window.location.href='signup.html'">Book a consultation</button>
+        </div>
+    </div>
+  </header>
+
+  <!-- 2. Contact Hero (Section 1) -->
+  <section class="hero topology" style="padding-top: 180px; min-height: 60vh; display: flex; align-items: center; position: relative; text-align: left;">
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <div class="tag gsap-hero" style="justify-content: center;"><i class="fa-solid fa-circle text-gold" style="font-size: 6px;"></i> GET IN TOUCH</div>
+        <h1 class="gsap-hero split-text">Initiate <span class="text-gold text-italic">dialogue.</span></h1>
+        <p class="gsap-hero" style="font-size: 1.25rem; margin-top: 1.5rem; color: rgba(255,255,255,0.8);">Direct access to our senior leadership and managing partners for critical operational mandates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Form Section (Section 2) -->
+  <section style="padding: 8rem 0; background-color: var(--color-white);">
+    <div class="container" style="display: flex; gap: 4rem;">
+      <div class="gsap-fade" style="flex: 1;">
+        <div class="tag"><i class="fa-solid fa-envelope text-gold"></i> SECURE COMMUNICATION</div>
+        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--color-navy);">Confidential Briefing.</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 3rem;">Submit your details below to schedule a private briefing. All communications are strictly privileged.</p>
+        
+        <form id="contactForm" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div style="display: flex; gap: 1.5rem;">
+            <div style="flex: 1;">
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">First Name *</label>
+              <input type="text" id="firstName" required style="width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; outline: none; font-family: var(--font-sans);">
+            </div>
+            <div style="flex: 1;">
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">Last Name *</label>
+              <input type="text" id="lastName" required style="width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; outline: none; font-family: var(--font-sans);">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">Corporate Email *</label>
+            <input type="email" id="email" required style="width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; outline: none; font-family: var(--font-sans);">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">Inquiry Type *</label>
+            <select id="inquiry" required style="width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; outline: none; font-family: var(--font-sans);">
+              <option value="">Select an option</option>
+              <option value="strategy">Strategy & Growth</option>
+              <option value="operations">Operations Excellence</option>
+              <option value="digital">Digital Transformation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem;">Message</label>
+            <textarea id="message" rows="4" style="width: 100%; padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; outline: none; font-family: var(--font-sans);"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 1rem;">SUBMIT REQUEST <i class="fa-solid fa-arrow-right-long" style="margin-left: 8px;"></i></button>
+        </form>
+      </div>
+
+      <div class="gsap-slide-left" style="flex: 1; padding: 3rem; background: var(--color-offwhite); border-radius: 12px;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--color-navy);">Direct Lines</h3>
+        
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 1rem; color: var(--color-gold); margin-bottom: 0.5rem; text-transform: uppercase;">Global Headquarters</h4>
+          <p style="color: var(--color-text-muted); margin-bottom: 0.25rem;">Level 28, The Shard</p>
+          <p style="color: var(--color-text-muted); margin-bottom: 0.25rem;">32 London Bridge St, London</p>
+          <p style="color: var(--color-navy); font-weight: 600; margin-top: 1rem;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +44 20 7946 0912</p>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 1rem; color: var(--color-gold); margin-bottom: 0.5rem; text-transform: uppercase;">Asia Pacific (APAC)</h4>
+          <p style="color: var(--color-text-muted); margin-bottom: 0.25rem;">Marina Bay Financial Centre</p>
+          <p style="color: var(--color-text-muted); margin-bottom: 0.25rem;">Tower 3, Singapore</p>
+          <p style="color: var(--color-navy); font-weight: 600; margin-top: 1rem;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +65 6701 1200</p>
+        </div>
+
+        <div>
+          <h4 style="font-size: 1rem; color: var(--color-gold); margin-bottom: 0.5rem; text-transform: uppercase;">Media & Press</h4>
+          <p style="color: var(--color-text-muted); margin-bottom: 0.25rem;">For all press inquiries:</p>
+          <p style="color: var(--color-navy); font-weight: 600; margin-top: 1rem;"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> press@stackly.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Map Section (Section 3) -->
+  <section style="background-color: var(--color-navy); padding: 8rem 0; color: white;">
+    <div class="orb orb-pink"></div>
+    <div class="container text-center gsap-fade" style="position: relative; z-index: 1;">
+      <div class="tag" style="justify-content: center; border-color: rgba(255,255,255,0.2);"><i class="fa-solid fa-map-location-dot text-gold"></i> OUR REACH</div>
+      <h2 style="font-size: 2.5rem; margin-bottom: 3rem;">Stackly Tamil Nadu Office</h2>
+      <div style="width: 100%; height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124411.08271701548!2d80.12328105!3d13.0478078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1692257321528!5m2!1sen!2sin" width="100%" height="100%" style="border:0; filter: grayscale(80%) invert(90%) contrast(1.2);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Footprint/Support Offices (Section 4) -->
+  <section class="footprint" style="padding: 8rem 0; background-color: var(--color-navy); position: relative; color: white; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="tag gsap-fade" style="border-color: rgba(255,255,255,0.2);"><i class="fa-solid fa-building text-gold"></i> REGIONAL HUBS</div>
+      <h2 class="gsap-fade" style="margin-bottom: 3rem;">Global Support Centers</h2>
+      
+      <div class="footprint-grid bento-grid">
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+          <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
+          <h4>New York</h4>
+          <p>Capital Markets & Tech</p>
+        </div>
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+          <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
+          <h4>Dubai</h4>
+          <p>Energy & Infrastructure</p>
+        </div>
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+          <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
+          <h4>Chennai</h4>
+          <p>Technology & Analytics</p>
+        </div>
+        <div class="cap-card footprint-card card-button-dark gsap-stagger-foot">
+          <div class="footprint-icon"><i class="fa-solid fa-location-dot text-gold"></i></div>
+          <h4>Frankfurt</h4>
+          <p>European Operations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CTA (Section 5) -->
+  <section class="cta" style="padding: 8rem 0; background-color: var(--color-white);">
+    <div class="container text-center gsap-fade" style="position: relative; z-index: 1;">
+      <div class="tag tag-light"><i class="fa-solid fa-envelope text-gold"></i> NEXT STEPS</div>
+      <h2 style="color: var(--color-navy);">Ready to transform?</h2>
+      <p style="color: var(--color-text-muted);">Join the leaders who have redefined their operational architecture.</p>
+      <div class="cta-actions">
+        <button class="btn-gold" onclick="window.location.href='signup.html'">REQUEST SECTOR BRIEFING <i class="fa-solid fa-arrow-right-long"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col gsap-footer" style="padding-right: 2rem;">
+          <div class="logo" style="margin-bottom: 1rem;">
+            <a href="index.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 32px;"></a>
+          </div>
+          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Stackly is an independent management consultancy. We work with leadership teams on the decisions that bend the numbers - the ones they have to live with.</p>
+          <div style="color: var(--color-text-light); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <span><i class="fa-regular fa-envelope"></i> hello@stackly.com</span>
+            <span><i class="fa-solid fa-phone"></i> +44 20 7946 0912</span>
+          </div>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="404.html">Strategy & Growth</a></li>
+            <li><a href="404.html">Operations Excellence</a></li>
+            <li><a href="404.html">Digital Transformation</a></li>
+            <li><a href="404.html">People & Organisation</a></li>
+            <li><a href="404.html">Risk & Compliance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col gsap-footer">
+          <h4>OFFICES</h4>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem; margin-bottom: 1.5rem;">
+            <strong style="color: white;">London</strong><br>
+            Level 28, The Shard<br>
+            32 London Bridge St<br>
+            London SE1 9SG
+          </div>
+          <div style="color: var(--color-text-light); opacity: 0.8; font-size: 0.85rem;">
+            <strong style="color: white;">New York</strong><br>
+            One World Trade Center<br>
+            Suite 4500<br>
+            New York, NY 10007
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly Consulting Group. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Privacy</a>
+          <a href="404.html" style="color: var(--color-text-muted); text-decoration: none;">Terms</a>
+          <a href="404.html" style="color: var(--color-text-muted);"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const inquiry = document.getElementById('inquiry').value;
+      
+      let isValid = true;
+      let errors = [];
+
+      if (!firstName) {
+        isValid = false;
+        errors.push("First Name is required.");
+      }
+      if (!lastName) {
+        isValid = false;
+        errors.push("Last Name is required.");
+      }
+      if (!email) {
+        isValid = false;
+        errors.push("Corporate Email is required.");
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        isValid = false;
+        errors.push("Please enter a valid email address.");
+      }
+      if (!inquiry) {
+        isValid = false;
+        errors.push("Please select an Inquiry Type.");
+      }
+      
+      if (isValid) {
+        // Validation passed, redirect to 404.html
+        window.location.href = '404.html';
+      } else {
+        alert("Validation Errors:\n" + errors.join('\n'));
+      }
+    }
+  </script>
+</body>
+</html>

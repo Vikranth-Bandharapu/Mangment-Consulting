@@ -37,91 +37,109 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --- 2. Vanta WebGL Backgrounds --- */
-  if (window.VANTA && document.getElementById('vanta-bg')) {
-    window.VANTA.NET({
-      el: "#vanta-bg",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0xc8a97e,
-      backgroundColor: 0x0b132b,
-      points: 12.00,
-      maxDistance: 22.00,
-      spacing: 18.00
+  if (window.VANTA) {
+    if (document.getElementById('vanta-bg')) {
+      window.VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xc8a97e,
+        backgroundColor: 0x0b132b,
+        points: 12.00,
+        maxDistance: 22.00,
+        spacing: 18.00
+      });
+    }
+    
+    document.querySelectorAll('.capabilities').forEach(el => {
+      window.VANTA.WAVES({
+        el: el,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x111c3a,
+        shininess: 45.00,
+        waveHeight: 15.00,
+        waveSpeed: 0.50,
+        zoom: 1.00
+      });
     });
-  }
-  
-  if (window.VANTA && document.querySelector('.capabilities')) {
-    window.VANTA.WAVES({
-      el: ".capabilities",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x111c3a,
-      shininess: 45.00,
-      waveHeight: 15.00,
-      waveSpeed: 0.50,
-      zoom: 1.00
+
+    document.querySelectorAll('.industries').forEach(el => {
+      window.VANTA.WAVES({
+        el: el,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x111c3a,
+        shininess: 40.00,
+        waveHeight: 15.00,
+        waveSpeed: 0.70,
+        zoom: 0.90
+      });
     });
-  }
-  if (window.VANTA && document.querySelector('.industries')) {
-    window.VANTA.WAVES({
-      el: ".industries",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x111c3a,
-      shininess: 40.00,
-      waveHeight: 15.00,
-      waveSpeed: 0.70,
-      zoom: 0.90
+    
+    document.querySelectorAll('.testimonials').forEach(el => {
+      window.VANTA.GLOBE({
+        el: el,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xc8a97e,
+        color2: 0x10b981,
+        backgroundColor: 0x0b132b,
+        size: 0.8
+      });
     });
-  }
-  
-  if (window.VANTA && document.querySelector('.testimonials')) {
-    window.VANTA.GLOBE({
-      el: ".testimonials",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0xc8a97e,
-      color2: 0x10b981,
-      backgroundColor: 0x0b132b,
-      size: 0.8
+    
+    document.querySelectorAll('.footprint').forEach(el => {
+      window.VANTA.FOG({
+        el: el,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        highlightColor: 0xc8a97e,
+        midtoneColor: 0x10b981,
+        lowlightColor: 0x111c3a,
+        baseColor: 0x0b132b,
+        blurFactor: 0.60,
+        speed: 1.50,
+        zoom: 1.20
+      });
     });
-  }
-  
-  if (window.VANTA && document.querySelector('.footprint')) {
-    window.VANTA.FOG({
-      el: ".footprint",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      highlightColor: 0xc8a97e,
-      midtoneColor: 0x10b981,
-      lowlightColor: 0x111c3a,
-      baseColor: 0x0b132b,
-      blurFactor: 0.60,
-      speed: 1.50,
-      zoom: 1.20
+
+    document.querySelectorAll('.topology').forEach(el => {
+      window.VANTA.TOPOLOGY({
+        el: el,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xc8a97e,
+        backgroundColor: 0x0b132b
+      });
     });
   }
 
@@ -207,34 +225,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* --- 6. Staggered Grids --- */
   const staggerClasses = [
-    { trigger: '.cap-grid', selector: '.gsap-stagger' },
-    { trigger: '.outcomes-grid', selector: '.gsap-stagger-outcome' },
-    { trigger: '.ind-grid', selector: '.gsap-stagger-ind' },
-    { trigger: '.test-grid', selector: '.gsap-stagger-test' },
-    { trigger: '.leader-grid', selector: '.gsap-stagger-leader' },
-    { trigger: '.footprint-grid', selector: '.gsap-stagger-foot' },
-    { trigger: '.insights-grid', selector: '.gsap-stagger-insight' },
-    { trigger: '.careers-content', selector: '.gsap-stagger-career' }
+    { container: '.cap-grid', selector: '.gsap-stagger' },
+    { container: '.outcomes-grid', selector: '.gsap-stagger-outcome' },
+    { container: '.ind-grid', selector: '.gsap-stagger-ind' },
+    { container: '.test-grid', selector: '.gsap-stagger-test' },
+    { container: '.leader-grid', selector: '.gsap-stagger-leader' },
+    { container: '.footprint-grid', selector: '.gsap-stagger-foot' },
+    { container: '.insights-grid', selector: '.gsap-stagger-insight' },
+    { container: '.careers-content', selector: '.gsap-stagger-career' },
+    { container: '.case-grid', selector: '.gsap-stagger-case' }
   ];
 
   staggerClasses.forEach(item => {
-    const triggerEl = document.querySelector(item.trigger);
-    const elements = document.querySelectorAll(item.selector);
-    
-    if (triggerEl && elements.length > 0) {
-      gsap.from(elements, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: triggerEl,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    }
+    const containers = document.querySelectorAll(item.container);
+    containers.forEach(container => {
+      const elements = container.querySelectorAll(item.selector);
+      if (elements.length > 0) {
+        gsap.fromTo(elements, {
+          y: 60,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      }
+    });
   });
 
   /* --- 7. Horizontal Scroll (Case Studies) --- */
@@ -315,16 +338,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --- 10. Slide Left & Footer --- */
-  gsap.to('.gsap-slide-left', {
-    x: 0,
-    opacity: 1,
-    duration: 1.2,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '.careers',
-      start: 'top 75%',
-      toggleActions: 'play none none reverse'
-    }
+  gsap.utils.toArray('.gsap-slide-left').forEach(el => {
+    gsap.fromTo(el, 
+      { x: 100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
   });
 
   gsap.from('.gsap-footer', {
@@ -340,5 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 
 
