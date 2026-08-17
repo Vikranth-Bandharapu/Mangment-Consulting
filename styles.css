@@ -240,6 +240,7 @@ a {
 .nav-actions .sign-in {
   font-size: 0.9rem;
   font-weight: 500;
+  color: var(--color-text-muted);
 }
 
 /* Hero */
