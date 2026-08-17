@@ -1544,7 +1544,7 @@ img, video, svg, canvas {
     width: 100vw !important;
     background-color: var(--color-navy) !important; /* Solid background so it's not transparent */
     flex-direction: column !important;
-    padding: 2rem !important;
+    padding: 2rem !important; overflow-y: auto !important; max-height: calc(100vh - 70px) !important; overscroll-behavior: contain !important; padding-bottom: 6rem !important;
     transform: translateY(-150%) !important;
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.3s ease !important;
     z-index: 1000 !important;
@@ -1845,3 +1845,9 @@ img, video, svg, canvas {
   }
 }
 
+
+/* Lock scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden !important;
+  /* removed touch-action to allow child scroll */
+}
