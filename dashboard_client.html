@@ -30,6 +30,9 @@
       flex-shrink: 0;
     }
     .sidebar-header {
+      background: var(--color-navy); z-index: 10;
+      position: relative;
+      white-space: nowrap;
       padding: 2rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
@@ -68,6 +71,8 @@
       text-align: center;
     }
     .sidebar-footer {
+      background: var(--color-navy); z-index: 10;
+      position: relative;
       padding: 1.5rem 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -109,9 +114,9 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      margin-bottom: 2.5rem;
-      width: fit-content;
-      min-width: 400px;
+      margin-bottom: 0.5rem;
+      width: 100%; box-sizing: border-box;
+      
     }
     .avatar-large {
       width: 60px;
@@ -277,9 +282,6 @@
 
   
     body.no-scroll .content-area { overflow: hidden !important; touch-action: none; }
-</style>
-
-  <style>
     /* EXTREME MOBILE OVERRIDE INJECTED DIRECTLY */
       .sidebar-overlay {
         display: none;
@@ -297,19 +299,23 @@
       
       @media (max-width: 768px) {
         body {
-          display: flex !important; /* Keep flex so height 100vh works */
+          display: flex; /* Keep flex so height 100vh works */
         }
         .sidebar {
           position: fixed !important;
           top: 0 !important;
           left: -100vw !important;
           width: 280px !important;
+          height: 100dvh !important; /* fallback */
           height: 100vh !important;
+          height: 100dvh !important;
           z-index: 2147483647 !important;
           background-color: var(--color-navy) !important;
           border-right: 1px solid rgba(255,255,255,0.1) !important;
           transition: left 0.3s ease-in-out !important;
-          display: flex !important;
+          display: flex;
+          flex-direction: column !important;
+          overflow-y: auto !important;
         }
         .sidebar.active {
           left: 0 !important;
@@ -320,12 +326,31 @@
           max-width: 100vw !important;
           /* overflow-x: hidden !important; removed because it breaks sticky headers sometimes */
         }
-        .content-area { padding: 1.5rem !important; }
-        .section-header { text-align: center !important; }
-        .section-header h1 { text-align: center !important; }
-        .section-header p { text-align: center !important; margin: 0 auto !important; max-width: 90% !important; }
+        .content-area { padding: 1rem !important; }
+        
+        .sidebar-footer { 
+            display: block !important; 
+            width: 100% !important; 
+            box-sizing: border-box !important;
+            padding-bottom: 6rem !important; 
+        }
+        .btn-logout {
+            width: 100% !important;
+            white-space: nowrap !important;
+            min-width: 200px !important;
+        }
+        
+        
+        .dash-mobile-header {
+          display: none !important;
+        }
+        @media (max-width: 768px) {
+          .dash-mobile-header {
+            display: flex !important;
+          }
+        }
         /* Fix the header alignment */
-        .dash-header-mobile-pad { padding: 1.5rem 1.5rem 0 1.5rem !important; }
+        .dash-header-mobile-pad { padding: 1.5rem 1rem 0 1rem !important; }
         .user-profile-card {
           min-width: 0 !important;
           width: 100% !important;
@@ -334,7 +359,7 @@
           word-break: break-all !important;
         }
         .dash-grid, .kpi-grid, .pipeline-grid {
-          display: flex !important;
+          display: flex;
           flex-direction: column !important;
           width: 100% !important;
         }
@@ -359,9 +384,9 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="sidebar-header">
+    <div class="sidebar-header" style="white-space: nowrap;">
       <a href="dashboard_client.html"><img src="assets/logo.webp" alt="Logo" style="height: 30px;"></a>
-      <span style="font-weight: bold; font-size: 1.8rem; font-family: var(--font-serif);">Client Portal</span>
+      <span style="font-weight: bold; font-size: 1.5rem; font-family: var(--font-serif);">Client Portal</span>
     </div>
     <div class="sidebar-nav" id="sidebarNav">
       <div class="nav-item active" data-target="overview"><i class="fa-solid fa-house"></i> Overview</div>
@@ -377,53 +402,44 @@
 
   <!-- MAIN -->
   <main class="main-wrapper">
-  <div class="dash-mobile-header">
-    <div><a href="dashboard_client.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 28px;"></a></div>
-    <button class="mobile-sidebar-btn" onclick="toggleMobileMenu()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-    <div class="dash-header-mobile-pad" style="padding: 1.5rem 3rem 0 3rem; display: flex; justify-content: space-between; align-items: center;">
-      <h3 style="margin: 0; font-family: var(--font-serif); font-size: 1.5rem; font-weight: normal; letter-spacing: 1px; text-transform: uppercase;">Client Portal</h3>
-      <div style="position: relative; cursor: pointer;" onclick="window.location.href='404.html'">
-        <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: var(--color-gold);"></i>
-        <span style="position: absolute; top: -5px; right: -8px; background: #ef4444; color: white; font-size: 0.65rem; font-weight: bold; padding: 2px 5px; border-radius: 50%;">3</span>
-      </div>
+  <div class="dash-mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #080d1f; border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; box-sizing: border-box;">
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <a href="dashboard_client.html"><img src="assets/logo.webp" alt="Stackly Logo" style="height: 24px;"></a>
+      <button class="mobile-sidebar-btn" onclick="toggleMobileMenu()" style="display: block; background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0;">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
+  </div>
     <div class="content-area">
-
       <!-- User Profile Header -->
-      <div class="user-profile-card">
+      <div class="user-profile-card" style="width: 100%; box-sizing: border-box; margin-bottom: 0.5rem;">
         <div class="avatar-large">
            <i class="fa-solid fa-user-tie"></i>
         </div>
         <div class="profile-info">
           <div class="profile-name" style="word-break: break-all; font-size: 1.1rem;">
-             <span class="profile-email" id="userEmailDisplay">client@enterprise.com</span>
+             <span class="profile-email" id="userEmailDisplay">avunoori0831@gmail.com</span>
           </div>
           <div class="profile-role">CLIENT PORTAL</div>
         </div>
       </div>
+
+
       
-      <!-- 1. OVERVIEW -->
-      
-      <!-- 1. DASHBOARD OVERVIEW -->
-      
-      <!-- 1. DASHBOARD OVERVIEW -->
       
       <!-- 1. DASHBOARD OVERVIEW -->
       <section id="overview" class="section-content active">
-        <div class="section-header" style="margin-bottom: 2rem;">
+        <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem; margin-bottom: 0;">Dashboard Overview</h1>
           <p style="font-size: 0.95rem; margin-top: 0.2rem; margin-bottom: 0;">Detailed overview and metrics for Dashboard Overview.</p>
         </div>
         
         <!-- 1. Hero Image Banner -->
-        <div style="margin-bottom: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; height: 280px; background-image: url('stackly_hero_building_1786436367086.jpg'); background-size: cover; background-position: center; position: relative;">
+        <div style="margin-bottom: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden;  background-image: url('stackly_hero_building_1786436367086.jpg'); background-size: cover; background-position: center; position: relative;">
             <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,19,43,1) 0%, rgba(11,19,43,0) 100%);"></div>
-            <div class="hero-banner-text" style="position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;">
+            <div class="hero-banner-text" style="position: relative; padding: 2rem 1.5rem; width: 100%; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center;">
                 <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-white);">Strategic Executive Briefing</h2>
-                <p style="color: var(--color-text-muted); font-size: 1rem; max-width: 600px;">
+                <p style="color: var(--color-text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto;">
                     Comprehensive overview of current operational metrics, highlighting strategic milestones achieved in the current quarter. System performance remains stable with an upward trajectory in key deliverables.
                 </p>
             </div>
@@ -665,7 +681,7 @@
 
       <!-- 2. ACTIVE PROJECTS -->
       <section id="projects" class="section-content">
-        <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem;">Active Projects</h1>
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Active Projects.</p>
         </div>
@@ -789,7 +805,7 @@
 
       <!-- 3. FINANCIALS -->
       <section id="financials" class="section-content">
-        <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem;">Financials</h1>
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Financials.</p>
         </div>
@@ -900,7 +916,7 @@
 
       <!-- 4. ANALYTICS -->
       <section id="analytics" class="section-content">
-        <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem;">Analytics</h1>
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Analytics.</p>
         </div>
@@ -986,7 +1002,7 @@
 
       <!-- 5. MARKET INTEL -->
       <section id="market" class="section-content">
-        <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem;">Market Intel</h1>
           <p style="font-size: 0.95rem;">Detailed overview and metrics for Market Intel.</p>
         </div>
@@ -1106,8 +1122,8 @@
       window.addEventListener('mousemove', (e) => {
         const posX = e.clientX;
         const posY = e.clientY;
-        cursorDot.style.left = `px`;
-        cursorDot.style.top = `px`;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
         gsap.to(cursorOutline, {
           x: posX,
           y: posY,
