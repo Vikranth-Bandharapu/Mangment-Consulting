@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -79,11 +79,11 @@
   <!-- 4. Category Filter -->
   <section style="padding: 2rem 0; background-color: var(--color-white); border-bottom: 1px solid rgba(0,0,0,0.1);">
     <div class="container gsap-fade" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-      <button onclick="window.location.href='404.html'" class="tag" style="background: var(--color-navy); color: white; cursor: pointer;">All Insights</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Macro Strategy</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Digital Core</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Supply Chain</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">M&A</button>
+      <button onclick="filterBlog('all', this)" class="tag active-filter" style="background: var(--color-navy); color: white; cursor: pointer;">All Insights</button>
+        <button onclick="filterBlog('digital-core', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Digital Core</button>
+        <button onclick="filterBlog('supply-chain', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Supply Chain</button>
+        <button onclick="filterBlog('m-and-a', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">M&A</button>
+        <button onclick="filterBlog('finance', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Finance</button>
     </div>
   </section>
 
@@ -91,7 +91,7 @@
   <section style="padding: 4rem 0 2rem; background-color: var(--color-white);">
     <div class="container">
       <div class="cap-grid bento-grid" style="grid-template-columns: repeat(3, 1fr);">
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger blog-item" data-category="m-and-a" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
           <div style="height: 200px; width: 100%; overflow: hidden;">
             <img src="assets/case1.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -101,7 +101,7 @@
             <p style="color: var(--color-text-muted); font-size: 0.9rem;">A post-mortem of the last decade's most expensive software rollups.</p>
           </div>
         </a>
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger blog-item" data-category="supply-chain" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
           <div style="height: 200px; width: 100%; overflow: hidden;">
             <img src="assets/hero.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -111,7 +111,7 @@
             <p style="color: var(--color-text-muted); font-size: 0.9rem;">Calculating the true landed cost of moving manufacturing back to North America.</p>
           </div>
         </a>
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger blog-item" data-category="digital-core" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
           <div style="height: 200px; width: 100%; overflow: hidden;">
             <img src="assets/boardroom.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -121,11 +121,22 @@
             <p style="color: var(--color-text-muted); font-size: 0.9rem;">Separating generative AI hype from actual P&L utility in enterprise workflows.</p>
           </div>
         </a>
+      
+          <a href="404.html" class="cap-card card-button gsap-stagger blog-item" data-category="finance" style="padding: 0; overflow: hidden; background: var(--color-offwhite); display: flex; flex-direction: column;">
+            <div style="height: 200px; width: 100%; overflow: hidden;">
+              <img src="assets/case2.webp" alt="Insight" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div style="padding: 2rem;">
+              <div class="tag" style="border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1rem; color: var(--color-navy);">FINANCE</div>
+              <h4 style="color: var(--color-navy); margin-bottom: 1rem; font-size: 1.2rem;">Modernizing Corporate Finance</h4>
+              <p style="color: var(--color-text-muted); font-size: 0.9rem;">How agile forecasting methods are redefining financial stability.</p>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 6. Newsletter Subscription -->
+    <!-- 6. Newsletter Subscription -->
   <section style="padding: 8rem 0; background-color: var(--color-navy); color: white;">
     <div class="orb orb-pink"></div>
     <div class="container text-center gsap-fade" style="position: relative; z-index: 1;">
@@ -193,7 +204,7 @@
           <div class="phil-content">
             <h3>On Digital Transformation</h3>
             <p>If your digital transformation doesn't retire legacy servers or reduce headcount in the back office, it was just an expensive IT project.</p>
-            <div style="margin-top: 1rem; color: var(--color-gold); font-size: 0.9rem;">— David Chen, Partner</div>
+            <div style="margin-top: 1rem; color: var(--color-gold); font-size: 0.9rem;">� David Chen, Partner</div>
           </div>
         </div>
         <div class="phil-item gsap-phil-item">
@@ -201,7 +212,7 @@
           <div class="phil-content">
             <h3>On Strategy</h3>
             <p>Strategy is not a document. Strategy is the physical allocation of capital and human bandwidth. If budgets didn't change, the strategy didn't change.</p>
-            <div style="margin-top: 1rem; color: var(--color-gold); font-size: 0.9rem;">— Elena Rostova, Managing Partner</div>
+            <div style="margin-top: 1rem; color: var(--color-gold); font-size: 0.9rem;">� Elena Rostova, Managing Partner</div>
           </div>
         </div>
       </div>
@@ -294,8 +305,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
   <script src="script.js"></script>
+<script>
+function filterBlog(category, btn) {
+    const buttons = document.querySelectorAll('.filter-container .tag');
+    buttons.forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--color-navy)';
+    });
+    btn.style.background = 'var(--color-navy)';
+    btn.style.color = 'white';
+
+    const items = document.querySelectorAll('.blog-item');
+    items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".glass-header");
+  if (header) {
+    if (window.scrollY > 50) {
+      header.style.backgroundColor = "var(--color-navy)";
+      header.style.transition = "background-color 0.3s ease";
+    } else {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0.85)";
+    }
+  }
+});
+</script>
 </body>
 </html>
+
 
 
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -82,11 +82,11 @@
   <!-- 4. Filter Bar -->
   <section style="padding: 2rem 0; background-color: var(--color-offwhite); border-bottom: 1px solid rgba(0,0,0,0.1);">
     <div class="container gsap-fade" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-      <button onclick="window.location.href='404.html'" class="tag" style="background: var(--color-navy); color: white; cursor: pointer;">All Sectors</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Finance</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Healthcare</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Technology</button>
-      <button onclick="window.location.href='404.html'" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Retail</button>
+      <button onclick="filterCases('all', this)" class="tag active-filter" style="background: var(--color-navy); color: white; cursor: pointer;">All Sectors</button>
+        <button onclick="filterCases('finance', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Finance</button>
+        <button onclick="filterCases('healthcare', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Healthcare</button>
+        <button onclick="filterCases('technology', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Technology</button>
+        <button onclick="filterCases('retail', this)" class="tag" style="background: transparent; color: var(--color-navy); cursor: pointer;">Retail</button>
     </div>
   </section>
 
@@ -94,7 +94,7 @@
   <section style="padding: 4rem 0 2rem; background-color: var(--color-offwhite);">
     <div class="container">
       <div class="cap-grid bento-grid" style="grid-template-columns: repeat(2, 1fr);">
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger case-item" data-category="finance" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
           <div style="height: 250px; width: 100%; overflow: hidden;">
             <img src="assets/case1.webp" alt="Finance" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -104,7 +104,7 @@
             <p style="color: var(--color-text-muted);">Consolidating core banking platforms across 12 countries while maintaining 99.999% uptime.</p>
           </div>
         </a>
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger case-item" data-category="healthcare" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
           <div style="height: 250px; width: 100%; overflow: hidden;">
             <img src="assets/boardroom.webp" alt="Healthcare" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -122,7 +122,7 @@
   <section style="padding: 2rem 0; background-color: var(--color-offwhite);">
     <div class="container">
       <div class="cap-grid bento-grid" style="grid-template-columns: repeat(2, 1fr);">
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger case-item" data-category="technology" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
           <div style="height: 250px; width: 100%; overflow: hidden;">
             <img src="assets/insights.webp" alt="Tech" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -132,7 +132,7 @@
             <p style="color: var(--color-text-muted);">Shifting from a volume-based sales motion to enterprise land-and-expand, doubling ACV.</p>
           </div>
         </a>
-        <a href="404.html" class="cap-card card-button gsap-stagger" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
+        <a href="404.html" class="cap-card card-button gsap-stagger case-item" data-category="retail" style="padding: 0; overflow: hidden; background: white; display: flex; flex-direction: column;">
           <div style="height: 250px; width: 100%; overflow: hidden;">
             <img src="assets/case2.webp" alt="Retail" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
           </div>
@@ -289,8 +289,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   <script src="script.js"></script>
+<script>
+function filterCases(category, btn) {
+    const buttons = document.querySelectorAll('.case-filter-container .tag');
+    buttons.forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--color-navy)';
+    });
+    btn.style.background = 'var(--color-navy)';
+    btn.style.color = 'white';
+
+    const items = document.querySelectorAll('.case-item');
+    items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".glass-header");
+  if (header) {
+    if (window.scrollY > 50) {
+      header.style.backgroundColor = "var(--color-navy)";
+      header.style.transition = "background-color 0.3s ease";
+    } else {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0.85)";
+    }
+  }
+});
+</script>
 </body>
 </html>
+
 
 
 

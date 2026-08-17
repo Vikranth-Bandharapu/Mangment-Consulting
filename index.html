@@ -538,6 +538,20 @@
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
   <script src="script.js"></script>
+
+<script>
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".glass-header");
+  if (header) {
+    if (window.scrollY > 50) {
+      header.style.backgroundColor = "var(--color-navy)";
+      header.style.transition = "background-color 0.3s ease";
+    } else {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0.85)";
+    }
+  }
+});
+</script>
 </body>
 </html>
 
