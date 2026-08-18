@@ -35,7 +35,7 @@
       white-space: nowrap;
       padding: 2rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex; flex-direction: row; align-items: center; gap: 1rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
     }
     .sidebar-nav {
       flex: 1;
@@ -50,7 +50,7 @@
       border-radius: 5px;
     }
     .nav-item {
-      display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem;
+      display: flex; flex-direction: row; align-items: center; gap: 1rem;
       padding: 0.8rem 1rem;
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
@@ -380,6 +380,19 @@
 <body>
 
   <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header" style="white-space: nowrap;">
+      <a href="dashboard_admin.html"><img src="assets/logo.webp" alt="Logo" style="height: 30px;"></a>
+      <span style="font-weight: bold; font-size: 1.5rem; font-family: var(--font-serif);">Admin Portal</span>
+    </div>
+    <div class="sidebar-nav" id="sidebarNav">
+      <div class="nav-item active" data-target="command"><i class="fa-solid fa-server"></i> Command Center</div>
+      <div class="nav-item" data-target="users"><i class="fa-solid fa-users"></i> User Management</div>
+      <div class="nav-item" data-target="system"><i class="fa-solid fa-heart-pulse"></i> System Health</div>
       <div class="nav-item" data-target="utilization"><i class="fa-solid fa-users-gear"></i> Utilization</div>
       <div class="nav-item" data-target="talent"><i class="fa-solid fa-user-plus"></i> Talent & Recruiting</div>
     </div>
@@ -406,30 +419,12 @@
         </div>
         <div class="profile-info">
           <div class="profile-name" style="word-break: break-all; font-size: 1.1rem;">
-             <span class="profile-email" id="userEmailDisplay">admin@stackly.com</span>
-          </div>
-          <div class="profile-role">DIRECTOR PORTAL</div>
-        </div>
-      </div>
-
-
-      <!-- User Profile Header -->
-      
-        <div class="profile-info">
-          <div class="profile-name" style="word-break: break-all; font-size: 1.1rem;">
              <span class="profile-email" id="userEmailDisplay">cmd@stackly.agency</span>
           </div>
           <div class="profile-role">ADMIN PORTAL</div>
         </div>
       </div>
       
-      <!-- 1. COMMAND CENTER -->
-      
-      <!-- 1. COMMAND CENTER -->
-      
-      <!-- 1. COMMAND CENTER -->
-      
-      <!-- 1. COMMAND CENTER -->
       <section id="command" class="section-content active">
         <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem;">Command Center</h1>
@@ -866,7 +861,83 @@
         </div>
       </section>
 
-      <!-- 4. UTILIZATION -->
+      
+      <!-- 2. USER MANAGEMENT -->
+      <section id="users" class="section-content">
+        <div class="section-header">
+          <h1>User Management</h1>
+          <p>Manage platform access, roles, and security policies.</p>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h3>Active Users</h3>
+            <div class="card-value">1,492</div>
+            <p class="card-trend up"><i class="fa-solid fa-arrow-up"></i> +12% this month</p>
+          </div>
+          <div class="dash-card">
+            <h3>Pending Approvals</h3>
+            <div class="card-value">18</div>
+            <p style="color: var(--color-gold);">Action required</p>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Last Login</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>john.doe@enterprise.com</td>
+                <td>Client Admin</td>
+                <td><span class="status-badge status-active">Active</span></td>
+                <td>2 mins ago</td>
+                <td><button class="btn-outline-gold" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">Edit</button></td>
+              </tr>
+              <tr>
+                <td>sarah.j@techcorp.io</td>
+                <td>Viewer</td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td>Never</td>
+                <td><button class="btn-outline-gold" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">Review</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. SYSTEM HEALTH -->
+      <section id="system" class="section-content">
+        <div class="section-header">
+          <h1>System Health</h1>
+          <p>Real-time infrastructure and security monitoring.</p>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h3>Server Uptime</h3>
+            <div class="card-value">99.999%</div>
+            <p class="card-trend up">All systems operational</p>
+          </div>
+          <div class="dash-card">
+            <h3>Average Latency</h3>
+            <div class="card-value">42ms</div>
+            <p class="card-trend up">Optimal performance</p>
+          </div>
+        </div>
+        <div style="background: #000; padding: 1.5rem; border-radius: 8px; font-family: monospace; color: #0f0; margin-top: 1rem; max-height: 200px; overflow-y: auto;">
+          > [SYS] All nodes reporting healthy status.<br>
+          > [SEC] 0 intrusion attempts detected.<br>
+          > [DB] Database replication lag: 0.01s.<br>
+          > [NET] Bandwidth utilization at 12%.<br>
+          > [SYS] Routine diagnostic completed successfully.
+        </div>
+      </section>
+<!-- 4. UTILIZATION -->
       <section id="utilization" class="section-content">
         <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">
           <h1 style="font-size: 2rem;">Utilization</h1>
