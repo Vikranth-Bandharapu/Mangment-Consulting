@@ -282,52 +282,6 @@
     body.no-scroll .content-area { overflow: hidden !important; touch-action: none; }
 </style>
 
-    <style>
-    .sidebar-footer {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box;
-        padding-bottom: 6rem !important; /* Mobile scroll fix */
-    }
-    .btn-logout {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box;
-        white-space: nowrap;
-    }
-    .sidebar-header {
-      background: var(--color-navy); z-index: 10;
-      position: relative;
-      white-space: nowrap;
-      padding: 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      gap: 1rem !important;
-    }
-    .avatar-small {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid var(--color-emerald);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: var(--color-emerald);
-      background: rgba(16, 185, 129, 0.1);
-      flex-shrink: 0;
-    }
-    .nav-item {
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      gap: 1rem !important;
-    }
-    </style>
-
-
   <style>
     /* EXTREME MOBILE OVERRIDE INJECTED DIRECTLY */
       .sidebar-overlay {
@@ -442,20 +396,7 @@
       <div class="nav-item" data-target="utilization"><i class="fa-solid fa-users-gear"></i> Utilization</div>
       <div class="nav-item" data-target="talent"><i class="fa-solid fa-user-plus"></i> Talent & Recruiting</div>
     </div>
-    
-    <!-- User Profile Header -->
-      <div class="user-profile-card" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; display: flex; align-items: center; box-sizing: border-box; margin: 0 1rem 1rem 1rem; width: calc(100% - 2rem) !important; padding: 1rem; gap: 1rem;">
-        <div class="avatar-small">
-           <i class="fa-solid fa-user-tie"></i>
-        </div>
-        <div class="profile-info">
-          <div class="profile-name" style="word-break: break-all; font-size: 0.95rem;">
-             <span class="profile-email" id="userEmailDisplay">cmd@stackly.agency</span>
-          </div>
-          <div class="profile-role" style="font-size: 0.75rem; color: var(--color-gold); margin-top: 0.25rem;">ADMIN PORTAL</div>
-        </div>
-      </div>
-<div class="sidebar-footer">
+    <div class="sidebar-footer">
       <a href="index.html" class="btn-logout"><i class="fa-solid fa-power-off"></i> Secure Logout</a>
     </div>
   </aside>
@@ -471,7 +412,18 @@
     </div>
   </div>
     <div class="content-area">
-      
+      <!-- User Profile Header -->
+      <div class="user-profile-card" style="width: 100%; box-sizing: border-box; margin-bottom: 0.5rem;">
+        <div class="avatar-large">
+           <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name" style="word-break: break-all; font-size: 1.1rem;">
+             <span class="profile-email" id="userEmailDisplay">cmd@stackly.agency</span>
+          </div>
+          <div class="profile-role">ADMIN PORTAL</div>
+        </div>
+      </div>
       
       <section id="command" class="section-content active">
         <div class="section-header" style="margin-bottom: 0.5rem; text-align: center;">

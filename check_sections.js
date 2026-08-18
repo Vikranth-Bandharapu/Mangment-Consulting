@@ -1,8 +1,11 @@
 const fs = require('fs');
-let html = fs.readFileSync('dashboard_admin.html', 'utf8');
-
-console.log('users:', html.includes('id="users"'));
-console.log('system:', html.includes('id="system"'));
-console.log('command:', html.includes('id="command"'));
-console.log('utilization:', html.includes('id="utilization"'));
-console.log('talent:', html.includes('id="talent"'));
+let html = fs.readFileSync('dashboard_client.html', 'utf8');
+const sections = ['projects', 'financials', 'analytics', 'market'];
+for (const sec of sections) {
+    const start = html.indexOf(`<section id="${sec}"`);
+    if (start !== -1) {
+        const end = html.indexOf('</section>', start) + 10;
+        console.log(`--- ${sec} ---`);
+        console.log(html.substring(start, end));
+    }
+}
